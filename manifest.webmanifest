@@ -1,12 +1,11 @@
 {
-  "name": "Sparkly Party Planet",
-  "short_name": "Sparkly",
-  "description": "Aplicación educativa infantil con karaoke, grabación y recompensas.",
+  "name": "Sparkly Party Planet V4",
+  "short_name": "Sparkly V4",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#12033f",
-  "theme_color": "#7b27e6",
+  "background_color": "#09022f",
+  "theme_color": "#6f20d8",
   "orientation": "landscape",
   "lang": "es-MX"
 }

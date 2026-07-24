@@ -1,12 +1,12 @@
-# Sparkly Party Planet V3
+# Sparkly Party Planet V4 — Pantalla exacta
 
-Versión 3 con:
-- Karaoke de demostración con letras sincronizadas.
-- Grabación de voz usando el micrófono.
-- Guardado local de grabaciones.
-- Biblioteca de canciones.
-- Carga de audios.
-- Perfil infantil.
-- Estrellas y niveles.
+Esta versión reproduce en programación la pantalla aprobada:
+- Menú lateral.
 - Área para padres.
-- PWA preparada para GitHub Pages.
+- Estrellas y nivel.
+- Logo central.
+- Las Chespitas y Sparkly.
+- Actividades educativas.
+- Panel para subir canciones.
+- Categorías y favoritas.
+- Karaoke y grabaciones funcionales.

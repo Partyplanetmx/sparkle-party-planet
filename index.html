@@ -1,50 +1,138 @@
-<!doctype html><html lang="es"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#7b27e6"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
-<title>Sparkly Party Planet V3</title></head><body>
-<div class="app"><aside class="sidebar">
-<button class="nav active" data-screen="home"><span>🏠</span>INICIO</button>
-<button class="nav" data-screen="songs"><span>🎵</span>CANCIONES</button>
-<button class="nav" data-screen="karaoke"><span>🎤</span>KARAOKE</button>
-<button class="nav" data-screen="learn"><span>🎓</span>APRENDE</button>
-<button class="nav" data-screen="games"><span>🎮</span>JUEGOS</button>
-<button class="nav" data-screen="recordings"><span>🎙️</span>GRABACIONES</button>
-<button class="nav" data-screen="achievements"><span>🏆</span>LOGROS</button>
-<button class="nav" data-screen="parents"><span>👨‍👩‍👧</span>PADRES</button>
-</aside><main class="main">
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6f20d8">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="styles.css">
+<title>Sparkly Party Planet V4</title>
+</head>
+<body>
+<div class="app-shell">
+  <aside class="side-menu">
+    <button class="menu-btn active" data-screen="inicio"><span>🏠</span>INICIO</button>
+    <button class="menu-btn" data-screen="canciones"><span>🎵</span>CANCIONES</button>
+    <button class="menu-btn" data-screen="karaoke"><span>🎤</span>KARAOKE</button>
+    <button class="menu-btn" data-screen="aprende"><span>🎓</span>APRENDE</button>
+    <button class="menu-btn" data-screen="juegos"><span>🎮</span>JUEGOS</button>
+    <button class="menu-btn" data-screen="logros"><span>🏆</span>MIS LOGROS</button>
+    <button class="menu-btn" data-screen="grabaciones"><span>📹</span>GRABACIONES</button>
+    <button class="menu-btn" data-screen="padres"><span>👨‍👩‍👧</span>PADRES</button>
+    <button class="menu-btn" data-screen="config"><span>⚙️</span>CONFIGURACIÓN</button>
+  </aside>
 
-<section id="home" class="screen active">
-<div class="topbar"><button class="pill" onclick="showScreen('parents')">👨‍👩‍👧 ÁREA PARA PADRES</button><div class="stats"><div class="pill">⭐ MIS ESTRELLAS <b data-stars>0</b></div><div class="pill">🏅 NIVEL <b data-level>1</b></div></div></div>
-<div class="hero"><img class="hero-img" src="assets/chespitas.jpg"><div class="hero-center"><img class="logo" src="assets/logo.jpg"><div class="ribbon">APRENDE, CANTA Y DIVIÉRTETE</div><div><button class="primary" onclick="showScreen('karaoke')">🎤 ¡A CANTAR!</button><button class="primary" onclick="showScreen('learn')">🎓 ¡A APRENDER!</button></div></div><img class="hero-img" src="assets/sparkly.jpg"></div>
-<div class="panel"><h2>ELIGE UNA ACTIVIDAD</h2><div class="feature-grid">
-<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button><button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button><button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button><button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button><button class="feature" onclick="lesson('Figuras','Círculo, cuadrado, triángulo y estrella')"><span>🔺</span>FIGURAS</button><button class="feature" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')"><span>📅</span>DÍAS</button><button class="feature" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')"><span>🧼</span>HÁBITOS</button><button class="feature" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')"><span>💗</span>EMOCIONES</button>
-</div></div></section>
+  <main class="content">
+    <section id="inicio" class="screen active">
+      <header class="top-row">
+        <button class="cream-btn" onclick="go('padres')">👥 ÁREA PARA PADRES</button>
+        <div class="score-wrap">
+          <div class="score-box">⭐ <span>MIS ESTRELLAS<br><b data-stars>125</b></span></div>
+          <div class="score-box">🟣 <span>NIVEL <b data-level>3</b></span></div>
+        </div>
+      </header>
 
-<section id="songs" class="screen"><div class="topbar"><div class="pill">🎵 CANCIONES</div><div class="pill">⭐ <b data-stars>0</b></div></div>
-<div class="layout"><div><div class="panel"><h2>🎵 CANTA CON LAS CHESPITAS</h2><div class="cards">
-<div class="card" onclick="demoSong('La Cumbia de las Chespitas')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>La Cumbia de las Chespitas</b></div><div class="card" onclick="demoSong('Brillitos de las Chespitas')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Brillitos de las Chespitas</b></div><div class="card" onclick="demoSong('Canta, juega y aprende')"><img src="assets/chespita2.jpg"><button class="play">▶</button><b>Canta, juega y aprende</b></div><div class="card" onclick="demoSong('Fiesta de colores')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>Fiesta de colores</b></div><div class="card" onclick="demoSong('Amigas por siempre')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Amigas por siempre</b></div>
-</div></div><div class="panel"><h2>☁️ SUBE TUS CANCIONES</h2><label class="upload"><input id="fileInput" type="file" accept="audio/*" multiple><div class="cloud">☁️⬆️</div><b>Toca aquí para seleccionar canciones</b><p>MP3, WAV o M4A. Se guardan en este dispositivo.</p></label><div id="songList" class="song-list"></div></div></div>
-<div><div class="panel"><h2>🎤 CANTA CON SPARKLY</h2><div class="cards" style="grid-template-columns:repeat(3,1fr)">
-<div class="card" onclick="demoSong('El baile de Sparkly')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>El baile de Sparkly</b></div><div class="card" onclick="demoSong('Sparkly vaquero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly vaquero</b></div><div class="card" onclick="demoSong('Sparkly aventurero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly aventurero</b></div>
-</div></div></div></div></section>
+      <section class="hero-grid">
+        <div class="character-panel chespitas-panel">
+          <img src="assets/chespitas.webp" onerror="this.src='assets/chespitas.jpg'" alt="Las Chespitas">
+        </div>
 
-<section id="karaoke" class="screen"><div class="pill">🎤 KARAOKE</div><div class="panel"><h2>BRILLITOS DE LAS CHESPITAS — DEMOSTRACIÓN</h2><div class="karaoke-box"><div id="lyrics" class="lyrics"><p>Presiona comenzar karaoke.</p></div><div class="recorder"><h3>Graba tu voz</h3><button id="recordBtn" class="record-btn" onclick="toggleRecord()">🎙️</button><p id="recordStatus">Lista para grabar</p><button class="primary" onclick="startKaraoke()">▶ COMENZAR KARAOKE</button></div></div></div></section>
+        <div class="brand-center">
+          <img class="brand-logo" src="assets/logo.webp" onerror="this.src='assets/logo.jpg'" alt="Sparkly Party Planet">
+          <div class="tagline">APRENDE, CANTA Y DIVIÉRTETE</div>
+          <div class="hero-actions">
+            <button onclick="go('karaoke')">🎤 ¡A CANTAR!</button>
+            <button onclick="go('aprende')">🎓 ¡A APRENDER!</button>
+          </div>
+        </div>
 
-<section id="learn" class="screen"><div class="pill">🎓 APRENDE</div><div class="panel"><h2>CATEGORÍAS EDUCATIVAS</h2><div class="feature-grid">
-<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button><button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button><button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button><button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button><button class="feature" onclick="lesson('Figuras','Círculo, cuadrado, triángulo y estrella')"><span>🔺</span>FIGURAS</button><button class="feature" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')"><span>📅</span>DÍAS</button><button class="feature" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')"><span>🧼</span>HÁBITOS</button><button class="feature" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')"><span>💗</span>EMOCIONES</button>
-</div></div></section>
+        <div class="character-panel sparkly-panel">
+          <img src="assets/sparkly.webp" onerror="this.src='assets/sparkly.jpg'" alt="Sparkly">
+        </div>
+      </section>
 
-<section id="games" class="screen"><div class="pill">🎮 JUEGOS</div><div class="panel"><h2>JUEGOS EN PREPARACIÓN</h2><div class="feature-grid" style="grid-template-columns:repeat(4,1fr)"><button class="feature"><span>🧩</span>ROMPECABEZAS</button><button class="feature"><span>🃏</span>MEMORAMA</button><button class="feature"><span>🎨</span>COLOREA</button><button class="feature"><span>⭐</span>ENCUENTRA ESTRELLAS</button></div></div></section>
+      <section class="activity-panel">
+        <h2>ELIGE UNA ACTIVIDAD</h2>
+        <div class="activity-grid">
+          <button class="activity purple" onclick="lesson('Vocales','A, E, I, O, U')">🔤<b>VOCALES</b></button>
+          <button class="activity orange" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')">🔢<b>NÚMEROS</b></button>
+          <button class="activity yellow" onclick="lesson('Colores','Rojo, azul, amarillo y verde')">🌈<b>COLORES</b></button>
+          <button class="activity green" onclick="lesson('Animales','León, tigre, perro y gato')">🐯<b>ANIMALES</b></button>
+          <button class="activity blue" onclick="lesson('Figuras','Círculo, triángulo, cuadrado y estrella')">🔺<b>FIGURAS</b></button>
+          <button class="activity violet" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')">📅<b>DÍAS</b></button>
+          <button class="activity aqua" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')">🫧<b>HÁBITOS</b></button>
+          <button class="activity pink" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')">💗<b>EMOCIONES</b></button>
+        </div>
+      </section>
 
-<section id="recordings" class="screen"><div class="pill">🎙️ MIS GRABACIONES</div><div class="panel"><h2>GRABACIONES GUARDADAS</h2><div id="recordingList"></div></div></section>
+      <section class="lower-grid">
+        <div class="songs-panel">
+          <div class="panel-title">⭐ 🎵 MIS CANCIONES <small>SUBE TUS CANCIONES</small> ⭐</div>
+          <div class="songs-body">
+            <label class="drop-zone">
+              <input id="audioInput" type="file" accept="audio/*" multiple>
+              <div class="upload-cloud">☁️⬆️</div>
+              <b>Arrastra tu archivo de audio<br>o haz clic para seleccionar</b>
+              <small>Formatos: MP3, WAV, M4A<br>Tamaño máximo: 50 MB</small>
+            </label>
+            <div class="uploaded">
+              <h3>MIS CANCIONES SUBIDAS</h3>
+              <div id="songList"></div>
+              <div class="privacy">🔒 Solo tú puedes ver y usar tus canciones.</div>
+            </div>
+          </div>
+        </div>
 
-<section id="achievements" class="screen"><div class="pill">🏆 MIS LOGROS</div><div class="panel"><h2>TU PROGRESO</h2><div class="progress-grid"><div class="progress-card"><span>⭐</span><b data-stars>0</b><p>Estrellas</p></div><div class="progress-card"><span>🏅</span><b data-level>1</b><p>Nivel</p></div><div class="progress-card"><span>🎖️</span><b>0</b><p>Medallas</p></div><div class="progress-card"><span>🎁</span><b>0</b><p>Recompensas</p></div></div></div></section>
+        <div class="categories-panel">
+          <h3>CATEGORÍAS</h3>
+          <button>🔤 Vocales</button><button>🔢 Números</button><button>🎨 Colores</button>
+          <button>🐯 Animales</button><button>📅 Días de la semana</button><button>🧼 Hábitos</button>
+          <button>💗 Emociones</button><button>🔺 Figuras</button>
+        </div>
 
-<section id="parents" class="screen"><div class="pill">👨‍👩‍👧 ÁREA PARA PADRES</div><div class="panel"><h2>PERFIL Y CONFIGURACIÓN</h2><div class="parent-grid">
-<div class="setting"><h3>👧 Perfil infantil</h3><input id="childName" placeholder="Nombre del niño o niña"><button class="primary" style="font-size:16px;padding:10px 18px" onclick="saveProfile()">GUARDAR</button><p>Perfil actual: <b id="profileName"></b></p></div>
-<div class="setting"><h3>⏱️ Tiempo de uso</h3><p>Próximamente podrás definir minutos diarios.</p></div><div class="setting"><h3>🔊 Volumen</h3><input type="range" min="0" max="100" value="70" style="width:100%"></div><div class="setting"><h3>📊 Progreso</h3><p>Estrellas: <b data-stars>0</b><br>Nivel: <b data-level>1</b></p></div>
-</div></div></section>
+        <div class="favorites-panel">
+          <h3>FAVORITAS</h3>
+          <div class="fav">👭 <span>La Cumbia de<br>las Chespitas</span> ⭐</div>
+          <div class="fav">🟣 <span>El baile de<br>Sparkly</span> ⭐</div>
+          <div class="fav">👭 <span>Canta, juega<br>y aprende</span> ⭐</div>
+          <button class="view-all">VER TODAS</button>
+        </div>
+      </section>
 
-</main></div>
-<div id="modal" class="modal"><div class="modal-box"><button class="close" onclick="closeModal()">✕</button><h2 id="modalTitle"></h2><p id="modalText"></p><audio id="player" controls></audio><button class="primary" style="font-size:17px;padding:10px 18px" onclick="addStars()">⭐ TERMINÉ LA ACTIVIDAD</button></div></div>
-<script src="app.js"></script></body></html>
+      <nav class="bottom-nav">
+        <button onclick="go('inicio')">🏠 INICIO</button>
+        <button onclick="go('canciones')">🎵 CANCIONES</button>
+        <button onclick="go('aprende')">🎓 APRENDE</button>
+        <button onclick="go('juegos')">🎮 JUEGOS</button>
+        <button onclick="go('logros')">🏆 MIS LOGROS</button>
+      </nav>
+    </section>
+
+    <section id="canciones" class="screen simple-screen">
+      <h1>🎵 CANCIONES</h1>
+      <div class="feature-card"><h2>Biblioteca musical</h2><p>Sube canciones desde la pantalla de Inicio y aparecerán aquí.</p><div id="libraryList"></div></div>
+    </section>
+
+    <section id="karaoke" class="screen simple-screen">
+      <h1>🎤 KARAOKE</h1>
+      <div class="feature-card">
+        <select id="karaokeSelect"></select>
+        <audio id="karaokePlayer" controls></audio>
+        <div id="lyrics" class="lyrics">Selecciona una canción y presiona comenzar.</div>
+        <button class="big-pink" onclick="startKaraoke()">▶ COMENZAR KARAOKE</button>
+      </div>
+    </section>
+
+    <section id="aprende" class="screen simple-screen"><h1>🎓 APRENDE</h1><div class="feature-card"><p>Actividades educativas de vocales, números, colores, animales, figuras, días, hábitos y emociones.</p></div></section>
+    <section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1><div class="feature-card"><button class="big-pink" onclick="addStars(5)">⭐ JUEGO DE ESTRELLAS</button></div></section>
+    <section id="logros" class="screen simple-screen"><h1>🏆 MIS LOGROS</h1><div class="feature-card"><p>Estrellas: <b data-stars>125</b></p><p>Nivel: <b data-level>3</b></p></div></section>
+    <section id="grabaciones" class="screen simple-screen"><h1>📹 GRABACIONES</h1><div class="feature-card"><button id="recordBtn" class="big-pink" onclick="toggleRecord()">🎙️ GRABAR VOZ</button><div id="recordList"></div></div></section>
+    <section id="padres" class="screen simple-screen"><h1>👨‍👩‍👧 ÁREA PARA PADRES</h1><div class="feature-card"><input id="childName" placeholder="Nombre del niño"><button class="big-pink" onclick="saveProfile()">GUARDAR PERFIL</button></div></section>
+    <section id="config" class="screen simple-screen"><h1>⚙️ CONFIGURACIÓN</h1><div class="feature-card"><p>Control de sonido, privacidad, tiempo de uso y apariencia.</p></div></section>
+  </main>
+</div>
+
+<div id="modal" class="modal"><div class="modal-box"><button onclick="closeModal()">✕</button><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
+<script src="app.js"></script>
+</body>
+</html>

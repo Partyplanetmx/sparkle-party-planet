@@ -1,0 +1,7 @@
+1. Copia todo dentro de:
+C:\Users\PC\OneDrive\Documentos\GitHub\sparkle-party-planet
+2. Reemplaza los archivos en el destino.
+3. En GitHub Desktop escribe:
+Versión 4 - Pantalla aprobada
+4. Commit to main.
+5. Push origin.
