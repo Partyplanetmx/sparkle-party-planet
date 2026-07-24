@@ -1,0 +1,7 @@
+1. Descomprime el ZIP.
+2. Copia TODO su contenido dentro de Documentos > GitHub > sparkle-party-planet.
+3. Acepta reemplazar README.md.
+4. Regresa a GitHub Desktop.
+5. En Summary escribe: Primera versión de la aplicación
+6. Presiona Commit to main.
+7. Presiona Push origin.

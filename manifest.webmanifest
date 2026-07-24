@@ -1,0 +1,10 @@
+{
+  "name": "Sparkly Party Planet",
+  "short_name": "Sparkly",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#12044d",
+  "theme_color": "#6b1bd1",
+  "orientation": "landscape",
+  "lang": "es-MX"
+}

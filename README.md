@@ -1,2 +1,2 @@
-# sparkle-party-planet
-Aplicación educativa infantil de Party Planet con las Chespitas y Sparkle
+# Sparkly Party Planet
+Primera versión funcional de la aplicación infantil educativa.
