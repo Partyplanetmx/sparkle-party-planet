@@ -1,13 +1,12 @@
-# Sparkly Party Planet V2
+# Sparkly Party Planet V3
 
-Versión 2.0 de la aplicación infantil educativa.
-
-Incluye:
-- Pantalla principal visual.
+Versión 3 con:
+- Karaoke de demostración con letras sincronizadas.
+- Grabación de voz usando el micrófono.
+- Guardado local de grabaciones.
 - Biblioteca de canciones.
-- Subida local de audios.
-- Categorías educativas.
+- Carga de audios.
+- Perfil infantil.
 - Estrellas y niveles.
-- Juegos preparados.
 - Área para padres.
-- PWA lista para publicar con GitHub Pages.
+- PWA preparada para GitHub Pages.

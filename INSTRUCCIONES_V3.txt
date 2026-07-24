@@ -1,0 +1,10 @@
+1. Descomprime Sparkly_Party_Planet_V3.zip.
+2. Copia TODO su contenido dentro de:
+   OneDrive > Documentos > GitHub > sparkle-party-planet
+3. Selecciona Sí a todo para reemplazar archivos.
+4. Abre GitHub Desktop.
+5. En Summary escribe:
+   Sparkly Party Planet V3 - Karaoke y grabación
+6. Presiona Commit to main.
+7. Presiona Push origin.
+8. Después activa GitHub Pages en Settings > Pages.

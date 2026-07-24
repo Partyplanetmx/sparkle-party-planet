@@ -1,72 +1,48 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#6e1fd5"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css"><title>Sparkly Party Planet</title></head>
-<body><div class="app">
-<aside class="sidebar">
+<!doctype html><html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#7b27e6"><link rel="manifest" href="manifest.webmanifest"><link rel="stylesheet" href="styles.css">
+<title>Sparkly Party Planet V3</title></head><body>
+<div class="app"><aside class="sidebar">
 <button class="nav active" data-screen="home"><span>🏠</span>INICIO</button>
 <button class="nav" data-screen="songs"><span>🎵</span>CANCIONES</button>
+<button class="nav" data-screen="karaoke"><span>🎤</span>KARAOKE</button>
 <button class="nav" data-screen="learn"><span>🎓</span>APRENDE</button>
 <button class="nav" data-screen="games"><span>🎮</span>JUEGOS</button>
-<button class="nav" data-screen="achievements"><span>🏆</span>MIS LOGROS</button>
+<button class="nav" data-screen="recordings"><span>🎙️</span>GRABACIONES</button>
+<button class="nav" data-screen="achievements"><span>🏆</span>LOGROS</button>
 <button class="nav" data-screen="parents"><span>👨‍👩‍👧</span>PADRES</button>
-</aside>
-<main class="main">
+</aside><main class="main">
 
 <section id="home" class="screen active">
 <div class="topbar"><button class="pill" onclick="showScreen('parents')">👨‍👩‍👧 ÁREA PARA PADRES</button><div class="stats"><div class="pill">⭐ MIS ESTRELLAS <b data-stars>0</b></div><div class="pill">🏅 NIVEL <b data-level>1</b></div></div></div>
-<div class="hero">
-<img class="hero-img" src="assets/chespitas.jpg" alt="Las Chespitas">
-<div class="hero-center"><img class="logo" src="assets/logo.jpg" alt="Sparkly Party Planet"><div class="ribbon">APRENDE, CANTA Y DIVIÉRTETE</div><button class="primary" onclick="showScreen('songs')">🎤 ¡A CANTAR!</button></div>
-<img class="hero-img" src="assets/sparkly.jpg" alt="Sparkly">
-</div>
+<div class="hero"><img class="hero-img" src="assets/chespitas.jpg"><div class="hero-center"><img class="logo" src="assets/logo.jpg"><div class="ribbon">APRENDE, CANTA Y DIVIÉRTETE</div><div><button class="primary" onclick="showScreen('karaoke')">🎤 ¡A CANTAR!</button><button class="primary" onclick="showScreen('learn')">🎓 ¡A APRENDER!</button></div></div><img class="hero-img" src="assets/sparkly.jpg"></div>
 <div class="panel"><h2>ELIGE UNA ACTIVIDAD</h2><div class="feature-grid">
-<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button>
-<button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button>
-<button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button>
-<button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button>
-<button class="feature" onclick="lesson('Figuras','Círculo, cuadrado, triángulo y estrella')"><span>🔺</span>FIGURAS</button>
-<button class="feature" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')"><span>📅</span>DÍAS</button>
-<button class="feature" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')"><span>🧼</span>HÁBITOS</button>
-<button class="feature" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')"><span>💗</span>EMOCIONES</button>
-</div></div>
-<div class="bottom"><button onclick="showScreen('songs')">🎤 MIS GRABACIONES</button><button onclick="showScreen('achievements')">🏆 MIS ESTRELLAS</button><button>🏅 DIPLOMAS</button><button>🎁 RECOMPENSAS</button></div>
-</section>
-
-<section id="songs" class="screen">
-<div class="topbar"><div class="pill">🎵 CANCIONES</div><div class="stats"><div class="pill">⭐ <b data-stars>0</b></div><div class="pill">NIVEL <b data-level>1</b></div></div></div>
-<div class="layout"><div>
-<div class="panel"><h2>🎵 CANTA CON LAS CHESPITAS ⭐</h2><div class="cards">
-<div class="card" onclick="demoSong('La Cumbia de las Chespitas')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>La Cumbia de las Chespitas</b></div>
-<div class="card" onclick="demoSong('Brillitos de las Chespitas')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Brillitos de las Chespitas</b></div>
-<div class="card" onclick="demoSong('Canta, juega y aprende')"><img src="assets/chespita2.jpg"><button class="play">▶</button><b>Canta, juega y aprende</b></div>
-<div class="card" onclick="demoSong('Fiesta de colores')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>Fiesta de colores</b></div>
-<div class="card" onclick="demoSong('Amigas por siempre')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Amigas por siempre</b></div>
-</div></div>
-<div class="panel"><h2>☁️ SUBE TUS CANCIONES</h2><label class="upload"><input id="fileInput" type="file" accept="audio/*" multiple><div class="cloud">☁️⬆️</div><b>Toca aquí para seleccionar canciones</b><p>MP3, WAV o M4A. Se guardan solamente en este dispositivo.</p></label><div id="songList" class="song-list"></div></div>
-</div>
-<div>
-<div class="panel"><h2 style="background:#8737e8">🎤 CANTA CON SPARKLY ⭐</h2><div class="cards" style="grid-template-columns:repeat(3,1fr)">
-<div class="card" onclick="demoSong('El baile de Sparkly')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>El baile de Sparkly</b></div>
-<div class="card" onclick="demoSong('Sparkly vaquero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly vaquero</b></div>
-<div class="card" onclick="demoSong('Sparkly aventurero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly aventurero</b></div>
-</div></div>
-<div class="panel"><h2 style="background:#ff8215">FAVORITAS</h2><div class="favorite">La Cumbia de las Chespitas <span>⭐</span></div><div class="favorite">El baile de Sparkly <span>⭐</span></div><div class="favorite">Canta, juega y aprende <span>⭐</span></div></div>
+<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button><button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button><button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button><button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button><button class="feature" onclick="lesson('Figuras','Círculo, cuadrado, triángulo y estrella')"><span>🔺</span>FIGURAS</button><button class="feature" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')"><span>📅</span>DÍAS</button><button class="feature" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')"><span>🧼</span>HÁBITOS</button><button class="feature" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')"><span>💗</span>EMOCIONES</button>
 </div></div></section>
+
+<section id="songs" class="screen"><div class="topbar"><div class="pill">🎵 CANCIONES</div><div class="pill">⭐ <b data-stars>0</b></div></div>
+<div class="layout"><div><div class="panel"><h2>🎵 CANTA CON LAS CHESPITAS</h2><div class="cards">
+<div class="card" onclick="demoSong('La Cumbia de las Chespitas')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>La Cumbia de las Chespitas</b></div><div class="card" onclick="demoSong('Brillitos de las Chespitas')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Brillitos de las Chespitas</b></div><div class="card" onclick="demoSong('Canta, juega y aprende')"><img src="assets/chespita2.jpg"><button class="play">▶</button><b>Canta, juega y aprende</b></div><div class="card" onclick="demoSong('Fiesta de colores')"><img src="assets/chespitas.jpg"><button class="play">▶</button><b>Fiesta de colores</b></div><div class="card" onclick="demoSong('Amigas por siempre')"><img src="assets/chespita1.jpg"><button class="play">▶</button><b>Amigas por siempre</b></div>
+</div></div><div class="panel"><h2>☁️ SUBE TUS CANCIONES</h2><label class="upload"><input id="fileInput" type="file" accept="audio/*" multiple><div class="cloud">☁️⬆️</div><b>Toca aquí para seleccionar canciones</b><p>MP3, WAV o M4A. Se guardan en este dispositivo.</p></label><div id="songList" class="song-list"></div></div></div>
+<div><div class="panel"><h2>🎤 CANTA CON SPARKLY</h2><div class="cards" style="grid-template-columns:repeat(3,1fr)">
+<div class="card" onclick="demoSong('El baile de Sparkly')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>El baile de Sparkly</b></div><div class="card" onclick="demoSong('Sparkly vaquero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly vaquero</b></div><div class="card" onclick="demoSong('Sparkly aventurero')"><img src="assets/sparkly.jpg"><button class="play">▶</button><b>Sparkly aventurero</b></div>
+</div></div></div></div></section>
+
+<section id="karaoke" class="screen"><div class="pill">🎤 KARAOKE</div><div class="panel"><h2>BRILLITOS DE LAS CHESPITAS — DEMOSTRACIÓN</h2><div class="karaoke-box"><div id="lyrics" class="lyrics"><p>Presiona comenzar karaoke.</p></div><div class="recorder"><h3>Graba tu voz</h3><button id="recordBtn" class="record-btn" onclick="toggleRecord()">🎙️</button><p id="recordStatus">Lista para grabar</p><button class="primary" onclick="startKaraoke()">▶ COMENZAR KARAOKE</button></div></div></div></section>
 
 <section id="learn" class="screen"><div class="pill">🎓 APRENDE</div><div class="panel"><h2>CATEGORÍAS EDUCATIVAS</h2><div class="feature-grid">
-<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button><button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button><button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button><button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button>
+<button class="feature" onclick="lesson('Vocales','A, E, I, O, U')"><span>🔤</span>VOCALES</button><button class="feature" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')"><span>🔢</span>NÚMEROS</button><button class="feature" onclick="lesson('Colores','Rojo, azul, amarillo y verde')"><span>🌈</span>COLORES</button><button class="feature" onclick="lesson('Animales','León, perro, gato y ranita')"><span>🦁</span>ANIMALES</button><button class="feature" onclick="lesson('Figuras','Círculo, cuadrado, triángulo y estrella')"><span>🔺</span>FIGURAS</button><button class="feature" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')"><span>📅</span>DÍAS</button><button class="feature" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')"><span>🧼</span>HÁBITOS</button><button class="feature" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')"><span>💗</span>EMOCIONES</button>
 </div></div></section>
 
-<section id="games" class="screen"><div class="pill">🎮 JUEGOS</div><div class="panel"><h2>PRÓXIMAMENTE</h2><div class="feature-grid" style="grid-template-columns:repeat(4,1fr)">
-<button class="feature"><span>🧩</span>ROMPECABEZAS</button><button class="feature"><span>🃏</span>MEMORAMA</button><button class="feature"><span>🎨</span>COLOREA</button><button class="feature"><span>⭐</span>ENCUENTRA ESTRELLAS</button>
-</div></div></section>
+<section id="games" class="screen"><div class="pill">🎮 JUEGOS</div><div class="panel"><h2>JUEGOS EN PREPARACIÓN</h2><div class="feature-grid" style="grid-template-columns:repeat(4,1fr)"><button class="feature"><span>🧩</span>ROMPECABEZAS</button><button class="feature"><span>🃏</span>MEMORAMA</button><button class="feature"><span>🎨</span>COLOREA</button><button class="feature"><span>⭐</span>ENCUENTRA ESTRELLAS</button></div></div></section>
 
-<section id="achievements" class="screen"><div class="pill">🏆 MIS LOGROS</div><div class="panel"><h2>TU PROGRESO</h2><div class="progress-grid">
-<div class="progress-card"><span>⭐</span><b data-stars>0</b><p>Estrellas</p></div><div class="progress-card"><span>🏅</span><b data-level>1</b><p>Nivel</p></div><div class="progress-card"><span>🎖️</span><b>0</b><p>Medallas</p></div><div class="progress-card"><span>🎁</span><b>0</b><p>Recompensas</p></div>
-</div></div></section>
+<section id="recordings" class="screen"><div class="pill">🎙️ MIS GRABACIONES</div><div class="panel"><h2>GRABACIONES GUARDADAS</h2><div id="recordingList"></div></div></section>
 
-<section id="parents" class="screen"><div class="pill">👨‍👩‍👧 ÁREA PARA PADRES</div><div class="panel"><h2>CONFIGURACIÓN</h2><div class="parent-grid">
-<div class="setting"><h3>⏱️ Tiempo de uso</h3><p>Se agregará control de minutos diarios.</p></div><div class="setting"><h3>🔊 Volumen</h3><input type="range" min="0" max="100" value="70" style="width:100%"></div><div class="setting"><h3>🔐 Protección</h3><p>Podrá protegerse con un código para adultos.</p></div><div class="setting"><h3>📊 Progreso</h3><p>Estrellas: <b data-stars>0</b><br>Nivel: <b data-level>1</b></p></div>
+<section id="achievements" class="screen"><div class="pill">🏆 MIS LOGROS</div><div class="panel"><h2>TU PROGRESO</h2><div class="progress-grid"><div class="progress-card"><span>⭐</span><b data-stars>0</b><p>Estrellas</p></div><div class="progress-card"><span>🏅</span><b data-level>1</b><p>Nivel</p></div><div class="progress-card"><span>🎖️</span><b>0</b><p>Medallas</p></div><div class="progress-card"><span>🎁</span><b>0</b><p>Recompensas</p></div></div></div></section>
+
+<section id="parents" class="screen"><div class="pill">👨‍👩‍👧 ÁREA PARA PADRES</div><div class="panel"><h2>PERFIL Y CONFIGURACIÓN</h2><div class="parent-grid">
+<div class="setting"><h3>👧 Perfil infantil</h3><input id="childName" placeholder="Nombre del niño o niña"><button class="primary" style="font-size:16px;padding:10px 18px" onclick="saveProfile()">GUARDAR</button><p>Perfil actual: <b id="profileName"></b></p></div>
+<div class="setting"><h3>⏱️ Tiempo de uso</h3><p>Próximamente podrás definir minutos diarios.</p></div><div class="setting"><h3>🔊 Volumen</h3><input type="range" min="0" max="100" value="70" style="width:100%"></div><div class="setting"><h3>📊 Progreso</h3><p>Estrellas: <b data-stars>0</b><br>Nivel: <b data-level>1</b></p></div>
 </div></div></section>
 
 </main></div>
