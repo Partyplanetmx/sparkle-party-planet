@@ -1,0 +1,9 @@
+1. Descomprime Sparkly_Party_Planet_V2.zip.
+2. Copia TODO su contenido dentro de:
+   Documentos > GitHub > sparkle-party-planet
+3. Acepta reemplazar todos los archivos.
+4. Regresa a GitHub Desktop.
+5. En Summary escribe:
+   Actualización a Sparkly Party Planet V2
+6. Presiona Commit to main.
+7. Presiona Push origin.
