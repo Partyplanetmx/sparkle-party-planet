@@ -1,12 +1,16 @@
-# Sparkly Party Planet V4 — Pantalla exacta
+# Sparkly Party Planet V5 Profesional
 
-Esta versión reproduce en programación la pantalla aprobada:
-- Menú lateral.
-- Área para padres.
-- Estrellas y nivel.
-- Logo central.
-- Las Chespitas y Sparkly.
-- Actividades educativas.
-- Panel para subir canciones.
-- Categorías y favoritas.
-- Karaoke y grabaciones funcionales.
+Funciones principales:
+- Interfaz basada en la pantalla aprobada.
+- Biblioteca local de canciones y buscador.
+- Favoritos.
+- Karaoke con letras editables.
+- Grabación, reproducción, descarga y eliminación de voz.
+- Juegos de estrellas, memoria y adivina la canción.
+- Actividades educativas interactivas.
+- Estrellas, niveles, logros y diploma imprimible.
+- Área para padres con PIN.
+- Perfil infantil, modo seguro y respaldo de progreso.
+- Instalación como PWA y uso básico sin conexión.
+
+PIN inicial del área para padres: 1234

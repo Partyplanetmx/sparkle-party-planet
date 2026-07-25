@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#6f20d8">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="styles.css">
-<title>Sparkly Party Planet V4</title>
+<title>Sparkly Party Planet V5 Profesional</title>
 </head>
 <body>
 <div class="app-shell">
@@ -25,7 +25,7 @@
   <main class="content">
     <section id="inicio" class="screen active">
       <header class="top-row">
-        <button class="cream-btn" onclick="go('padres')">👥 ÁREA PARA PADRES</button>
+        <div class="top-left-actions"><button class="cream-btn" onclick="openParentGate()">👥 ÁREA PARA PADRES</button><button id="installBtn" class="cream-btn install-btn" hidden>📲 INSTALAR APP</button></div>
         <div class="score-wrap">
           <div class="score-box">⭐ <span>MIS ESTRELLAS<br><b data-stars>125</b></span></div>
           <div class="score-box">🟣 <span>NIVEL <b data-level>3</b></span></div>
@@ -77,7 +77,7 @@
             </label>
             <div class="uploaded">
               <h3>MIS CANCIONES SUBIDAS</h3>
-              <div id="songList"></div>
+              <div class="song-tools"><input id="songSearch" placeholder="🔎 Buscar canción"><select id="songFilter"><option value="all">Todas</option><option value="favorite">Favoritas</option></select></div><div id="songList"></div>
               <div class="privacy">🔒 Solo tú puedes ver y usar tus canciones.</div>
             </div>
           </div>
@@ -118,21 +118,85 @@
       <div class="feature-card">
         <select id="karaokeSelect"></select>
         <audio id="karaokePlayer" controls></audio>
+        <div class="karaoke-controls">
+          <button class="secondary-btn" onclick="showLyricsEditor()">✏️ EDITAR LETRA</button>
+          <button class="secondary-btn" onclick="toggleInstrumental()">🎚️ MODO ENSAYO</button>
+        </div>
         <div id="lyrics" class="lyrics">Selecciona una canción y presiona comenzar.</div>
         <button class="big-pink" onclick="startKaraoke()">▶ COMENZAR KARAOKE</button>
+        <button class="secondary-btn" onclick="stopKaraoke()">⏹ DETENER</button>
       </div>
     </section>
 
-    <section id="aprende" class="screen simple-screen"><h1>🎓 APRENDE</h1><div class="feature-card"><p>Actividades educativas de vocales, números, colores, animales, figuras, días, hábitos y emociones.</p></div></section>
-    <section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1><div class="feature-card"><button class="big-pink" onclick="addStars(5)">⭐ JUEGO DE ESTRELLAS</button></div></section>
-    <section id="logros" class="screen simple-screen"><h1>🏆 MIS LOGROS</h1><div class="feature-card"><p>Estrellas: <b data-stars>125</b></p><p>Nivel: <b data-level>3</b></p></div></section>
-    <section id="grabaciones" class="screen simple-screen"><h1>📹 GRABACIONES</h1><div class="feature-card"><button id="recordBtn" class="big-pink" onclick="toggleRecord()">🎙️ GRABAR VOZ</button><div id="recordList"></div></div></section>
-    <section id="padres" class="screen simple-screen"><h1>👨‍👩‍👧 ÁREA PARA PADRES</h1><div class="feature-card"><input id="childName" placeholder="Nombre del niño"><button class="big-pink" onclick="saveProfile()">GUARDAR PERFIL</button></div></section>
-    <section id="config" class="screen simple-screen"><h1>⚙️ CONFIGURACIÓN</h1><div class="feature-card"><p>Control de sonido, privacidad, tiempo de uso y apariencia.</p></div></section>
+    <section id="aprende" class="screen simple-screen">
+    <h1>🎓 APRENDE</h1>
+    <div class="learning-grid">
+      <button onclick="startQuiz('vocales')">🔤<b>Vocales</b><small>Escucha y elige</small></button>
+      <button onclick="startQuiz('numeros')">🔢<b>Números</b><small>Cuenta y aprende</small></button>
+      <button onclick="startQuiz('colores')">🌈<b>Colores</b><small>Reconoce colores</small></button>
+      <button onclick="startQuiz('animales')">🐯<b>Animales</b><small>Sonidos y nombres</small></button>
+      <button onclick="startQuiz('figuras')">🔺<b>Figuras</b><small>Identifica formas</small></button>
+      <button onclick="startQuiz('emociones')">💗<b>Emociones</b><small>Aprende a expresarte</small></button>
+    </div>
+    <div id="quizBox" class="feature-card quiz-box"><p>Selecciona una actividad.</p></div>
+    </section>
+    <section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1>
+    <div class="games-grid">
+      <div class="game-card"><span>⭐</span><h3>Atrapa estrellas</h3><button onclick="startStarGame()">JUGAR</button></div>
+      <div class="game-card"><span>🎨</span><h3>Memoria de colores</h3><button onclick="startMemoryGame()">JUGAR</button></div>
+      <div class="game-card"><span>🎵</span><h3>Adivina la canción</h3><button onclick="startSongGuess()">JUGAR</button></div>
+    </div>
+    <div id="gameArea" class="feature-card game-area">Elige un juego.</div>
+    </section>
+    <section id="logros" class="screen simple-screen"><h1>🏆 MIS LOGROS</h1>
+    <div class="achievement-grid">
+      <div class="achievement" data-need="5">🎤<b>Primera canción</b><small>5 estrellas</small></div>
+      <div class="achievement" data-need="25">🌟<b>Pequeña estrella</b><small>25 estrellas</small></div>
+      <div class="achievement" data-need="75">🎓<b>Gran aprendiz</b><small>75 estrellas</small></div>
+      <div class="achievement" data-need="150">👑<b>Superestrella</b><small>150 estrellas</small></div>
+    </div>
+    <div class="feature-card">
+      <p>Estrellas: <b data-stars>125</b></p><p>Nivel: <b data-level>3</b></p>
+      <button class="big-pink" onclick="printDiploma()">🖨️ CREAR DIPLOMA</button>
+    </div></section>
+    <section id="grabaciones" class="screen simple-screen"><h1>📹 GRABACIONES</h1>
+    <div class="feature-card"><p>Graba la voz del niño mientras canta.</p>
+    <button id="recordBtn" class="big-pink" onclick="toggleRecord()">🎙️ GRABAR VOZ</button>
+    <div id="recordStatus"></div><div id="recordList"></div></div></section>
+    <section id="padres" class="screen simple-screen"><h1>👨‍👩‍👧 ÁREA PARA PADRES</h1>
+    <div class="parents-grid">
+      <div class="feature-card">
+        <h2>Perfil infantil</h2>
+        <input id="childName" placeholder="Nombre del niño">
+        <input id="childAge" type="number" min="2" max="14" placeholder="Edad">
+        <button class="big-pink" onclick="saveProfile()">GUARDAR PERFIL</button>
+      </div>
+      <div class="feature-card">
+        <h2>Seguridad</h2>
+        <input id="newPin" type="password" inputmode="numeric" maxlength="4" placeholder="Nuevo PIN de 4 dígitos">
+        <button class="secondary-btn" onclick="savePin()">CAMBIAR PIN</button>
+        <label class="switch-row"><input id="safeMode" type="checkbox"> Modo infantil seguro</label>
+        <label class="switch-row"><input id="voiceEnabled" type="checkbox"> Instrucciones por voz</label>
+      </div>
+      <div class="feature-card">
+        <h2>Resumen de progreso</h2>
+        <p id="parentSummary"></p>
+        <button class="secondary-btn" onclick="resetProgress()">REINICIAR PROGRESO</button>
+      </div>
+    </div></section>
+    <section id="config" class="screen simple-screen"><h1>⚙️ CONFIGURACIÓN</h1>
+    <div class="settings-grid">
+      <div class="feature-card"><h2>Sonido</h2><label>Volumen <input id="volumeControl" type="range" min="0" max="1" step="0.05" value="1"></label></div>
+      <div class="feature-card"><h2>Apariencia</h2><button class="secondary-btn" onclick="toggleCompact()">CAMBIAR TAMAÑO</button></div>
+      <div class="feature-card"><h2>Datos</h2><button class="secondary-btn" onclick="exportData()">EXPORTAR RESPALDO</button><input id="importData" type="file" accept=".json"></div>
+      <div class="feature-card"><h2>Versión</h2><p>Sparkly Party Planet V5 Profesional</p><p>Funciona sin conexión después de cargarla una vez.</p></div>
+    </div></section>
   </main>
 </div>
 
 <div id="modal" class="modal"><div class="modal-box"><button onclick="closeModal()">✕</button><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
+    <div id="pinModal" class="modal"><div class="modal-box"><button onclick="closePin()">✕</button><h2>Área para padres</h2><p>Ingresa el PIN</p><input id="pinInput" type="password" inputmode="numeric" maxlength="4" placeholder="PIN"><button class="big-pink" onclick="verifyPin()">ENTRAR</button><small>PIN inicial: 1234</small></div></div>
+    <div id="lyricsModal" class="modal"><div class="modal-box wide"><button onclick="closeLyricsEditor()">✕</button><h2>Editar letra</h2><p>Escribe una frase por línea.</p><textarea id="lyricsEditor"></textarea><button class="big-pink" onclick="saveLyrics()">GUARDAR LETRA</button></div></div>
 <script src="app.js"></script>
 </body>
 </html>

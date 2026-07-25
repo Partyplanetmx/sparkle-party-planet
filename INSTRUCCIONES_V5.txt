@@ -1,0 +1,25 @@
+SPARKLY PARTY PLANET V5 PROFESIONAL
+
+1. Copia todo el contenido de esta carpeta dentro de:
+   C:\Users\PC\OneDrive\Documentos\GitHub\sparkle-party-planet
+
+2. Selecciona:
+   Reemplazar los archivos en el destino.
+
+3. Abre GitHub Desktop.
+
+4. En Summary escribe:
+   Versión 5 Profesional
+
+5. Presiona:
+   Commit to main
+
+6. Presiona:
+   Push origin
+
+7. Espera 1 a 3 minutos y abre:
+   https://partyplanetmx.github.io/sparkle-party-planet/
+
+8. Presiona Ctrl + F5 si aparece la versión anterior.
+
+PIN inicial para padres: 1234
