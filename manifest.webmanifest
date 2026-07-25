@@ -1,6 +1,6 @@
 {
-  "name": "Sparkly Party Planet V7 — Sparkly Idiomas",
-  "short_name": "Sparkly V7",
+  "name": "Sparkly Party Planet V8 — Mundo Party Planet",
+  "short_name": "Sparkly V8",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
@@ -8,6 +8,6 @@
   "theme_color": "#6f20d8",
   "orientation": "landscape",
   "lang": "es-MX",
-  "description": "Aplicación infantil educativa con música, juegos y aprendizaje de varios idiomas.",
-  "id": "./?v=7"
+  "description": "Música, idiomas, karaoke, juegos, cuentos, videos, arte y misiones para niños.",
+  "id": "./?v=8"
 }

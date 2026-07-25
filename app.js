@@ -209,3 +209,113 @@ function singLanguageSong(){const l=languagePack().song;let i=0;speakText(l[i]);
 function addLanguageStars(n){localStorage.languageStars=+(localStorage.languageStars||0)+n;updateLanguageStars();addStars(n)}
 function updateLanguageStars(){if($('#languageStars'))$('#languageStars').textContent=localStorage.languageStars||0}
 renderLanguage();
+
+
+// ===== MUNDO PARTY PLANET V8 =====
+let v8Playlist='all',v8CurrentSongId=null,v8Videos=[],v8Drawings=[],currentStoryIndex=0,paintCtx=null,painting=false;
+const v8Stories=[
+ {icon:'⭐',title:'La estrellita que compartía su luz',value:'Compartir',text:'Había una vez una estrellita llamada Luma que brillaba sobre Party Planet. Una noche vio a una nube pequeña que tenía miedo de la oscuridad. Luma se acercó y compartió un poquito de su luz. La nube comprendió que cuando compartimos, nuestra alegría no se hace pequeña: se multiplica. Desde entonces, las dos iluminaban juntas el cielo y ayudaban a quien necesitara esperanza.'},
+ {icon:'🐶',title:'Sparkly cuida a un perrito',value:'Cuidado de mascotas',text:'Sparkly encontró un perrito cansado cerca del jardín. Le dio agua, buscó a un adulto y preparó un lugar seguro para que descansara. Las Chespitas ayudaron a encontrar a su familia. Sparkly aprendió que las mascotas sienten, necesitan alimento, cariño, atención veterinaria y un hogar donde siempre sean respetadas.'},
+ {icon:'🌈',title:'Las Chespitas y el arcoíris de la amistad',value:'Amistad',text:'Un día desaparecieron los colores de Party Planet. Cada Chespita tenía guardado un color, pero ninguno podía formar el arcoíris por sí solo. Cuando decidieron unirlos, el cielo volvió a llenarse de luz. Comprendieron que cada persona es diferente y que la amistad crece cuando respetamos y celebramos esas diferencias.'},
+ {icon:'🌱',title:'El jardín de los buenos hábitos',value:'Responsabilidad',text:'En el jardín mágico, cada buen hábito hacía crecer una flor. Lavarse las manos, ordenar los juguetes, dormir temprano y hablar con respeto llenaban el jardín de colores. Sparkly descubrió que los pequeños hábitos de cada día pueden crear grandes cambios.'},
+ {icon:'🎤',title:'La canción que tenía miedo de salir',value:'Confianza',text:'Una canción vivía escondida dentro de una cajita musical porque temía que a nadie le gustara. Las Chespitas la escucharon y le dijeron que su voz era única. Cuando la canción se atrevió a salir, todos comenzaron a cantar. Aprendió que ser valiente no significa no tener miedo, sino intentarlo a pesar del miedo.'},
+ {icon:'🌎',title:'Un saludo alrededor del mundo',value:'Diversidad',text:'Sparkly viajó por muchos países y aprendió que las personas saludan de diferentes maneras. Escuchó hello, bonjour, ciao, olá, hallo, konnichiwa y ni hao. Aunque las palabras eran distintas, todas llevaban el mismo deseo: reconocer al otro con alegría y respeto.'}
+];
+
+const v8Missions=[
+ {id:'language',icon:'🌍',title:'Practica un idioma',desc:'Gana al menos una estrella en Sparkly Idiomas',reward:5},
+ {id:'song',icon:'🎵',title:'Escucha una canción',desc:'Reproduce una canción completa o empieza una',reward:4},
+ {id:'story',icon:'📚',title:'Lee un cuento',desc:'Termina uno de los cuentos de Sparkly',reward:6},
+ {id:'game',icon:'🎮',title:'Juega y aprende',desc:'Completa una actividad o juego',reward:5},
+ {id:'drawing',icon:'🎨',title:'Crea un dibujo',desc:'Guarda una obra en el Taller de Arte',reward:7},
+ {id:'karaoke',icon:'🎤',title:'Canta karaoke',desc:'Comienza una canción en Karaoke',reward:8}
+];
+
+function v8SongMeta(song){
+ const n=(song.name||'').toLowerCase();
+ let character='Party Planet',category='party';
+ if(n.includes('chespita'))character='Chespitas';
+ else if(n.includes('sparkly'))character='Sparkly';
+ else if(n.includes('estrell'))character='Estrellita';
+ else if(n.includes('cangur'))character='Cangurito';
+ if(n.includes('vocal')||n.includes('número')||n.includes('color')||n.includes('aprende'))category='learn';
+ return {character,category}
+}
+function setV8Playlist(p){v8Playlist=p;$$('.playlist-chip').forEach(x=>x.classList.remove('active'));event?.target?.classList.add('active');renderV8Music()}
+function renderV8Music(){
+ if(!$('#v8MusicGrid'))return;
+ const q=($('#musicSearchV8')?.value||'').toLowerCase(),cf=$('#musicCharacterFilter')?.value||'all';
+ let list=songs.filter(s=>s.name.toLowerCase().includes(q));
+ list=list.filter(s=>{const m=v8SongMeta(s);return cf==='all'||m.character===cf});
+ if(v8Playlist==='favorites')list=list.filter(s=>s.favorite);
+ if(v8Playlist==='party')list=list.filter(s=>v8SongMeta(s).category==='party');
+ if(v8Playlist==='learn')list=list.filter(s=>v8SongMeta(s).category==='learn');
+ $('#v8MusicGrid').innerHTML=list.map(s=>{const m=v8SongMeta(s);return `<article class="v8-media-card">
+  <div class="v8-media-cover">${m.character==='Chespitas'?'👭':m.character==='Sparkly'?'🟣':m.character==='Estrellita'?'⭐':m.character==='Cangurito'?'🦘':'🎵'}</div>
+  <div class="v8-media-info"><h3>${escapeHtml(s.name)}</h3><p>${m.character} · ${m.category==='learn'?'Aprende':'Fiesta'}</p>
+  <div class="v8-media-actions"><button onclick="playV8Song(${s.id})">▶ ESCUCHAR</button><button onclick="toggleFavorite(${s.id});setTimeout(renderV8Music,100)">⭐</button><button onclick="go('karaoke');setTimeout(()=>{$('#karaokeSelect').value='${s.id}'},100)">🎤</button></div></div></article>`}).join('')||'<div class="feature-card"><h2>Sube canciones para verlas aquí.</h2></div>'
+}
+$('#musicSearchV8')?.addEventListener('input',renderV8Music);
+$('#musicCharacterFilter')?.addEventListener('change',renderV8Music);
+function playV8Song(id){const s=songs.find(x=>x.id===id);if(!s)return;v8CurrentSongId=id;$('#v8NowTitle').textContent=s.name;$('#v8NowMeta').textContent=v8SongMeta(s).character;$('#v8Audio').src=URL.createObjectURL(s.blob);$('#v8Audio').play();completeMission('song')}
+function toggleCurrentV8Favorite(){if(v8CurrentSongId){toggleFavorite(v8CurrentSongId);setTimeout(renderV8Music,100)}}
+function shuffleV8Music(){if(!songs.length)return;playV8Song(songs[Math.floor(Math.random()*songs.length)].id)}
+const oldRenderSongsV8=renderSongs;renderSongs=function(){oldRenderSongsV8();renderV8Music()};
+
+function loadV8Videos(){
+ if(!db)return;
+ if(!db.objectStoreNames.contains('videos')){v8Videos=JSON.parse(localStorage.v8VideoMeta||'[]');renderV8Videos();return}
+ const r=db.transaction('videos','readonly').objectStore('videos').getAll();r.onsuccess=()=>{v8Videos=r.result;renderV8Videos()}
+}
+async function saveLocalVideo(){
+ const title=$('#videoTitleInput').value.trim(),type=$('#videoTypeInput').value,file=$('#videoFileInput').files[0];
+ if(!title||!file){alert('Escribe un título y selecciona un video.');return}
+ if(file.size>150*1024*1024){alert('El video debe pesar menos de 150 MB.');return}
+ try{
+   const db2=await openV8DB();const tx=db2.transaction('videos','readwrite');tx.objectStore('videos').add({title,type,blob:file,size:file.size,created:Date.now()});
+   tx.oncomplete=()=>{$('#videoTitleInput').value='';$('#videoFileInput').value='';loadV8Videos()}
+ }catch(e){alert('No se pudo guardar el video en este dispositivo.')}
+}
+function openV8DB(){return new Promise((res,rej)=>{const r=indexedDB.open('SparklyV8',1);r.onupgradeneeded=e=>{const d=e.target.result;if(!d.objectStoreNames.contains('videos'))d.createObjectStore('videos',{keyPath:'id',autoIncrement:true});if(!d.objectStoreNames.contains('drawings'))d.createObjectStore('drawings',{keyPath:'id',autoIncrement:true})};r.onsuccess=e=>res(e.target.result);r.onerror=()=>rej(r.error)})}
+async function loadV8Videos(){try{const d=await openV8DB();const r=d.transaction('videos','readonly').objectStore('videos').getAll();r.onsuccess=()=>{v8Videos=r.result;renderV8Videos()}}catch(e){}}
+function renderV8Videos(){if(!$('#videoGridV8'))return;$('#videoGridV8').innerHTML=v8Videos.map(v=>`<article class="v8-media-card"><div class="video-thumb">🎬</div><div class="v8-media-info"><h3>${escapeHtml(v.title)}</h3><p>${escapeHtml(v.type)} · ${(v.size/1024/1024).toFixed(1)} MB</p><div class="v8-media-actions"><button onclick="playVideoV8(${v.id})">▶ VER</button><button onclick="deleteVideoV8(${v.id})">🗑️</button></div></div></article>`).join('')||'<div class="feature-card"><h2>No hay videos guardados.</h2></div>'}
+async function playVideoV8(id){const v=v8Videos.find(x=>x.id===id);if(!v)return;$('#videoPlayerV8').src=URL.createObjectURL(v.blob);$('#videoModalV8').classList.add('open');$('#videoPlayerV8').play()}
+function closeVideoV8(){$('#videoPlayerV8').pause();$('#videoModalV8').classList.remove('open')}
+async function deleteVideoV8(id){if(!confirm('¿Eliminar este video?'))return;const d=await openV8DB();const tx=d.transaction('videos','readwrite');tx.objectStore('videos').delete(id);tx.oncomplete=loadV8Videos}
+
+function renderStories(){$('#storyGrid').innerHTML=v8Stories.map((s,i)=>`<article class="story-card"><div class="story-icon">${s.icon}</div><h3>${s.title}</h3><p>Valor: ${s.value}</p><button onclick="openStory(${i})">ABRIR CUENTO</button></article>`).join('')}
+function openStory(i){currentStoryIndex=i;const s=v8Stories[i];$('#storyTitle').textContent=s.title;$('#storyText').textContent=s.text;scrollTo({top:$('#storyReader').offsetTop-20,behavior:'smooth'})}
+function readStoryAloud(){const s=v8Stories[currentStoryIndex];if(!s)return;speakText(s.title+'. '+s.text,'es-MX')}
+function stopStory(){if('speechSynthesis'in window)speechSynthesis.cancel()}
+function completeStory(){completeMission('story');addStars(5);alert('⭐ ¡Ganaste 5 estrellas por terminar el cuento!')}
+
+function initCanvasV8(){
+ const c=$('#drawingCanvas');if(!c)return;paintCtx=c.getContext('2d');paintCtx.fillStyle='white';paintCtx.fillRect(0,0,c.width,c.height);paintCtx.lineCap='round';
+ const pos=e=>{const r=c.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:(p.clientX-r.left)*c.width/r.width,y:(p.clientY-r.top)*c.height/r.height}};
+ const start=e=>{painting=true;const p=pos(e);paintCtx.beginPath();paintCtx.moveTo(p.x,p.y);e.preventDefault()};
+ const move=e=>{if(!painting)return;const p=pos(e);paintCtx.strokeStyle=$('#paintColor').value;paintCtx.lineWidth=+$('#paintSize').value;paintCtx.lineTo(p.x,p.y);paintCtx.stroke();e.preventDefault()};
+ const end=()=>painting=false;
+ c.addEventListener('mousedown',start);c.addEventListener('mousemove',move);addEventListener('mouseup',end);c.addEventListener('touchstart',start,{passive:false});c.addEventListener('touchmove',move,{passive:false});c.addEventListener('touchend',end)
+}
+function clearCanvasV8(){if(!paintCtx)return;paintCtx.fillStyle='white';paintCtx.fillRect(0,0,1000,600)}
+function addSparklyStamp(){if(!paintCtx)return;paintCtx.font='110px serif';paintCtx.fillText('🟣',420,330)}
+function addStarStamp(){if(!paintCtx)return;paintCtx.font='110px serif';paintCtx.fillText('⭐',420,330)}
+async function saveDrawingV8(){const c=$('#drawingCanvas'),data=c.toDataURL('image/png');const d=await openV8DB();const tx=d.transaction('drawings','readwrite');tx.objectStore('drawings').add({data,created:Date.now()});tx.oncomplete=()=>{loadDrawingsV8();completeMission('drawing');addStars(7);alert('🎨 Dibujo guardado y 7 estrellas ganadas')}}
+async function loadDrawingsV8(){try{const d=await openV8DB();const r=d.transaction('drawings','readonly').objectStore('drawings').getAll();r.onsuccess=()=>{v8Drawings=r.result;$('#savedDrawings').innerHTML=v8Drawings.map(x=>`<img src="${x.data}" alt="Dibujo guardado">`).join('')}}catch(e){}}
+
+function missionKey(id){return 'v8Mission_'+new Date().toISOString().slice(0,10)+'_'+id}
+function completeMission(id){if(localStorage[missionKey(id)])return;localStorage[missionKey(id)]='1';renderMissions()}
+function claimMission(id,reward){if(!localStorage[missionKey(id)]){alert('Primero completa la misión.');return}const ck=missionKey(id)+'_claimed';if(localStorage[ck]){alert('Esta recompensa ya fue recogida.');return}localStorage[ck]='1';addStars(reward);renderMissions();alert(`🏅 Ganaste ${reward} estrellas`)}
+function renderMissions(){if(!$('#missionGrid'))return;$('#missionGrid').innerHTML=v8Missions.map(m=>{const done=!!localStorage[missionKey(m.id)],claimed=!!localStorage[missionKey(m.id)+'_claimed'];return `<article class="mission-card ${done?'done':''}"><span>${m.icon}</span><h3>${m.title}</h3><p>${m.desc}</p><p>Recompensa: ⭐ ${m.reward}</p><button onclick="claimMission('${m.id}',${m.reward})">${claimed?'RECOGIDA':done?'RECOGER':'PENDIENTE'}</button></article>`}).join('')}
+const oldAddLanguageStarsV8=addLanguageStars;addLanguageStars=function(n){oldAddLanguageStarsV8(n);completeMission('language')}
+const oldAddStarsV8=addStars;addStars=function(n){oldAddStarsV8(n);if(n>0)completeMission('game')}
+const oldStartKaraokeV8=startKaraoke;startKaraoke=function(){oldStartKaraokeV8();completeMission('karaoke')}
+
+function saveV8ParentControls(){localStorage.dailyMinutes=$('#dailyMinutes').value;localStorage.videoPermission=$('#videoPermission').checked;localStorage.communityPermission=$('#communityPermission').checked;alert('Controles guardados')}
+function updateV8ParentControls(){if(!$('#dailyMinutes'))return;$('#dailyMinutes').value=localStorage.dailyMinutes||45;$('#videoPermission').checked=localStorage.videoPermission==='true';$('#communityPermission').checked=localStorage.communityPermission==='true';$('#usageToday').textContent='Tiempo aproximado de uso hoy: '+Math.floor((Date.now()-(+(sessionStorage.v8Start||Date.now())))/60000)+' minutos'}
+sessionStorage.v8Start=sessionStorage.v8Start||Date.now();
+setInterval(updateV8ParentControls,30000);
+
+const oldGoV8=go;go=function(id){oldGoV8(id);if(id==='mundoMusical')renderV8Music();if(id==='videos')loadV8Videos();if(id==='cuentos')renderStories();if(id==='arte'){setTimeout(initCanvasV8,100);loadDrawingsV8()}if(id==='misiones')renderMissions();if(id==='padres')updateV8ParentControls()};
+
+renderStories();renderMissions();setTimeout(()=>{renderV8Music();loadV8Videos();loadDrawingsV8()},500);
