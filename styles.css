@@ -26,3 +26,18 @@ button,input,select{font:inherit}.app-shell{display:grid;grid-template-columns:1
 .record-item{display:grid;grid-template-columns:1fr auto auto auto;gap:8px;align-items:center;background:#1b0d58;border-radius:13px;padding:10px;margin-top:8px}.recording-pulse{animation:pulse 1s infinite}@keyframes pulse{50%{transform:scale(1.05)}}
 body.compact .content{zoom:.88}
 @media(max-width:900px){.learning-grid,.games-grid,.achievement-grid,.parents-grid,.settings-grid{grid-template-columns:1fr}.song-tools{grid-template-columns:1fr}}
+
+.language-hero{display:flex;justify-content:space-between;gap:20px;align-items:center;max-width:1150px;margin:0 auto 18px;background:linear-gradient(135deg,#5d20c7,#db278b);padding:24px;border-radius:28px;border:2px solid #d890ff}
+.language-hero h1{margin:0;font-size:38px}.language-score{background:#fff4d9;color:#341264;border-radius:20px;padding:14px 20px;font-size:20px;font-weight:900}
+.language-selector{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1150px;margin:0 auto 18px}
+.lang-card{border:2px solid #8c55e5;background:linear-gradient(#38217e,#1b0d52);color:#fff;border-radius:20px;padding:16px;font-size:38px;box-shadow:0 10px 22px #0005}
+.lang-card b{display:block;font-size:15px;margin-top:7px}.lang-card.active{background:linear-gradient(#ff4c9d,#d91c74);transform:translateY(-3px)}
+.language-tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:20px 0}.language-tab{border:0;border-radius:15px;padding:12px 18px;font-weight:900;background:#2b176f;color:#fff}.language-tab.active{background:#ff3f95}
+.language-panel{display:none;max-width:1100px;margin:0 auto}.language-panel.active{display:block}
+.word-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.word-card{background:linear-gradient(#5424bd,#1f0d62);border:2px solid #9e65ff;border-radius:20px;padding:16px;text-align:center}
+.word-card .emoji{font-size:45px}.word-card h3{font-size:25px;margin:8px 0}.word-card p{opacity:.8}.word-card button{border:0;border-radius:13px;padding:9px 13px;background:#ffd339;color:#301157;font-weight:900}
+.talk-card{max-width:700px;margin:auto;background:linear-gradient(#4c1da8,#1a0b53);border:2px solid #a568ff;border-radius:28px;text-align:center;padding:28px}.sparkly-teacher{font-size:95px}.talk-card h2{font-size:48px;margin:8px}.talk-card p{font-size:25px}.speech-result{margin:18px auto;background:#120630;border-radius:15px;padding:15px;min-height:55px}
+.talk-navigation{display:flex;justify-content:space-between;gap:12px;margin-top:18px}.talk-navigation button{border:0;border-radius:13px;padding:10px 18px;font-weight:900}
+.language-options{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.language-options button{border:0;border-radius:16px;padding:17px;background:#5a28c4;color:#fff;font-size:20px;font-weight:900}.language-options button.correct{background:#21a866}.language-options button.wrong{background:#d4385c}
+.language-game-card,.language-song-card{text-align:center}.language-song-lyrics{font-size:25px;line-height:1.8;background:#160744;border-radius:18px;padding:20px}
+@media(max-width:900px){.language-selector,.word-grid{grid-template-columns:repeat(2,1fr)}.language-hero{flex-direction:column}.language-options{grid-template-columns:1fr}}

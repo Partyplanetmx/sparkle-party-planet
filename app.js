@@ -156,3 +156,56 @@ $('#installBtn')?.addEventListener('click',async()=>{if(!deferredPrompt)return;d
 if(localStorage.compact==='true')document.body.classList.add('compact');
 $('#volumeControl').value=localStorage.volume||1; updateStats();
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js'));
+
+const languageData={
+"en-US":{name:"Inglés",words:[["👋","Hello","Hola"],["🙏","Thank you","Gracias"],["😊","Happy","Feliz"],["⭐","Star","Estrella"],["🎵","Music","Música"],["🎂","Birthday","Cumpleaños"],["❤️","Friend","Amigo"],["🌈","Colors","Colores"]],phrases:[["Hello!","¡Hola!"],["My name is Sparkly.","Mi nombre es Sparkly."],["How are you?","¿Cómo estás?"],["I am happy!","¡Estoy feliz!"],["Let’s sing together!","¡Cantemos juntos!"]],song:["Hello, hello, how are you?","I am happy, yes I am!","Clap your hands and sing with me,","Sparkly friends for everyone!"]},
+"fr-FR":{name:"Francés",words:[["👋","Bonjour","Hola"],["🙏","Merci","Gracias"],["😊","Heureux","Feliz"],["⭐","Étoile","Estrella"],["🎵","Musique","Música"],["🎂","Anniversaire","Cumpleaños"],["❤️","Ami","Amigo"],["🌈","Couleurs","Colores"]],phrases:[["Bonjour!","¡Hola!"],["Je m'appelle Sparkly.","Me llamo Sparkly."],["Comment ça va?","¿Cómo estás?"],["Je suis heureux!","¡Estoy feliz!"],["Chantons ensemble!","¡Cantemos juntos!"]],song:["Bonjour, bonjour, comment ça va?","Je suis heureux, me voilà!","Tape des mains et chante avec moi,","Les amis de Sparkly sont là!"]},
+"it-IT":{name:"Italiano",words:[["👋","Ciao","Hola"],["🙏","Grazie","Gracias"],["😊","Felice","Feliz"],["⭐","Stella","Estrella"],["🎵","Musica","Música"],["🎂","Compleanno","Cumpleaños"],["❤️","Amico","Amigo"],["🌈","Colori","Colores"]],phrases:[["Ciao!","¡Hola!"],["Mi chiamo Sparkly.","Me llamo Sparkly."],["Come stai?","¿Cómo estás?"],["Sono felice!","¡Estoy feliz!"],["Cantiamo insieme!","¡Cantemos juntos!"]],song:["Ciao, ciao, come stai?","Sono felice, lo sai!","Batti le mani e canta con me,","Sparkly è amico di te!"]},
+"pt-BR":{name:"Portugués",words:[["👋","Olá","Hola"],["🙏","Obrigado","Gracias"],["😊","Feliz","Feliz"],["⭐","Estrela","Estrella"],["🎵","Música","Música"],["🎂","Aniversário","Cumpleaños"],["❤️","Amigo","Amigo"],["🌈","Cores","Colores"]],phrases:[["Olá!","¡Hola!"],["Meu nome é Sparkly.","Mi nombre es Sparkly."],["Como você está?","¿Cómo estás?"],["Eu estou feliz!","¡Estoy feliz!"],["Vamos cantar juntos!","¡Cantemos juntos!"]],song:["Olá, olá, como vai?","Estou feliz, muito mais!","Bata palmas e cante também,","Com Sparkly tudo vai bem!"]},
+"de-DE":{name:"Alemán",words:[["👋","Hallo","Hola"],["🙏","Danke","Gracias"],["😊","Glücklich","Feliz"],["⭐","Stern","Estrella"],["🎵","Musik","Música"],["🎂","Geburtstag","Cumpleaños"],["❤️","Freund","Amigo"],["🌈","Farben","Colores"]],phrases:[["Hallo!","¡Hola!"],["Ich heiße Sparkly.","Me llamo Sparkly."],["Wie geht es dir?","¿Cómo estás?"],["Ich bin glücklich!","¡Estoy feliz!"],["Lass uns zusammen singen!","¡Cantemos juntos!"]],song:["Hallo, hallo, wie geht es dir?","Ich bin glücklich, sing mit mir!","Klatsch in die Hände, eins, zwei, drei,","Sparkly-Freunde sind dabei!"]},
+"ja-JP":{name:"Japonés",words:[["👋","こんにちは","Hola"],["🙏","ありがとう","Gracias"],["😊","うれしい","Feliz"],["⭐","ほし","Estrella"],["🎵","おんがく","Música"],["🎂","たんじょうび","Cumpleaños"],["❤️","ともだち","Amigo"],["🌈","いろ","Colores"]],phrases:[["こんにちは!","¡Hola!"],["わたしはスパークリーです。","Soy Sparkly."],["げんきですか?","¿Cómo estás?"],["うれしいです!","¡Estoy feliz!"],["いっしょにうたいましょう!","¡Cantemos juntos!"]],song:["こんにちは、こんにちは","いっしょにうたいましょう","てをたたいて、にこにこ","スパークリーとあそぼう"]},
+"ko-KR":{name:"Coreano",words:[["👋","안녕하세요","Hola"],["🙏","감사합니다","Gracias"],["😊","행복해요","Feliz"],["⭐","별","Estrella"],["🎵","음악","Música"],["🎂","생일","Cumpleaños"],["❤️","친구","Amigo"],["🌈","색깔","Colores"]],phrases:[["안녕하세요!","¡Hola!"],["저는 스파클리예요.","Soy Sparkly."],["잘 지내요?","¿Cómo estás?"],["행복해요!","¡Estoy feliz!"],["같이 노래해요!","¡Cantemos juntos!"]],song:["안녕, 안녕, 반가워요","함께 노래 불러요","손뼉 치고 웃어 봐요","스파클리와 놀아요"]},
+"zh-CN":{name:"Mandarín",words:[["👋","你好","Hola"],["🙏","谢谢","Gracias"],["😊","开心","Feliz"],["⭐","星星","Estrella"],["🎵","音乐","Música"],["🎂","生日","Cumpleaños"],["❤️","朋友","Amigo"],["🌈","颜色","Colores"]],phrases:[["你好!","¡Hola!"],["我叫 Sparkly。","Me llamo Sparkly."],["你好吗?","¿Cómo estás?"],["我很开心!","¡Estoy feliz!"],["我们一起唱歌吧!","¡Cantemos juntos!"]],song:["你好，你好，你好吗","我很开心一起唱","拍拍手呀笑一笑","Sparkly 朋友都来到"]}
+};
+let currentLang="en-US",currentPhraseIndex=0,languageQuestion=null;
+function languagePack(){return languageData[currentLang]}
+function renderLanguage(){
+ const p=languagePack();
+ $('#languageTitle').textContent='Palabras básicas en '+p.name;
+ $('#songLanguageLabel').textContent=p.name;
+ $('#wordGrid').innerHTML=p.words.map((w,i)=>`<div class="word-card"><div class="emoji">${w[0]}</div><h3>${w[1]}</h3><p>${w[2]}</p><button onclick="speakLanguageWord(${i})">🔊 ESCUCHAR</button></div>`).join('');
+ $('#languageSongLyrics').innerHTML=p.song.map(x=>`<div>${escapeHtml(x)}</div>`).join('');
+ currentPhraseIndex=0;renderPhrase();newLanguageQuestion();updateLanguageStars()
+}
+$$('.lang-card').forEach(b=>b.addEventListener('click',()=>{$$('.lang-card').forEach(x=>x.classList.remove('active'));b.classList.add('active');currentLang=b.dataset.lang;renderLanguage()}));
+$$('.language-tab').forEach(b=>b.addEventListener('click',()=>{
+ $$('.language-tab').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ $$('.language-panel').forEach(x=>x.classList.remove('active'));
+ $('#language'+b.dataset.languageTab.charAt(0).toUpperCase()+b.dataset.languageTab.slice(1)).classList.add('active')
+}));
+function speakText(text,lang=currentLang){if(!('speechSynthesis'in window)){alert('Este navegador no puede reproducir voz.');return}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=.78;u.pitch=1.08;speechSynthesis.speak(u)}
+function speakLanguageWord(i){speakText(languagePack().words[i][1]);addLanguageStars(1)}
+function renderPhrase(){const p=languagePack().phrases[currentPhraseIndex];$('#talkPhrase').textContent=p[0];$('#talkMeaning').textContent=p[1];$('#speechResult').textContent='Presiona el micrófono y repite la frase.'}
+function speakCurrentPhrase(){speakText(languagePack().phrases[currentPhraseIndex][0])}
+function nextPhrase(){currentPhraseIndex=(currentPhraseIndex+1)%languagePack().phrases.length;renderPhrase();speakCurrentPhrase()}
+function previousPhrase(){currentPhraseIndex=(currentPhraseIndex-1+languagePack().phrases.length)%languagePack().phrases.length;renderPhrase();speakCurrentPhrase()}
+function normalizeSpeech(s){return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\p{L}\p{N}\s]/gu,'').trim()}
+function startPronunciation(){
+ const R=window.SpeechRecognition||window.webkitSpeechRecognition;
+ if(!R){$('#speechResult').textContent='Prueba esta función en Chrome o Edge.';return}
+ const r=new R();r.lang=currentLang;r.interimResults=false;r.maxAlternatives=3;$('#speechResult').textContent='🎙️ Escuchando…';
+ r.onresult=e=>{const heard=e.results[0][0].transcript,target=languagePack().phrases[currentPhraseIndex][0],a=normalizeSpeech(heard),b=normalizeSpeech(target),words=b.split(/\s+/),m=words.filter(w=>a.includes(w)).length,score=Math.round(m/Math.max(words.length,1)*100);
+ if(score>=70){$('#speechResult').innerHTML=`⭐ ¡Excelente! Escuché: <b>${escapeHtml(heard)}</b>`;addLanguageStars(5)}else{$('#speechResult').innerHTML=`💜 Escuché: <b>${escapeHtml(heard)}</b><br>Inténtalo otra vez.`}};
+ r.onerror=()=>$('#speechResult').textContent='No pude escuchar. Revisa el permiso del micrófono.';r.start()
+}
+function newLanguageQuestion(){
+ const p=languagePack(),ci=Math.floor(Math.random()*p.words.length),c=p.words[ci];let opts=[c[1]];
+ while(opts.length<4){const x=p.words[Math.floor(Math.random()*p.words.length)][1];if(!opts.includes(x))opts.push(x)}
+ opts.sort(()=>Math.random()-.5);languageQuestion={answer:c[1]};$('#languageQuestion').textContent=`¿Cómo se dice “${c[2]}” en ${p.name}?`;
+ $('#languageOptions').innerHTML=opts.map(x=>`<button onclick="answerLanguage('${encodeURIComponent(x)}',this)">${x}</button>`).join('');$('#languageFeedback').innerHTML=''
+}
+function answerLanguage(v,btn){const x=decodeURIComponent(v);$$('#languageOptions button').forEach(b=>b.disabled=true);if(x===languageQuestion.answer){btn.classList.add('correct');$('#languageFeedback').innerHTML='<h2>🎉 ¡Correcto!</h2>';speakText(x);addLanguageStars(4)}else{btn.classList.add('wrong');$('#languageFeedback').innerHTML=`<h2>La respuesta era: ${escapeHtml(languageQuestion.answer)}</h2>`;speakText(languageQuestion.answer)}}
+function singLanguageSong(){const l=languagePack().song;let i=0;speakText(l[i]);const t=setInterval(()=>{i++;if(i>=l.length){clearInterval(t);addLanguageStars(6);return}speakText(l[i])},2800)}
+function addLanguageStars(n){localStorage.languageStars=+(localStorage.languageStars||0)+n;updateLanguageStars();addStars(n)}
+function updateLanguageStars(){if($('#languageStars'))$('#languageStars').textContent=localStorage.languageStars||0}
+renderLanguage();

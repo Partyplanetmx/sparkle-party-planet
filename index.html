@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#6f20d8">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="styles.css">
-<title>Sparkly Party Planet V5 Profesional</title>
+<title>Sparkly Party Planet V7 — Sparkly Idiomas</title>
 </head>
 <body>
 <div class="app-shell">
@@ -14,7 +14,7 @@
     <button class="menu-btn active" data-screen="inicio"><span>🏠</span>INICIO</button>
     <button class="menu-btn" data-screen="canciones"><span>🎵</span>CANCIONES</button>
     <button class="menu-btn" data-screen="karaoke"><span>🎤</span>KARAOKE</button>
-    <button class="menu-btn" data-screen="aprende"><span>🎓</span>APRENDE</button>
+    <button class="menu-btn" data-screen="aprende"><span>🎓</span>APRENDE</button><button class="menu-btn" data-screen="idiomas"><span>🌍</span>IDIOMAS</button>
     <button class="menu-btn" data-screen="juegos"><span>🎮</span>JUEGOS</button>
     <button class="menu-btn" data-screen="logros"><span>🏆</span>MIS LOGROS</button>
     <button class="menu-btn" data-screen="grabaciones"><span>📹</span>GRABACIONES</button>
@@ -140,7 +140,74 @@
     </div>
     <div id="quizBox" class="feature-card quiz-box"><p>Selecciona una actividad.</p></div>
     </section>
-    <section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1>
+    
+<section id="idiomas" class="screen simple-screen">
+  <div class="language-hero">
+    <div>
+      <h1>🌍 SPARKLY IDIOMAS</h1>
+      <p>Aprende a saludar, escuchar y hablar jugando con Sparkly y las Chespitas.</p>
+    </div>
+    <div class="language-score">🏅 <b id="languageStars">0</b> estrellas de idiomas</div>
+  </div>
+
+  <div class="language-selector">
+    <button class="lang-card active" data-lang="en-US">🇺🇸<b>INGLÉS</b></button>
+    <button class="lang-card" data-lang="fr-FR">🇫🇷<b>FRANCÉS</b></button>
+    <button class="lang-card" data-lang="it-IT">🇮🇹<b>ITALIANO</b></button>
+    <button class="lang-card" data-lang="pt-BR">🇧🇷<b>PORTUGUÉS</b></button>
+    <button class="lang-card" data-lang="de-DE">🇩🇪<b>ALEMÁN</b></button>
+    <button class="lang-card" data-lang="ja-JP">🇯🇵<b>JAPONÉS</b></button>
+    <button class="lang-card" data-lang="ko-KR">🇰🇷<b>COREANO</b></button>
+    <button class="lang-card" data-lang="zh-CN">🇨🇳<b>MANDARÍN</b></button>
+  </div>
+
+  <div class="language-tabs">
+    <button class="language-tab active" data-language-tab="words">🧠 PALABRAS</button>
+    <button class="language-tab" data-language-tab="talk">🗣️ HABLAR</button>
+    <button class="language-tab" data-language-tab="game">🎮 JUEGO</button>
+    <button class="language-tab" data-language-tab="song">🎵 CANCIÓN</button>
+  </div>
+
+  <div id="languageWords" class="language-panel active">
+    <h2 id="languageTitle">Palabras básicas</h2>
+    <div id="wordGrid" class="word-grid"></div>
+  </div>
+
+  <div id="languageTalk" class="language-panel">
+    <div class="talk-card">
+      <div class="sparkly-teacher">🟣</div>
+      <h2 id="talkPhrase">Hello!</h2>
+      <p id="talkMeaning">¡Hola!</p>
+      <button class="big-pink" onclick="speakCurrentPhrase()">🔊 ESCUCHAR</button>
+      <button class="secondary-btn" onclick="startPronunciation()">🎙️ REPETIR CON MI VOZ</button>
+      <div id="speechResult" class="speech-result">Presiona el micrófono y repite la frase.</div>
+      <div class="talk-navigation">
+        <button onclick="previousPhrase()">⬅ ANTERIOR</button>
+        <button onclick="nextPhrase()">SIGUIENTE ➡</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="languageGame" class="language-panel">
+    <div class="feature-card language-game-card">
+      <h2 id="languageQuestion">Pregunta</h2>
+      <div id="languageOptions" class="language-options"></div>
+      <div id="languageFeedback"></div>
+      <button class="secondary-btn" onclick="newLanguageQuestion()">OTRA PREGUNTA</button>
+    </div>
+  </div>
+
+  <div id="languageSong" class="language-panel">
+    <div class="feature-card language-song-card">
+      <h2>🎵 Canción de saludos</h2>
+      <p id="songLanguageLabel"></p>
+      <div id="languageSongLyrics" class="language-song-lyrics"></div>
+      <button class="big-pink" onclick="singLanguageSong()">▶ ESCUCHAR CANCIÓN HABLADA</button>
+    </div>
+  </div>
+</section>
+
+<section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1>
     <div class="games-grid">
       <div class="game-card"><span>⭐</span><h3>Atrapa estrellas</h3><button onclick="startStarGame()">JUGAR</button></div>
       <div class="game-card"><span>🎨</span><h3>Memoria de colores</h3><button onclick="startMemoryGame()">JUGAR</button></div>
@@ -189,7 +256,7 @@
       <div class="feature-card"><h2>Sonido</h2><label>Volumen <input id="volumeControl" type="range" min="0" max="1" step="0.05" value="1"></label></div>
       <div class="feature-card"><h2>Apariencia</h2><button class="secondary-btn" onclick="toggleCompact()">CAMBIAR TAMAÑO</button></div>
       <div class="feature-card"><h2>Datos</h2><button class="secondary-btn" onclick="exportData()">EXPORTAR RESPALDO</button><input id="importData" type="file" accept=".json"></div>
-      <div class="feature-card"><h2>Versión</h2><p>Sparkly Party Planet V5 Profesional</p><p>Funciona sin conexión después de cargarla una vez.</p></div>
+      <div class="feature-card"><h2>Versión</h2><p>Sparkly Party Planet V7 — Sparkly Idiomas</p><p>Funciona sin conexión después de cargarla una vez.</p></div>
     </div></section>
   </main>
 </div>

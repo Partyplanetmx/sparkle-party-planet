@@ -1,4 +1,4 @@
-const CACHE='sparkly-v5-profesional-1';
+const CACHE='sparkly-v7-idiomas-1';
 const CORE=['./','./index.html','./styles.css','./app.js','./manifest.webmanifest',
 './assets/logo.webp','./assets/sparkly.webp','./assets/chespitas.webp'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(CORE)));self.skipWaiting()});

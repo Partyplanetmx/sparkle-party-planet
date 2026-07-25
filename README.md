@@ -1,16 +1,12 @@
-# Sparkly Party Planet V5 Profesional
+# Sparkly Party Planet V7 — Sparkly Idiomas
 
-Funciones principales:
-- Interfaz basada en la pantalla aprobada.
-- Biblioteca local de canciones y buscador.
-- Favoritos.
-- Karaoke con letras editables.
-- Grabación, reproducción, descarga y eliminación de voz.
-- Juegos de estrellas, memoria y adivina la canción.
-- Actividades educativas interactivas.
-- Estrellas, niveles, logros y diploma imprimible.
-- Área para padres con PIN.
-- Perfil infantil, modo seguro y respaldo de progreso.
-- Instalación como PWA y uso básico sin conexión.
+Incluye inglés, francés, italiano, portugués, alemán, japonés, coreano y mandarín.
 
-PIN inicial del área para padres: 1234
+Funciones:
+- Palabras básicas con pronunciación.
+- Frases para escuchar y repetir.
+- Reconocimiento de voz compatible con Chrome y Edge.
+- Juego de preguntas.
+- Canción de saludos.
+- Estrellas especiales de idiomas.
+- Conserva karaoke, juegos, grabaciones, logros y área para padres.

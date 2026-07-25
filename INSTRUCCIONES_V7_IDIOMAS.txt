@@ -1,0 +1,9 @@
+1. Descomprime el ZIP.
+2. Copia todos los archivos en:
+C:\Users\PC\OneDrive\Documentos\GitHub\sparkle-party-planet
+3. Elige Reemplazar los archivos en el destino.
+4. En GitHub Desktop escribe: Versión 7 - Sparkly Idiomas
+5. Pulsa Commit to main.
+6. Pulsa Push origin.
+7. Abre https://partyplanetmx.github.io/sparkle-party-planet/
+8. Presiona Ctrl + F5 si ves la versión anterior.
