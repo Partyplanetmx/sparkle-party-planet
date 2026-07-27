@@ -1,403 +1,232 @@
 <!doctype html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#6f20d8">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="stylesheet" href="styles.css">
-<title>Sparkly Party Planet V8 — Mundo Party Planet</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7c3aed">
+  <title>Sparkly Party Planet V11</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <style>
+    :root{
+      --morado:#7c3aed; --rosa:#ec4899; --azul:#38bdf8; --amarillo:#fde047;
+      --blanco:#fff; --oscuro:#312e81; --panel:rgba(255,255,255,.93);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:
+      radial-gradient(circle at top left,#f9a8d4,transparent 35%),
+      radial-gradient(circle at top right,#7dd3fc,transparent 35%),
+      linear-gradient(145deg,#7c3aed,#c026d3);min-height:100vh;color:#2d1b69}
+    button,input,select{font:inherit}
+    button{cursor:pointer}
+    .app{max-width:1100px;margin:auto;padding:14px}
+    .hero{background:var(--panel);border-radius:28px;padding:20px;display:grid;
+      grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;box-shadow:0 18px 50px #312e8150}
+    .hero h1{margin:.2rem 0;font-size:clamp(2rem,5vw,4rem);color:var(--morado)}
+    .hero p{font-size:1.05rem}
+    .hero img{width:100%;max-height:260px;object-fit:contain}
+    .pill{display:inline-block;background:#ede9fe;color:#5b21b6;padding:7px 12px;border-radius:999px;font-weight:700}
+    .top-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .btn{border:0;border-radius:14px;padding:11px 16px;font-weight:700;background:var(--morado);color:#fff;box-shadow:0 8px 18px #7c3aed35}
+    .btn.secondary{background:#fff;color:var(--morado);border:2px solid #ddd6fe}
+    .btn.vip{background:linear-gradient(135deg,#f59e0b,#fde047);color:#422006}
+    .menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:18px 0}
+    .menu button{border:0;border-radius:22px;padding:18px;background:var(--panel);color:#4c1d95;font-weight:800;box-shadow:0 12px 30px #312e8130;min-height:105px}
+    .menu button span{display:block;font-size:2rem;margin-bottom:8px}
+    .screen{display:none;background:var(--panel);border-radius:26px;padding:18px;box-shadow:0 16px 35px #312e8130}
+    .screen.active{display:block}
+    .screen h2{margin-top:0;color:#6d28d9}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+    .card{background:#fff;border:2px solid #ede9fe;border-radius:20px;padding:15px}
+    .card h3{margin-top:0}
+    .status{padding:10px 12px;border-radius:12px;background:#f5f3ff;margin:10px 0}
+    .memory-grid{display:grid;grid-template-columns:repeat(4,minmax(62px,1fr));gap:10px;max-width:520px;margin:auto}
+    .memory-card{aspect-ratio:1;border:0;border-radius:16px;background:#7c3aed;color:white;font-size:2rem}
+    .memory-card.flipped,.memory-card.matched{background:#fff;border:3px solid #c4b5fd;color:#4c1d95}
+    .riddle-options{display:grid;gap:10px}
+    .riddle-options button{padding:12px;border:2px solid #ddd6fe;border-radius:14px;background:white}
+    .difference-wrap{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .scene{position:relative;min-height:250px;border-radius:18px;background:linear-gradient(#bae6fd 0 55%,#86efac 55%);overflow:hidden;border:3px solid #fff}
+    .obj{position:absolute;font-size:2.2rem;user-select:none}
+    .hotspot{position:absolute;width:44px;height:44px;border-radius:50%;border:3px dashed transparent;background:transparent}
+    .hotspot.found{border-color:#ef4444;background:#fee2e288}
+    .canvas-wrap{display:grid;grid-template-columns:170px 1fr;gap:14px}
+    .palette{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+    .swatch{height:46px;border-radius:12px;border:3px solid white;box-shadow:0 0 0 1px #ccc}
+    canvas{width:100%;background:white;border-radius:18px;border:3px solid #ddd6fe;touch-action:none}
+    .karaoke-box{background:#1e1b4b;color:white;border-radius:20px;padding:18px;text-align:center}
+    .lyrics{font-size:1.25rem;line-height:1.7;min-height:150px}
+    .line-active{color:#fde047;font-weight:800;font-size:1.35rem}
+    .vip-lock{border:2px dashed #f59e0b;background:#fffbeb;border-radius:18px;padding:15px}
+    .prices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+    .price{background:#fff7ed;border:2px solid #fed7aa;border-radius:18px;padding:15px}
+    .progress{height:12px;border-radius:999px;background:#ede9fe;overflow:hidden}
+    .progress>div{height:100%;background:#7c3aed;width:35%}
+    footer{text-align:center;color:white;padding:24px 10px}
+    @media(max-width:720px){
+      .hero{grid-template-columns:1fr}
+      .hero img{max-height:190px}
+      .difference-wrap{grid-template-columns:1fr}
+      .canvas-wrap{grid-template-columns:1fr}
+      .memory-grid{grid-template-columns:repeat(4,1fr)}
+    }
+  </style>
 </head>
 <body>
-<div class="app-shell">
-  <aside class="side-menu">
-    <button class="menu-btn active" data-screen="inicio"><span>🏠</span>INICIO</button>
-    <button class="menu-btn" data-screen="canciones"><span>🎵</span>CANCIONES</button>
-    <button class="menu-btn" data-screen="karaoke"><span>🎤</span>KARAOKE</button>
-    <button class="menu-btn" data-screen="aprende"><span>🎓</span>APRENDE</button><button class="menu-btn" data-screen="idiomas"><span>🌍</span>IDIOMAS</button><button class="menu-btn" data-screen="mundoMusical"><span>🎧</span>MÚSICA</button><button class="menu-btn" data-screen="videos"><span>🎬</span>VIDEOS</button><button class="menu-btn" data-screen="cuentos"><span>📚</span>CUENTOS</button><button class="menu-btn" data-screen="arte"><span>🎨</span>ARTE</button>
-    <button class="menu-btn" data-screen="juegos"><span>🎮</span>JUEGOS</button>
-    <button class="menu-btn" data-screen="logros"><span>🏆</span>MIS LOGROS</button>
-    <button class="menu-btn" data-screen="grabaciones"><span>📹</span>GRABACIONES</button>
-    <button class="menu-btn" data-screen="padres"><span>👨‍👩‍👧</span>PADRES</button>
-    <button class="menu-btn" data-screen="config"><span>⚙️</span>CONFIGURACIÓN</button>
-  </aside>
-
-  <main class="content">
-    <section id="inicio" class="screen active">
-      <header class="top-row">
-        <div class="top-left-actions"><button class="cream-btn" onclick="openParentGate()">👥 ÁREA PARA PADRES</button><button id="installBtn" class="cream-btn install-btn" hidden>📲 INSTALAR APP</button></div>
-        <div class="score-wrap">
-          <div class="score-box">⭐ <span>MIS ESTRELLAS<br><b data-stars>125</b></span></div>
-          <div class="score-box">🟣 <span>NIVEL <b data-level>3</b></span></div>
-        </div>
-      </header>
-
-      <section class="hero-grid">
-        <div class="character-panel chespitas-panel">
-          <img src="assets/chespitas.webp" onerror="this.src='assets/chespitas.jpg'" alt="Las Chespitas">
-        </div>
-
-        <div class="brand-center">
-          <img class="brand-logo" src="assets/logo.webp" onerror="this.src='assets/logo.jpg'" alt="Sparkly Party Planet">
-          <div class="tagline">APRENDE, CANTA Y DIVIÉRTETE</div>
-          <div class="hero-actions">
-            <button onclick="go('karaoke')">🎤 ¡A CANTAR!</button>
-            <button onclick="go('aprende')">🎓 ¡A APRENDER!</button>
-          </div>
-        </div>
-
-        <div class="character-panel sparkly-panel">
-          <img src="assets/sparkly.webp" onerror="this.src='assets/sparkly.jpg'" alt="Sparkly">
-        </div>
-      </section>
-
-      <section class="activity-panel">
-        <h2>ELIGE UNA ACTIVIDAD</h2>
-        <div class="activity-grid">
-          <button class="activity purple" onclick="lesson('Vocales','A, E, I, O, U')">🔤<b>VOCALES</b></button>
-          <button class="activity orange" onclick="lesson('Números','Uno, dos, tres, cuatro y cinco')">🔢<b>NÚMEROS</b></button>
-          <button class="activity yellow" onclick="lesson('Colores','Rojo, azul, amarillo y verde')">🌈<b>COLORES</b></button>
-          <button class="activity green" onclick="lesson('Animales','León, tigre, perro y gato')">🐯<b>ANIMALES</b></button>
-          <button class="activity blue" onclick="lesson('Figuras','Círculo, triángulo, cuadrado y estrella')">🔺<b>FIGURAS</b></button>
-          <button class="activity violet" onclick="lesson('Días','Lunes, martes, miércoles, jueves, viernes, sábado y domingo')">📅<b>DÍAS</b></button>
-          <button class="activity aqua" onclick="lesson('Hábitos','Lavar las manos, cepillar los dientes y ordenar')">🫧<b>HÁBITOS</b></button>
-          <button class="activity pink" onclick="lesson('Emociones','Feliz, triste, enojado y tranquilo')">💗<b>EMOCIONES</b></button>
-        </div>
-      </section>
-
-      <section class="lower-grid">
-        <div class="songs-panel">
-          <div class="panel-title">⭐ 🎵 MIS CANCIONES <small>SUBE TUS CANCIONES</small> ⭐</div>
-          <div class="songs-body">
-            <label class="drop-zone">
-              <input id="audioInput" type="file" accept="audio/*" multiple>
-              <div class="upload-cloud">☁️⬆️</div>
-              <b>Arrastra tu archivo de audio<br>o haz clic para seleccionar</b>
-              <small>Formatos: MP3, WAV, M4A<br>Tamaño máximo: 50 MB</small>
-            </label>
-            <div class="uploaded">
-              <h3>MIS CANCIONES SUBIDAS</h3>
-              <div class="song-tools"><input id="songSearch" placeholder="🔎 Buscar canción"><select id="songFilter"><option value="all">Todas</option><option value="favorite">Favoritas</option></select></div><div id="songList"></div>
-              <div class="privacy">🔒 Solo tú puedes ver y usar tus canciones.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="categories-panel">
-          <h3>CATEGORÍAS</h3>
-          <button>🔤 Vocales</button><button>🔢 Números</button><button>🎨 Colores</button>
-          <button>🐯 Animales</button><button>📅 Días de la semana</button><button>🧼 Hábitos</button>
-          <button>💗 Emociones</button><button>🔺 Figuras</button>
-        </div>
-
-        <div class="favorites-panel">
-          <h3>FAVORITAS</h3>
-          <div class="fav">👭 <span>La Cumbia de<br>las Chespitas</span> ⭐</div>
-          <div class="fav">🟣 <span>El baile de<br>Sparkly</span> ⭐</div>
-          <div class="fav">👭 <span>Canta, juega<br>y aprende</span> ⭐</div>
-          <button class="view-all">VER TODAS</button>
-        </div>
-      </section>
-
-      <nav class="bottom-nav">
-        <button onclick="go('inicio')">🏠 INICIO</button>
-        <button onclick="go('canciones')">🎵 CANCIONES</button>
-        <button onclick="go('aprende')">🎓 APRENDE</button>
-        <button onclick="go('juegos')">🎮 JUEGOS</button>
-        <button onclick="go('logros')">🏆 MIS LOGROS</button><button onclick="go('misiones')">🏅 MISIONES</button>
-      </nav>
-    </section>
-
-    <section id="canciones" class="screen simple-screen">
-      <h1>🎵 CANCIONES</h1>
-      <div class="feature-card"><h2>Biblioteca musical</h2><p>Sube canciones desde la pantalla de Inicio y aparecerán aquí.</p><div id="libraryList"></div></div>
-    </section>
-
-    <section id="karaoke" class="screen simple-screen">
-      <h1>🎤 KARAOKE</h1>
-      <div class="feature-card">
-        <select id="karaokeSelect"></select>
-        <audio id="karaokePlayer" controls></audio>
-        <div class="karaoke-controls">
-          <button class="secondary-btn" onclick="showLyricsEditor()">✏️ EDITAR LETRA</button>
-          <button class="secondary-btn" onclick="toggleInstrumental()">🎚️ MODO ENSAYO</button>
-        </div>
-        <div id="lyrics" class="lyrics">Selecciona una canción y presiona comenzar.</div>
-        <button class="big-pink" onclick="startKaraoke()">▶ COMENZAR KARAOKE</button>
-        <button class="secondary-btn" onclick="stopKaraoke()">⏹ DETENER</button>
-      </div>
-    </section>
-
-    <section id="aprende" class="screen simple-screen">
-    <h1>🎓 APRENDE</h1>
-    <div class="learning-grid">
-      <button onclick="startQuiz('vocales')">🔤<b>Vocales</b><small>Escucha y elige</small></button>
-      <button onclick="startQuiz('numeros')">🔢<b>Números</b><small>Cuenta y aprende</small></button>
-      <button onclick="startQuiz('colores')">🌈<b>Colores</b><small>Reconoce colores</small></button>
-      <button onclick="startQuiz('animales')">🐯<b>Animales</b><small>Sonidos y nombres</small></button>
-      <button onclick="startQuiz('figuras')">🔺<b>Figuras</b><small>Identifica formas</small></button>
-      <button onclick="startQuiz('emociones')">💗<b>Emociones</b><small>Aprende a expresarte</small></button>
-    </div>
-    <div id="quizBox" class="feature-card quiz-box"><p>Selecciona una actividad.</p></div>
-    </section>
-    
-<section id="idiomas" class="screen simple-screen">
-  <div class="language-hero">
+<div class="app">
+  <section class="hero">
     <div>
-      <h1>🌍 SPARKLY IDIOMAS</h1>
-      <p>Aprende a saludar, escuchar y hablar jugando con Sparkly y las Chespitas.</p>
-    </div>
-    <div class="language-score">🏅 <b id="languageStars">0</b> estrellas de idiomas</div>
-  </div>
-
-  <div class="language-selector">
-    <button class="lang-card active" data-lang="en-US">🇺🇸<b>INGLÉS</b></button>
-    <button class="lang-card" data-lang="fr-FR">🇫🇷<b>FRANCÉS</b></button>
-    <button class="lang-card" data-lang="it-IT">🇮🇹<b>ITALIANO</b></button>
-    <button class="lang-card" data-lang="pt-BR">🇧🇷<b>PORTUGUÉS</b></button>
-    <button class="lang-card" data-lang="de-DE">🇩🇪<b>ALEMÁN</b></button>
-    <button class="lang-card" data-lang="ja-JP">🇯🇵<b>JAPONÉS</b></button>
-    <button class="lang-card" data-lang="ko-KR">🇰🇷<b>COREANO</b></button>
-    <button class="lang-card" data-lang="zh-CN">🇨🇳<b>MANDARÍN</b></button>
-  </div>
-
-  <div class="language-tabs">
-    <button class="language-tab active" data-language-tab="words">🧠 PALABRAS</button>
-    <button class="language-tab" data-language-tab="talk">🗣️ HABLAR</button>
-    <button class="language-tab" data-language-tab="game">🎮 JUEGO</button>
-    <button class="language-tab" data-language-tab="song">🎵 CANCIÓN</button>
-  </div>
-
-  <div id="languageWords" class="language-panel active">
-    <h2 id="languageTitle">Palabras básicas</h2>
-    <div id="wordGrid" class="word-grid"></div>
-  </div>
-
-  <div id="languageTalk" class="language-panel">
-    <div class="talk-card">
-      <div class="sparkly-teacher">🟣</div>
-      <h2 id="talkPhrase">Hello!</h2>
-      <p id="talkMeaning">¡Hola!</p>
-      <button class="big-pink" onclick="speakCurrentPhrase()">🔊 ESCUCHAR</button>
-      <button class="secondary-btn" onclick="startPronunciation()">🎙️ REPETIR CON MI VOZ</button>
-      <div id="speechResult" class="speech-result">Presiona el micrófono y repite la frase.</div>
-      <div class="talk-navigation">
-        <button onclick="previousPhrase()">⬅ ANTERIOR</button>
-        <button onclick="nextPhrase()">SIGUIENTE ➡</button>
+      <span class="pill">Versión 11 • Juegos + Karaoke + VIP</span>
+      <h1>Sparkly Party Planet</h1>
+      <p>Aprende, canta y juega con Las Chespitas y Sparkly.</p>
+      <div class="top-actions">
+        <button class="btn" id="welcomeBtn">🔊 Escuchar bienvenida</button>
+        <button class="btn vip" data-open="vip">👑 Conocer VIP</button>
       </div>
     </div>
-  </div>
+    <img src="assets/personajes-party-planet.png" alt="Personajes de Las Chespitas y Sparkly">
+  </section>
 
-  <div id="languageGame" class="language-panel">
-    <div class="feature-card language-game-card">
-      <h2 id="languageQuestion">Pregunta</h2>
-      <div id="languageOptions" class="language-options"></div>
-      <div id="languageFeedback"></div>
-      <button class="secondary-btn" onclick="newLanguageQuestion()">OTRA PREGUNTA</button>
+  <nav class="menu" aria-label="Menú principal">
+    <button data-open="memory"><span>🧠</span>Memorama</button>
+    <button data-open="differences"><span>🔎</span>Diferencias</button>
+    <button data-open="riddles"><span>❓</span>Adivinanzas</button>
+    <button data-open="coloring"><span>🎨</span>Colorear</button>
+    <button data-open="karaoke"><span>🎤</span>Karaoke</button>
+    <button data-open="study"><span>📚</span>Modo Estudio</button>
+    <button data-open="customize"><span>👗</span>Personalizar</button>
+    <button data-open="vip"><span>👑</span>VIP</button>
+  </nav>
+
+  <section id="home" class="screen active">
+    <h2>🌟 Bienvenidos a Mundo Party Planet</h2>
+    <div class="grid">
+      <div class="card"><h3>🏆 Tus estrellas</h3><p id="stars">0 estrellas</p></div>
+      <div class="card"><h3>🎮 Juegos terminados</h3><p id="gamesDone">0 actividades</p></div>
+      <div class="card"><h3>📈 Progreso</h3><div class="progress"><div id="progressBar"></div></div></div>
     </div>
-  </div>
+  </section>
 
-  <div id="languageSong" class="language-panel">
-    <div class="feature-card language-song-card">
-      <h2>🎵 Canción de saludos</h2>
-      <p id="songLanguageLabel"></p>
-      <div id="languageSongLyrics" class="language-song-lyrics"></div>
-      <button class="big-pink" onclick="singLanguageSong()">▶ ESCUCHAR CANCIÓN HABLADA</button>
-    </div>
-  </div>
-</section>
+  <section id="memory" class="screen">
+    <h2>🧠 Memorama Party Planet</h2>
+    <p>Encuentra todas las parejas.</p>
+    <div class="status" id="memoryStatus">Movimientos: 0</div>
+    <div class="memory-grid" id="memoryGrid"></div>
+    <p><button class="btn secondary" id="resetMemory">Reiniciar</button></p>
+  </section>
 
-
-<section id="mundoMusical" class="screen simple-screen">
-  <div class="v8-hero music-hero">
-    <div>
-      <h1>🎧 PARTY PLANET MUSIC</h1>
-      <p>Escucha canciones, crea listas y guarda tus favoritas.</p>
-    </div>
-    <button class="secondary-btn" onclick="go('canciones')">➕ SUBIR CANCIONES</button>
-  </div>
-
-  <div class="music-toolbar">
-    <input id="musicSearchV8" placeholder="🔎 Buscar canción">
-    <select id="musicCharacterFilter">
-      <option value="all">Todos los personajes</option>
-      <option value="Chespitas">Las Chespitas</option>
-      <option value="Sparkly">Sparkly</option>
-      <option value="Estrellita">Estrellita</option>
-      <option value="Cangurito">Cangurito</option>
-    </select>
-  </div>
-
-  <div class="playlist-row">
-    <button onclick="setV8Playlist('all')" class="playlist-chip active">✨ Todas</button>
-    <button onclick="setV8Playlist('favorites')" class="playlist-chip">⭐ Favoritas</button>
-    <button onclick="setV8Playlist('party')" class="playlist-chip">🎉 Fiesta</button>
-    <button onclick="setV8Playlist('learn')" class="playlist-chip">🎓 Aprende</button>
-    <button onclick="shuffleV8Music()" class="playlist-chip">🔀 Aleatorio</button>
-  </div>
-
-  <div id="v8MusicGrid" class="v8-card-grid"></div>
-
-  <div id="v8MusicPlayer" class="v8-player">
-    <div>
-      <b id="v8NowTitle">Selecciona una canción</b>
-      <small id="v8NowMeta">Party Planet</small>
-    </div>
-    <audio id="v8Audio" controls></audio>
-    <button onclick="toggleCurrentV8Favorite()">⭐</button>
-  </div>
-</section>
-
-<section id="videos" class="screen simple-screen">
-  <div class="v8-hero video-hero">
-    <div>
-      <h1>🎬 VIDEOS PARTY PLANET</h1>
-      <p>Guarda videoclips, coreografías y shows para verlos dentro de la aplicación.</p>
-    </div>
-  </div>
-
-  <div class="feature-card upload-video-box">
-    <h2>Agregar video</h2>
-    <input id="videoTitleInput" placeholder="Título del video">
-    <select id="videoTypeInput">
-      <option>Videoclip</option>
-      <option>Coreografía</option>
-      <option>Show</option>
-      <option>Aprende a bailar</option>
-    </select>
-    <input id="videoFileInput" type="file" accept="video/*">
-    <button class="big-pink" onclick="saveLocalVideo()">🎬 GUARDAR VIDEO</button>
-    <small>Los videos se guardan en este dispositivo. Para que todos los usuarios los vean se necesita conectarlos a la nube.</small>
-  </div>
-
-  <div id="videoGridV8" class="v8-card-grid"></div>
-</section>
-
-<section id="cuentos" class="screen simple-screen">
-  <div class="v8-hero story-hero">
-    <div>
-      <h1>📚 CUENTOS CON SPARKLY</h1>
-      <p>Lee o escucha cuentos cortos con valores y aventuras.</p>
-    </div>
-  </div>
-
-  <div id="storyGrid" class="story-grid"></div>
-
-  <div id="storyReader" class="feature-card story-reader">
-    <h2 id="storyTitle">Selecciona un cuento</h2>
-    <div id="storyText">Sparkly está listo para comenzar una nueva aventura.</div>
-    <div class="story-actions">
-      <button class="big-pink" onclick="readStoryAloud()">🔊 ESCUCHAR CUENTO</button>
-      <button class="secondary-btn" onclick="stopStory()">⏹ DETENER</button>
-      <button class="secondary-btn" onclick="completeStory()">⭐ TERMINÉ EL CUENTO</button>
-    </div>
-  </div>
-</section>
-
-<section id="arte" class="screen simple-screen">
-  <div class="v8-hero art-hero">
-    <div>
-      <h1>🎨 TALLER DE ARTE</h1>
-      <p>Dibuja, colorea y guarda tus creaciones de Party Planet.</p>
-    </div>
-  </div>
-
-  <div class="art-layout">
-    <div class="art-tools">
-      <label>Color <input id="paintColor" type="color" value="#ff3f95"></label>
-      <label>Tamaño <input id="paintSize" type="range" min="2" max="40" value="10"></label>
-      <button onclick="clearCanvasV8()">🧽 LIMPIAR</button>
-      <button onclick="addSparklyStamp()">🟣 SPARKLY</button>
-      <button onclick="addStarStamp()">⭐ ESTRELLA</button>
-      <button onclick="saveDrawingV8()">💾 GUARDAR</button>
-    </div>
-    <canvas id="drawingCanvas" width="1000" height="600"></canvas>
-  </div>
-  <div id="savedDrawings" class="saved-drawings"></div>
-</section>
-
-<section id="misiones" class="screen simple-screen">
-  <div class="v8-hero mission-hero">
-    <div>
-      <h1>🏅 MISIONES DIARIAS</h1>
-      <p>Completa actividades para ganar estrellas y medallas.</p>
-    </div>
-  </div>
-  <div id="missionGrid" class="mission-grid"></div>
-</section>
-
-<section id="juegos" class="screen simple-screen"><h1>🎮 JUEGOS</h1>
-    <div class="games-grid">
-      <div class="game-card"><span>⭐</span><h3>Atrapa estrellas</h3><button onclick="startStarGame()">JUGAR</button></div>
-      <div class="game-card"><span>🎨</span><h3>Memoria de colores</h3><button onclick="startMemoryGame()">JUGAR</button></div>
-      <div class="game-card"><span>🎵</span><h3>Adivina la canción</h3><button onclick="startSongGuess()">JUGAR</button></div>
-    </div>
-    <div id="gameArea" class="feature-card game-area">Elige un juego.</div>
-    </section>
-    <section id="logros" class="screen simple-screen"><h1>🏆 MIS LOGROS</h1>
-    <div class="achievement-grid">
-      <div class="achievement" data-need="5">🎤<b>Primera canción</b><small>5 estrellas</small></div>
-      <div class="achievement" data-need="25">🌟<b>Pequeña estrella</b><small>25 estrellas</small></div>
-      <div class="achievement" data-need="75">🎓<b>Gran aprendiz</b><small>75 estrellas</small></div>
-      <div class="achievement" data-need="150">👑<b>Superestrella</b><small>150 estrellas</small></div>
-    </div>
-    <div class="feature-card">
-      <p>Estrellas: <b data-stars>125</b></p><p>Nivel: <b data-level>3</b></p>
-      <button class="big-pink" onclick="printDiploma()">🖨️ CREAR DIPLOMA</button>
-    </div></section>
-    <section id="grabaciones" class="screen simple-screen"><h1>📹 GRABACIONES</h1>
-    <div class="feature-card"><p>Graba la voz del niño mientras canta.</p>
-    <button id="recordBtn" class="big-pink" onclick="toggleRecord()">🎙️ GRABAR VOZ</button>
-    <div id="recordStatus"></div><div id="recordList"></div></div></section>
-    <section id="padres" class="screen simple-screen"><h1>👨‍👩‍👧 ÁREA PARA PADRES</h1>
-    <div class="parents-grid">
-      <div class="feature-card">
-        <h2>Perfil infantil</h2>
-        <input id="childName" placeholder="Nombre del niño">
-        <input id="childAge" type="number" min="2" max="14" placeholder="Edad">
-        <button class="big-pink" onclick="saveProfile()">GUARDAR PERFIL</button>
+  <section id="differences" class="screen">
+    <h2>🔎 Encuentra las diferencias</h2>
+    <p>Busca tres diferencias en la imagen de la derecha.</p>
+    <div class="status" id="differenceStatus">Encontradas: 0 de 3</div>
+    <div class="difference-wrap">
+      <div class="scene" aria-label="Escena original">
+        <span class="obj" style="left:10%;top:12%">☀️</span>
+        <span class="obj" style="left:35%;top:18%">🎈</span>
+        <span class="obj" style="left:66%;top:42%">🎂</span>
+        <span class="obj" style="left:18%;top:58%">🟣</span>
+        <span class="obj" style="left:45%;top:62%">⭐</span>
       </div>
-      <div class="feature-card">
-        <h2>Seguridad</h2>
-        <input id="newPin" type="password" inputmode="numeric" maxlength="4" placeholder="Nuevo PIN de 4 dígitos">
-        <button class="secondary-btn" onclick="savePin()">CAMBIAR PIN</button>
-        <label class="switch-row"><input id="safeMode" type="checkbox"> Modo infantil seguro</label>
-        <label class="switch-row"><input id="voiceEnabled" type="checkbox"> Instrucciones por voz</label>
+      <div class="scene" id="differenceScene" aria-label="Escena con diferencias">
+        <span class="obj" style="left:10%;top:12%">🌙</span>
+        <span class="obj" style="left:35%;top:18%">🎈</span>
+        <span class="obj" style="left:66%;top:42%">🧁</span>
+        <span class="obj" style="left:18%;top:58%">🟣</span>
+        <span class="obj" style="left:45%;top:62%">🌟</span>
+        <button class="hotspot" aria-label="Diferencia uno" style="left:8%;top:9%" data-diff="1"></button>
+        <button class="hotspot" aria-label="Diferencia dos" style="left:64%;top:39%" data-diff="2"></button>
+        <button class="hotspot" aria-label="Diferencia tres" style="left:43%;top:59%" data-diff="3"></button>
       </div>
-      
-      <div class="feature-card">
-        <h2>Control de tiempo</h2>
-        <label>Minutos diarios
-          <input id="dailyMinutes" type="number" min="10" max="180" value="45">
+    </div>
+  </section>
+
+  <section id="riddles" class="screen">
+    <h2>❓ Adivinanzas de Las Chespitas</h2>
+    <div class="card">
+      <h3 id="riddleQuestion"></h3>
+      <div class="riddle-options" id="riddleOptions"></div>
+      <div class="status" id="riddleStatus">Elige una respuesta.</div>
+    </div>
+  </section>
+
+  <section id="coloring" class="screen">
+    <h2>🎨 Colorea con Las Chespitas</h2>
+    <div class="canvas-wrap">
+      <div>
+        <h3>Colores</h3>
+        <div class="palette" id="palette"></div>
+        <p><label>Tamaño del pincel <input id="brushSize" type="range" min="3" max="30" value="12"></label></p>
+        <button class="btn secondary" id="clearCanvas">Limpiar</button>
+        <button class="btn" id="saveCanvas">Guardar dibujo</button>
+      </div>
+      <canvas id="colorCanvas" width="760" height="500" aria-label="Lienzo para colorear"></canvas>
+    </div>
+  </section>
+
+  <section id="karaoke" class="screen">
+    <h2>🎤 Karaoke de Las Chespitas</h2>
+    <div class="karaoke-box">
+      <label>Selecciona canción
+        <select id="songSelect">
+          <option value="party">Vamos todos a Party Planet</option>
+          <option value="stars">Vueltas y estrellitas</option>
+          <option value="skates">Los patines de Party Planet</option>
+        </select>
+      </label>
+      <div class="lyrics" id="lyricsBox"></div>
+      <button class="btn vip" id="startKaraoke">▶ Iniciar karaoke</button>
+      <button class="btn secondary" id="stopKaraoke">⏹ Detener</button>
+      <div class="vip-lock">
+        <strong>VIP:</strong> subir pista instrumental, grabar voz, efectos de escenario y letras sincronizadas completas.
+        <p><input id="trackUpload" type="file" accept="audio/*"></p>
+        <audio id="audioPlayer" controls style="width:100%"></audio>
+      </div>
+    </div>
+  </section>
+
+  <section id="study" class="screen">
+    <h2>📚 Modo Estudio</h2>
+    <div class="grid">
+      <div class="card"><h3>🔤 Letras</h3><p>Aprende vocales y abecedario.</p><button class="btn lesson" data-lesson="A, E, I, O, U. ¡Muy bien!">Practicar</button></div>
+      <div class="card"><h3>🔢 Números</h3><p>Cuenta del uno al diez.</p><button class="btn lesson" data-lesson="Uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez.">Practicar</button></div>
+      <div class="card"><h3>🎨 Colores</h3><p>Rojo, azul, amarillo y más.</p><button class="btn lesson" data-lesson="Rojo, azul, amarillo, verde, rosa y morado.">Practicar</button></div>
+      <div class="card"><h3>🌎 Inglés</h3><p>Palabras básicas.</p><button class="btn lesson" data-lesson="Hello means hola. Star means estrella. Party means fiesta.">Practicar</button></div>
+    </div>
+  </section>
+
+  <section id="customize" class="screen">
+    <h2>👗 Personaliza tu personaje</h2>
+    <div class="grid">
+      <div class="card">
+        <div id="avatar" style="font-size:7rem;text-align:center">👧</div>
+        <label>Personaje
+          <select id="characterSelect"><option>👧 Chespita</option><option>🟣 Sparkly</option><option>⭐ Estrellita</option></select>
         </label>
-        <label class="switch-row"><input id="videoPermission" type="checkbox"> Permitir videos guardados</label>
-        <label class="switch-row"><input id="communityPermission" type="checkbox"> Permitir funciones de comunidad</label>
-        <button class="secondary-btn" onclick="saveV8ParentControls()">GUARDAR CONTROLES</button>
-        <p id="usageToday"></p>
+        <label>Accesorio
+          <select id="accessorySelect"><option value="">Sin accesorio</option><option value="🤠">Sombrero vaquero</option><option value="👑">Corona VIP</option><option value="🎀">Moño</option></select>
+        </label>
+        <p id="avatarAccessory" style="font-size:4rem;text-align:center"></p>
       </div>
-<div class="feature-card">
-        <h2>Resumen de progreso</h2>
-        <p id="parentSummary"></p>
-        <button class="secondary-btn" onclick="resetProgress()">REINICIAR PROGRESO</button>
+      <div class="vip-lock">
+        Los vestuarios especiales, fondos y accesorios premium se desbloquean con VIP o con estrellas ganadas.
       </div>
-    </div></section>
-    <section id="config" class="screen simple-screen"><h1>⚙️ CONFIGURACIÓN</h1>
-    <div class="settings-grid">
-      <div class="feature-card"><h2>Sonido</h2><label>Volumen <input id="volumeControl" type="range" min="0" max="1" step="0.05" value="1"></label></div>
-      <div class="feature-card"><h2>Apariencia</h2><button class="secondary-btn" onclick="toggleCompact()">CAMBIAR TAMAÑO</button></div>
-      <div class="feature-card"><h2>Datos</h2><button class="secondary-btn" onclick="exportData()">EXPORTAR RESPALDO</button><input id="importData" type="file" accept=".json"></div>
-      <div class="feature-card"><h2>Versión</h2><p>Sparkly Party Planet V8 — Mundo Party Planet</p><p>Funciona sin conexión después de cargarla una vez.</p></div>
-    </div></section>
-  </main>
-</div>
-
-<div id="modal" class="modal"><div class="modal-box"><button onclick="closeModal()">✕</button><h2 id="modalTitle"></h2><p id="modalText"></p></div></div>
-    <div id="pinModal" class="modal"><div class="modal-box"><button onclick="closePin()">✕</button><h2>Área para padres</h2><p>Ingresa el PIN</p><input id="pinInput" type="password" inputmode="numeric" maxlength="4" placeholder="PIN"><button class="big-pink" onclick="verifyPin()">ENTRAR</button><small>PIN inicial: 1234</small></div></div>
-    <div id="lyricsModal" class="modal"><div class="modal-box wide"><button onclick="closeLyricsEditor()">✕</button><h2>Editar letra</h2><p>Escribe una frase por línea.</p><textarea id="lyricsEditor"></textarea><button class="big-pink" onclick="saveLyrics()">GUARDAR LETRA</button></div></div>
-<div id="videoModalV8" class="video-player-modal">
-      <button onclick="closeVideoV8()">✕</button>
-      <video id="videoPlayerV8" controls></video>
     </div>
-    <script src="app.js"></script>
+  </section>
+
+  <section id="vip" class="screen">
+    <h2>👑 Party Planet VIP</h2>
+    <p>Desbloquea karaoke completo, juegos adicionales, personalización, progreso familiar y contenido nuevo.</p>
+    <div class="prices">
+      <div class="price"><h3>Mensual</h3><p><strong>$99 MXN</strong></p><button class="btn vip purchase">Elegir</button></div>
+      <div class="price"><h3>Anual</h3><p><strong>$899 MXN</strong></p><button class="btn vip purchase">Elegir</button></div>
+      <div class="price"><h3>Familiar</h3><p><strong>$1,199 MXN</strong></p><button class="btn vip purchase">Elegir</button></div>
+    </div>
+    <div class="status" id="purchaseMessage">Demostración: para cobrar de verdad se debe conectar App Store, Google Play o una pasarela de pago.</div>
+  </section>
+
+  <p style="text-align:center"><button class="btn secondary" id="homeBtn">🏠 Volver al inicio</button></p>
+</div>
+<footer>Party Planet — ¡Donde la fiesta comienza!</footer>
+
+<script src="app.js"></script>
 </body>
 </html>

@@ -1,13 +1,9 @@
 {
-  "name": "Sparkly Party Planet V8 — Mundo Party Planet",
-  "short_name": "Sparkly V8",
+  "name": "Sparkly Party Planet V11",
+  "short_name": "Party Planet",
   "start_url": "./index.html",
-  "scope": "./",
   "display": "standalone",
-  "background_color": "#09022f",
-  "theme_color": "#6f20d8",
-  "orientation": "landscape",
-  "lang": "es-MX",
-  "description": "Música, idiomas, karaoke, juegos, cuentos, videos, arte y misiones para niños.",
-  "id": "./?v=8"
+  "background_color": "#7c3aed",
+  "theme_color": "#7c3aed",
+  "icons": []
 }
