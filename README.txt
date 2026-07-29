@@ -1,14 +1,20 @@
-SPARKLY PARTY PLANET V12 — ADMINISTRACIÓN E IDIOMAS
+SPARKLY PARTY PLANET V13 — CATEGORÍAS DE IDIOMAS
 
-Incluye:
-- Panel privado con PIN de 6 dígitos.
-- Subir canciones, portada, categoría y letra.
-- Publicar, ocultar o eliminar solo desde la sesión administradora.
-- Biblioteca pública para que los niños únicamente escuchen.
-- Idiomas ampliados: inglés, francés e italiano.
-- Palabras por categorías, pronunciación y juego de traducciones.
+CAMBIOS SOLICITADOS
+- Se quitaron los cuadros superiores de Vocales, Números, Colores, Animales y demás.
+- La sección Idiomas ahora funciona directamente desde el panel Categorías.
+- Categorías activas: saludos, familia, colores, números, animales, alimentos, frutas,
+  verduras, escuela, casa, ropa, juguetes, cuerpo, emociones, días y meses, clima,
+  profesiones, transporte, lugares, verbos, adjetivos, adverbios, frases útiles,
+  naturaleza, música, fiesta, tecnología y deportes.
+- Idiomas: inglés, francés, italiano, alemán, portugués, japonés, coreano y chino mandarín.
+- Buscador de palabras.
+- Pronunciación con la voz disponible del dispositivo.
+- Preguntas de traducción con estrellas.
+- Categoría sorpresa.
+- Generador de prácticas combinables para producir una cantidad prácticamente ilimitada
+  de ejercicios nuevos.
 
-IMPORTANTE:
-Esta versión guarda todo localmente en el navegador del dispositivo.
-Para que la protección sea absoluta en internet, debe conectarse a una base de datos en la nube con una cuenta administradora y reglas de seguridad.
-Si se borran los datos del navegador, también se eliminan el PIN y las canciones locales.
+NOTA
+Las traducciones principales están incluidas para palabras frecuentes. Algunas palabras
+menos comunes usan una práctica guiada provisional hasta ampliar el diccionario completo.

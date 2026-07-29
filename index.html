@@ -76,7 +76,17 @@ input,select,textarea{width:100%;padding:11px;border:2px solid #ddd6fe;border-ra
       .canvas-wrap{grid-template-columns:1fr}
       .memory-grid{grid-template-columns:repeat(4,1fr)}
     }
-  </style>
+  
+.language-layout{display:grid;grid-template-columns:230px 1fr;gap:16px}
+.category-panel{background:#312e81;color:white;border-radius:20px;padding:14px;align-self:start}
+.category-panel h3{margin-top:0}
+.category-buttons{display:grid;gap:8px;margin-bottom:12px}
+.category-buttons button{border:0;border-radius:12px;padding:11px;text-align:left;background:#ffffff18;color:white;font-weight:700}
+.category-buttons button.active{background:#ec4899}
+.category-buttons button:hover{background:#ffffff2b}
+@media(max-width:760px){.language-layout{grid-template-columns:1fr}.category-buttons{grid-template-columns:repeat(2,1fr)}}
+
+</style>
 </head>
 <body>
 <div class="app">
@@ -230,29 +240,59 @@ input,select,textarea{width:100%;padding:11px;border:2px solid #ddd6fe;border-ra
     <div class="status" id="songsEmpty">Todavía no hay canciones publicadas desde este dispositivo.</div>
   </section>
 
+
   <section id="languages" class="screen">
-    <h2>🌎 Aprende idiomas con Las Chespitas</h2>
+    <h2>🌎 Idiomas</h2>
+    <p>Elige un idioma y después una categoría. Ya no aparecen los cuadros superiores de vocales, números, colores ni animales.</p>
+
     <div class="card">
       <label>Idioma
         <select id="languageSelect">
-          <option value="en">Inglés</option>
-          <option value="fr">Francés</option>
-          <option value="it">Italiano</option>
+          <option value="en">🇺🇸 Inglés</option>
+          <option value="fr">🇫🇷 Francés</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="de">🇩🇪 Alemán</option>
+          <option value="pt">🇧🇷 Portugués</option>
+          <option value="ja">🇯🇵 Japonés</option>
+          <option value="ko">🇰🇷 Coreano</option>
+          <option value="zh">🇨🇳 Chino mandarín</option>
         </select>
       </label>
-      <label>Categoría
-        <select id="categorySelect"></select>
+
+      <label>Buscar palabra
+        <input id="wordSearch" type="search" placeholder="Escribe una palabra en español o en el idioma elegido">
       </label>
-      <p><button class="btn" id="startLanguageQuiz">🎯 Jugar y aprender</button></p>
+
+      <div class="status" id="languageCounter">Selecciona una categoría para comenzar.</div>
     </div>
-    <div class="grid" id="wordGrid"></div>
-    <div class="card" id="languageQuizBox" style="display:none">
-      <h3 id="languageQuestion"></h3>
-      <div class="riddle-options" id="languageOptions"></div>
-      <div class="status" id="languageStatus">Elige la traducción correcta.</div>
+
+    <div class="language-layout">
+      <aside class="category-panel">
+        <h3>📚 Categorías</h3>
+        <div id="categoryButtons" class="category-buttons"></div>
+        <button class="btn vip" id="surpriseCategory">✨ Categoría sorpresa</button>
+      </aside>
+
+      <div>
+        <div class="grid" id="wordGrid"></div>
+
+        <div class="card" id="languageQuizBox" style="display:none">
+          <h3>🎯 Practica y gana estrellas</h3>
+          <p id="languageQuestion"></p>
+          <div class="riddle-options" id="languageOptions"></div>
+          <div class="status" id="languageStatus">Elige la respuesta correcta.</div>
+          <p><button class="btn" id="nextLanguageQuestion">Siguiente pregunta</button></p>
+        </div>
+
+        <div class="card">
+          <h3>♾️ Palabras nuevas para aprender</h3>
+          <p>La aplicación puede formar nuevas prácticas mezclando personas, acciones, objetos, lugares, colores y cantidades.</p>
+          <button class="btn" id="generatePractice">Crear práctica nueva</button>
+          <div class="status" id="generatedPractice">Presiona el botón para generar una frase.</div>
+        </div>
+      </div>
     </div>
   </section>
-
   <section id="admin" class="screen">
     <h2>🔐 Administración de Las Chespitas</h2>
     <div id="adminSetup" class="card">
