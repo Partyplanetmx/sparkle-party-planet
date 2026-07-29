@@ -1,0 +1,34 @@
+PARTY PLANET - VERSIÓN 15
+
+CÓMO ABRIRLA EN WINDOWS
+
+OPCIÓN 1
+1. Extrae todos los archivos del ZIP.
+2. Abre la carpeta extraída.
+3. Haz doble clic en ABRIR_PARTY_PLANET.bat.
+
+OPCIÓN 2
+1. Haz doble clic en ABRIR_PARTY_PLANET.html.
+
+OPCIÓN 3
+1. Haz doble clic en index.html.
+
+IMPORTANTE
+- No abras la aplicación desde dentro de WinRAR.
+- Primero debes usar el botón “Extraer en”.
+- Después abre la carpeta ya extraída.
+- Mantén juntos index.html, app.js, styles.css, manifest.json, sw.js y la carpeta assets.
+
+CONTENIDO
+- Pantalla de Idiomas estilo Sparkly Party Planet.
+- 11 idiomas.
+- 23 categorías.
+- Buscador y filtros.
+- Pronunciación.
+- Favoritos.
+- Palabras aprendidas.
+- Modo estudio.
+- Juego de traducciones.
+- Estrellas y progreso guardado.
+- Área para padres.
+- Diseño para computadora, tableta y teléfono.
