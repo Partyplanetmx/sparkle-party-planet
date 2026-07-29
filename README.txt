@@ -1,20 +1,15 @@
-SPARKLY PARTY PLANET V13 — CATEGORÍAS DE IDIOMAS
+PARTY PLANET VERSIÓN 14
 
-CAMBIOS SOLICITADOS
-- Se quitaron los cuadros superiores de Vocales, Números, Colores, Animales y demás.
-- La sección Idiomas ahora funciona directamente desde el panel Categorías.
-- Categorías activas: saludos, familia, colores, números, animales, alimentos, frutas,
-  verduras, escuela, casa, ropa, juguetes, cuerpo, emociones, días y meses, clima,
-  profesiones, transporte, lugares, verbos, adjetivos, adverbios, frases útiles,
-  naturaleza, música, fiesta, tecnología y deportes.
-- Idiomas: inglés, francés, italiano, alemán, portugués, japonés, coreano y chino mandarín.
-- Buscador de palabras.
-- Pronunciación con la voz disponible del dispositivo.
-- Preguntas de traducción con estrellas.
-- Categoría sorpresa.
-- Generador de prácticas combinables para producir una cantidad prácticamente ilimitada
-  de ejercicios nuevos.
+Abre index.html para probar la aplicación.
 
-NOTA
-Las traducciones principales están incluidas para palabras frecuentes. Algunas palabras
-menos comunes usan una práctica guiada provisional hasta ampliar el diccionario completo.
+Incluye:
+- Pantalla funcional de Idiomas basada en el diseño proporcionado.
+- 11 idiomas y 23 categorías.
+- Buscador y filtro.
+- Pronunciación por voz.
+- Favoritos y palabras aprendidas.
+- Modo estudio y juego de traducción.
+- Estrellas y guardado de progreso.
+- Diseño adaptable para teléfono, tableta y computadora.
+
+La indicación 5,000+ representa la meta del catálogo. El paquete incluye una base funcional que puede ampliarse agregando nuevas entradas al archivo app.js.
