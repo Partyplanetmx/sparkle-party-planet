@@ -1,9 +1,9 @@
 {
-  "name": "Party Planet Versión 15",
-  "short_name": "Party Planet V15",
+  "name": "Party Planet Versión 16",
+  "short_name": "Party Planet V16",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#080044",
-  "theme_color": "#080044",
+  "background_color": "#090044",
+  "theme_color": "#160066",
   "icons": []
 }

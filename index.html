@@ -1,16 +1,87 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#080044"><title>Party Planet V15</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css"></head><body>
-<header><button onclick="parentGate()">👥 PARA PADRES</button><div class="logo">⭐ <b>Sparkly</b><small>PARTY PLANET</small></div><div class="coins">⭐ <span id="stars">1250</span>　💎 35　⚙️</div></header>
-<section class="hero"><div class="girls">👧🏻👧🏼<small>LAS CHESPITAS</small></div><div><h1>APRENDE, CANTA Y DIVIÉRTETE</h1><button>🎤 ¡A CANTAR!</button><button onclick="showLanguages()">🎓 ¡A APRENDER!</button></div><button class="vip">👑 HAZTE VIP</button></section>
-<div class="bar">ELIGE UNA ACTIVIDAD</div>
-<div class="layout">
-<nav><button>🏠 <span>INICIO</span></button><button>🎤 <span>KARAOKE</span></button><button>📖 <span>CUENTOS</span></button><button>🎮 <span>JUEGOS</span></button><button class="on">🌍 <span>IDIOMAS</span></button><button onclick="study()">🎓 <span>MODO ESTUDIO</span></button><button>🎨 <span>COLOREA</span></button><button>👕 <span>PERSONALIZA</span></button><button>🎵 <span>MÚSICA</span></button><button>🏆 <span>RECOMPENSAS</span></button><button>🛍️ <span>TIENDA</span></button><button>🗓️ <span>EVENTOS</span></button><button>⚙️ <span>AJUSTES</span></button><div class="mascot">🦘</div></nav>
-<main><div class="heading"><div><h2>🌍 IDIOMAS</h2><p>Aprende palabras en diferentes idiomas de forma divertida</p></div><b>🔥 Racha: 1 día</b></div>
-<div id="langs" class="langs"></div>
-<div class="search"><input id="q" placeholder="🔎 Buscar palabra..." oninput="renderWords()"><select id="filter" onchange="renderWords()"></select><button onclick="randomWord()">🔀 ALEATORIA</button></div>
-<div class="stats">Palabras disponibles: <b>5,000+</b><span>⭐ Aprendidas: <b id="learned">0</b></span><span>❤️ Favoritas: <b id="favs">0</b></span></div>
-<div id="catGrid" class="cat-grid"></div>
-<div class="infinite"><b>∞ INFINITAS PALABRAS PARA APRENDER</b><small>Siempre estamos agregando más palabras y categorías nuevas</small></div>
-<div class="actions"><button onclick="randomWord()">🎵 <b>ESCUCHA</b><small>Pronunciación clara</small></button><button onclick="study()">🎧 <b>APRENDE</b><small>Mira la traducción</small></button><button onclick="quiz()">💗 <b>PRACTICA</b><small>Juega y responde</small></button><button onclick="showFavorites()">✅ <b>GUARDA</b><small>Repite tus favoritas</small></button><button class="learn" onclick="study()">¡A APRENDER! ⭐+10</button></div>
-<div id="words" class="word-grid"></div><div id="quiz" class="quiz hide"></div></main>
-<aside><h3>☰ CATEGORÍAS</h3><div id="side"></div><div class="new">⭐ ¡NUEVAS CATEGORÍAS!<small>Cada semana</small></div></aside>
-</div><div id="modal" class="modal hide"><div><button onclick="closeModal()">✕</button><section id="modalBody"></section></div></div><div id="toast"></div><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#160066">
+<title>Party Planet V16</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="space-bg"></div>
+<div id="app">
+<header class="topbar">
+  <button class="parents" onclick="openParentGate()">👥 PARA PADRES</button>
+  <div class="brand" onclick="go('home')">
+    <span class="brand-star">⭐</span>
+    <div><b>Sparkly</b><small>PARTY PLANET</small></div>
+  </div>
+  <div class="wallet">
+    <span>⭐ <b id="starsTop">1250</b></span>
+    <span>💎 <b id="gemsTop">35</b></span>
+    <button onclick="go('settings')">⚙️</button>
+  </div>
+</header>
+
+<section class="hero-banner">
+  <div class="hero-characters">
+    <div class="character-bubble">👧🏻</div>
+    <div class="character-bubble">👧🏼</div>
+    <span>LAS CHESPITAS</span>
+  </div>
+  <div class="hero-copy">
+    <h1>APRENDE, CANTA Y DIVIÉRTETE</h1>
+    <div>
+      <button onclick="go('karaoke')">🎤 ¡A CANTAR!</button>
+      <button onclick="go('study')">🎓 ¡A APRENDER!</button>
+    </div>
+  </div>
+  <button class="vip-btn" onclick="go('vip')">👑 HAZTE VIP</button>
+</section>
+
+<div class="section-banner">ELIGE UNA ACTIVIDAD</div>
+
+<div class="app-layout">
+  <nav id="mainNav" class="side-nav">
+    <button data-screen="home" onclick="go('home')">🏠 <span>INICIO</span></button>
+    <button data-screen="karaoke" onclick="go('karaoke')">🎤 <span>KARAOKE</span></button>
+    <button data-screen="stories" onclick="go('stories')">📖 <span>CUENTOS</span></button>
+    <button data-screen="games" onclick="go('games')">🎮 <span>JUEGOS</span></button>
+    <button data-screen="languages" onclick="go('languages')">🌍 <span>IDIOMAS</span></button>
+    <button data-screen="study" onclick="go('study')">🎓 <span>MODO ESTUDIO</span></button>
+    <button data-screen="color" onclick="go('color')">🎨 <span>COLOREA</span></button>
+    <button data-screen="avatar" onclick="go('avatar')">👕 <span>PERSONALIZA</span></button>
+    <button data-screen="music" onclick="go('music')">🎵 <span>MÚSICA</span></button>
+    <button data-screen="rewards" onclick="go('rewards')">🏆 <span>RECOMPENSAS</span></button>
+    <button data-screen="store" onclick="go('store')">🛍️ <span>TIENDA</span></button>
+    <button data-screen="events" onclick="go('events')">🗓️ <span>EVENTOS</span></button>
+    <button data-screen="settings" onclick="go('settings')">⚙️ <span>AJUSTES</span></button>
+    <div class="kangaroo">🦘<small>Cangurito Bailarín</small></div>
+  </nav>
+
+  <main class="content">
+    <section id="screen-home" class="screen active"></section>
+    <section id="screen-karaoke" class="screen"></section>
+    <section id="screen-stories" class="screen"></section>
+    <section id="screen-games" class="screen"></section>
+    <section id="screen-languages" class="screen"></section>
+    <section id="screen-study" class="screen"></section>
+    <section id="screen-color" class="screen"></section>
+    <section id="screen-avatar" class="screen"></section>
+    <section id="screen-music" class="screen"></section>
+    <section id="screen-rewards" class="screen"></section>
+    <section id="screen-store" class="screen"></section>
+    <section id="screen-events" class="screen"></section>
+    <section id="screen-settings" class="screen"></section>
+    <section id="screen-vip" class="screen"></section>
+    <section id="screen-parents" class="screen"></section>
+  </main>
+</div>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>

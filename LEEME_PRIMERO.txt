@@ -1,34 +1,28 @@
-PARTY PLANET - VERSIÓN 15
+PARTY PLANET VERSIÓN 16
 
-CÓMO ABRIRLA EN WINDOWS
+Esta versión fue reconstruida para que cada botón principal abra una pantalla distinta y tenga una función real.
 
-OPCIÓN 1
-1. Extrae todos los archivos del ZIP.
-2. Abre la carpeta extraída.
-3. Haz doble clic en ABRIR_PARTY_PLANET.bat.
+CÓMO ABRIRLA
+1. Extrae todo el ZIP.
+2. Abre la carpeta.
+3. Haz doble clic en ABRIR_PARTY_PLANET.bat o index.html.
 
-OPCIÓN 2
-1. Haz doble clic en ABRIR_PARTY_PLANET.html.
-
-OPCIÓN 3
-1. Haz doble clic en index.html.
+PANTALLAS FUNCIONALES
+- Inicio
+- Karaoke
+- Cuentos con narración
+- Juegos
+- Idiomas
+- Modo estudio
+- Colorear
+- Personalizar avatar
+- Música demostrativa
+- Recompensas
+- Tienda protegida
+- Eventos
+- Ajustes
+- VIP
+- Área para padres
 
 IMPORTANTE
-- No abras la aplicación desde dentro de WinRAR.
-- Primero debes usar el botón “Extraer en”.
-- Después abre la carpeta ya extraída.
-- Mantén juntos index.html, app.js, styles.css, manifest.json, sw.js y la carpeta assets.
-
-CONTENIDO
-- Pantalla de Idiomas estilo Sparkly Party Planet.
-- 11 idiomas.
-- 23 categorías.
-- Buscador y filtros.
-- Pronunciación.
-- Favoritos.
-- Palabras aprendidas.
-- Modo estudio.
-- Juego de traducciones.
-- Estrellas y progreso guardado.
-- Área para padres.
-- Diseño para computadora, tableta y teléfono.
+Es una aplicación web funcional. Para publicarla como aplicación nativa en App Store o Google Play todavía debe empaquetarse con una herramienta como Capacitor, Flutter o React Native.
