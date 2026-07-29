@@ -1,0 +1,9 @@
+{
+  "name": "Party Planet Versi\u00f3n 14",
+  "short_name": "Party Planet V14",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#080044",
+  "theme_color": "#080044",
+  "icons": []
+}
