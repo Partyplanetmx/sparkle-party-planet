@@ -1,20 +1,18 @@
-PARTY PLANET VERSIÓN 19
+PARTY PLANET VERSIÓN 20
 
-IMÁGENES INTEGRADAS
-- Cangurito Bailarín: Juegos y retos.
-- Estrellita: Modo estudio y recompensas.
-- Sparkly: Karaoke y música.
-- Las Chespitas: Cuentos y aventuras.
-- Logo Sparkly Party Planet: Encabezado principal.
+Esta versión toma como base el diseño HTML proporcionado, pero fue adaptada para funcionar sin internet.
 
 MEJORAS
-- Galería de personajes en la pantalla de Inicio.
-- Imágenes en alta calidad.
-- Cada personaje abre una sección funcional.
-- Banners visuales en Karaoke, Juegos, Cuentos y Modo Estudio.
-- Se mantienen todos los botones funcionales de la Versión 18.
+- No depende de Tailwind, Google Fonts ni enlaces externos.
+- Usa las imágenes reales de Party Planet.
+- Barra superior moderna.
+- Menú lateral tipo cápsula espacial.
+- Banner principal en alta calidad.
+- Botones interactivos sobre el banner.
+- Carrusel funcional con Estrellita, Cangurito, Las Chespitas, Sparkly y el logo.
+- Todos los accesos abren secciones reales de la aplicación.
 
 CÓMO ABRIR
-1. Extrae el ZIP completamente.
+1. Extrae el ZIP.
 2. Abre ABRIR_PARTY_PLANET.bat.
-3. Si aparece una versión anterior, presiona Ctrl + F5.
+3. Si ves otra versión, presiona Ctrl + F5.

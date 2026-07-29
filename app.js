@@ -24,59 +24,70 @@ function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKa
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
-    <div class="visual-home-wrap">
-      <img class="visual-home-image" src="assets/images/inicio_v18_party_planet.png" alt="Inicio Party Planet con Sparkly, Las Chespitas y el Cangurito Bailarín">
-
-      <button class="hotspot hs-parents" aria-label="Para padres" onclick="openParentGate()"></button>
-      <button class="hotspot hs-vip" aria-label="Hazte VIP" onclick="go('vip')"></button>
-      <button class="hotspot hs-karaoke" aria-label="Karaoke" onclick="go('karaoke')"></button>
-      <button class="hotspot hs-languages" aria-label="Idiomas" onclick="go('languages')"></button>
-      <button class="hotspot hs-games" aria-label="Juegos" onclick="go('games')"></button>
-      <button class="hotspot hs-stories" aria-label="Cuentos" onclick="go('stories')"></button>
-      <button class="hotspot hs-color" aria-label="Colorea" onclick="go('color')"></button>
-      <button class="hotspot hs-avatar" aria-label="Personaliza" onclick="go('avatar')"></button>
-      <button class="hotspot hs-continue" aria-label="Continuar aprendiendo" onclick="go('study')"></button>
-      <button class="hotspot hs-challenge" aria-label="Reto del día" onclick="go('games');setTimeout(colorGame,150)"></button>
-      <button class="hotspot hs-progress" aria-label="Ver progreso" onclick="go('rewards')"></button>
-      <button class="hotspot hs-music" aria-label="Música" onclick="go('music')"></button>
-      <button class="hotspot hs-events" aria-label="Eventos" onclick="go('events')"></button>
-      <button class="hotspot hs-rewards" aria-label="Premios" onclick="go('rewards')"></button>
-      <button class="hotspot hs-settings" aria-label="Ajustes" onclick="go('settings')"></button>
-    </div>
-    <section class="character-showcase">
-      <button onclick="go('games')" class="character-card">
-        <img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín">
-        <div><b>Cangurito Bailarín</b><small>Juegos, baile y retos</small></div>
-      </button>
-      <button onclick="go('study')" class="character-card">
-        <img src="assets/images/estrellita.jpg" alt="Estrellita">
-        <div><b>Estrellita</b><small>Aprendizaje y recompensas</small></div>
-      </button>
-      <button onclick="go('karaoke')" class="character-card">
-        <img src="assets/images/sparkly.jpg" alt="Sparkly">
-        <div><b>Sparkly</b><small>Música y diversión</small></div>
-      </button>
-      <button onclick="go('stories')" class="character-card">
+    <section class="v20-header">
+      <div class="v20-mini-brand">
         <img src="assets/images/chespitas.jpg" alt="Las Chespitas">
-        <div><b>Las Chespitas</b><small>Cuentos, canciones y aventuras</small></div>
-      </button>
-    </section>
-    <div class="mobile-home-fallback">
-      <h2>Party Planet</h2>
-      <p>Elige una actividad.</p>
-      <div class="home-main-grid">
-        <button class="home-action-card karaoke-card" onclick="go('karaoke')"><span class="home-action-icon">🎤</span><div><b>Karaoke</b><small>Canta y diviértete</small></div><i>›</i></button>
-        <button class="home-action-card language-card" onclick="go('languages')"><span class="home-action-icon">🌍</span><div><b>Idiomas</b><small>Aprende jugando</small></div><i>›</i></button>
-        <button class="home-action-card games-card" onclick="go('games')"><span class="home-action-icon">🎮</span><div><b>Juegos</b><small>Diviértete y aprende</small></div><i>›</i></button>
-        <button class="home-action-card stories-card" onclick="go('stories')"><span class="home-action-icon">📖</span><div><b>Cuentos</b><small>Historias mágicas</small></div><i>›</i></button>
-        <button class="home-action-card color-card" onclick="go('color')"><span class="home-action-icon">🎨</span><div><b>Colorea</b><small>Dale color a tu mundo</small></div><i>›</i></button>
-        <button class="home-action-card avatar-card" onclick="go('avatar')"><span class="home-action-icon">👕</span><div><b>Personaliza</b><small>Crea y decora</small></div><i>›</i></button>
+        <span>LAS CHESPITAS</span>
       </div>
-      <div class="home-shortcuts">
-        <button onclick="go('music')">🎵 Música</button>
-        <button onclick="go('events')">🗓️ Eventos</button>
-        <button onclick="go('rewards')">🏆 Premios</button>
-        <button onclick="go('settings')">⚙️ Ajustes</button>
+
+      <div class="v20-title">
+        <h2>¡APRENDE, CANTA Y DIVIÉRTETE!</h2>
+      </div>
+
+      <div class="v20-header-actions">
+        <button class="v20-sing" onclick="go('karaoke')">🎤 ¡A CANTAR!</button>
+        <button class="v20-learn" onclick="go('study')">🚀 ¡A APRENDER!</button>
+        <button class="v20-vip" onclick="go('vip')">👑 HAZTE VIP</button>
+      </div>
+    </section>
+
+    <div class="v20-main">
+      <nav class="v20-capsule">
+        <button class="active" onclick="go('home')">🏠 <span>INICIO</span></button>
+        <button onclick="go('karaoke')">🎵 <span>KARAOKE</span></button>
+        <button onclick="go('stories')">📚 <span>CUENTOS</span></button>
+        <button onclick="go('games')">🎮 <span>JUEGOS</span></button>
+        <button onclick="go('languages')">🌍 <span>IDIOMAS</span></button>
+        <button onclick="go('color')">🎨 <span>COLOREA</span></button>
+        <button onclick="go('rewards')">🎁 <span>PREMIOS</span></button>
+      </nav>
+
+      <div class="v20-content">
+        <section class="v20-banner">
+          <img src="assets/images/inicio_visual.png" alt="Party Planet con Sparkly, Las Chespitas y el Cangurito Bailarín">
+
+          <button class="v20-overlay v20-parents" onclick="openParentGate()" aria-label="Para padres"></button>
+          <button class="v20-overlay v20-wallet" onclick="go('rewards')" aria-label="Ver estrellas y premios"></button>
+          <button class="v20-overlay v20-banner-karaoke" onclick="go('karaoke')" aria-label="Abrir karaoke"></button>
+          <button class="v20-overlay v20-banner-languages" onclick="go('languages')" aria-label="Abrir idiomas"></button>
+          <button class="v20-overlay v20-banner-games" onclick="go('games')" aria-label="Abrir juegos"></button>
+          <button class="v20-overlay v20-banner-stories" onclick="go('stories')" aria-label="Abrir cuentos"></button>
+          <button class="v20-overlay v20-banner-color" onclick="go('color')" aria-label="Abrir colorea"></button>
+          <button class="v20-overlay v20-banner-avatar" onclick="go('avatar')" aria-label="Abrir personaliza"></button>
+        </section>
+
+        <section class="v20-carousel">
+          <button onclick="go('study')">
+            <img src="assets/images/estrellita.jpg" alt="Estrellita">
+            <span>Aventura espacial</span>
+          </button>
+          <button onclick="go('games')">
+            <img src="assets/images/cangurito.jpg" alt="Cangurito">
+            <span>Cangurito Star</span>
+          </button>
+          <button onclick="go('stories')">
+            <img src="assets/images/chespitas.jpg" alt="Las Chespitas">
+            <span>Vaqueritas cósmicas</span>
+          </button>
+          <button onclick="go('music')">
+            <img src="assets/images/sparkly.jpg" alt="Sparkly">
+            <span>Cumpleaños feliz</span>
+          </button>
+          <button onclick="go('avatar')">
+            <img src="assets/images/logo_sparkly.jpg" alt="Sparkly Party Planet">
+            <span>Explorador Sparkly</span>
+          </button>
+        </section>
       </div>
     </div>`;
 }
