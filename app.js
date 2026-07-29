@@ -22,13 +22,92 @@ function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
 function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusic();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
-function renderHome(){document.getElementById("screen-home").innerHTML=title("🏠","Inicio","Todo Party Planet en una sola pantalla")+`<div class="home-grid">
-<button class="home-card pink" onclick="go('karaoke')"><span>🎤</span>Karaoke<small>Canta tus canciones</small></button>
-<button class="home-card blue" onclick="go('languages')"><span>🌍</span>Idiomas<small>Aprende palabras nuevas</small></button>
-<button class="home-card purple" onclick="go('games')"><span>🎮</span>Juegos<small>Retos y diversión</small></button>
-<button class="home-card green" onclick="go('stories')"><span>📖</span>Cuentos<small>Historias narradas</small></button>
-<button class="home-card orange" onclick="go('color')"><span>🎨</span>Colorea<small>Crea con tus colores</small></button>
-<button class="home-card red" onclick="go('rewards')"><span>🏆</span>Recompensas<small>Premios por aprender</small></button></div>`}
+function renderHome(){
+  const nextWord = WORDS.find(w=>!state.learned.has(w.es)) || WORDS[0];
+  document.getElementById("screen-home").innerHTML =
+    `<div class="home-welcome">
+      <div class="welcome-copy">
+        <span class="welcome-label">✨ TU MUNDO PARTY PLANET</span>
+        <h2>¡Hola! ¿Qué quieres hacer hoy?</h2>
+        <p>Canta, juega, aprende y gana estrellas con Sparkly, Las Chespitas y el Cangurito Bailarín.</p>
+        <div class="welcome-actions">
+          <button onclick="go('study')">🎓 Continuar aprendiendo</button>
+          <button onclick="go('karaoke')">🎤 Cantar ahora</button>
+        </div>
+      </div>
+      <div class="welcome-character">
+        <div class="welcome-sparkly">⭐</div>
+        <b>¡Vamos a divertirnos!</b>
+      </div>
+    </div>
+
+    <div class="home-section-heading">
+      <div>
+        <h3>Actividades principales</h3>
+        <p>Todos los botones abren una actividad real.</p>
+      </div>
+      <span>⭐ ${state.stars} estrellas</span>
+    </div>
+
+    <div class="home-main-grid">
+      <button class="home-action-card karaoke-card" onclick="go('karaoke')">
+        <span class="home-action-icon">🎤</span>
+        <div><b>Karaoke</b><small>Canta siguiendo la letra</small></div>
+        <i>›</i>
+      </button>
+      <button class="home-action-card language-card" onclick="go('languages')">
+        <span class="home-action-icon">🌍</span>
+        <div><b>Idiomas</b><small>Escucha y aprende palabras</small></div>
+        <i>›</i>
+      </button>
+      <button class="home-action-card games-card" onclick="go('games')">
+        <span class="home-action-icon">🎮</span>
+        <div><b>Juegos</b><small>Memorama, números y colores</small></div>
+        <i>›</i>
+      </button>
+      <button class="home-action-card stories-card" onclick="go('stories')">
+        <span class="home-action-icon">📖</span>
+        <div><b>Cuentos</b><small>Historias con narración</small></div>
+        <i>›</i>
+      </button>
+      <button class="home-action-card color-card" onclick="go('color')">
+        <span class="home-action-icon">🎨</span>
+        <div><b>Colorea</b><small>Escoge colores y crea</small></div>
+        <i>›</i>
+      </button>
+      <button class="home-action-card avatar-card" onclick="go('avatar')">
+        <span class="home-action-icon">👕</span>
+        <div><b>Personaliza</b><small>Crea tu personaje</small></div>
+        <i>›</i>
+      </button>
+    </div>
+
+    <div class="home-bottom-grid">
+      <section class="continue-card">
+        <div class="continue-icon">${nextWord.emoji}</div>
+        <div class="continue-info">
+          <span>CONTINÚA TU APRENDIZAJE</span>
+          <h3>${nextWord.es}</h3>
+          <p>Apréndela en ${LANGS[state.lang][0]}: <b>${nextWord[state.lang]}</b></p>
+        </div>
+        <button onclick="go('study')">Continuar ›</button>
+      </section>
+
+      <section class="daily-challenge">
+        <span>RETO DEL DÍA</span>
+        <h3>⭐ Gana 10 estrellas</h3>
+        <p>Completa una ronda del juego de colores.</p>
+        <button onclick="go('games');setTimeout(colorGame,150)">Jugar reto</button>
+      </section>
+    </div>
+
+    <div class="home-shortcuts">
+      <button onclick="go('music')">🎵 Música</button>
+      <button onclick="go('rewards')">🏆 Premios</button>
+      <button onclick="go('events')">🗓️ Eventos</button>
+      <button onclick="go('settings')">⚙️ Ajustes</button>
+    </div>`;
+}
 function renderKaraoke(){document.getElementById("screen-karaoke").innerHTML=title("🎤","Karaoke","Elige una canción y sigue la letra")+`<div class="panel karaoke-box"><select id="karaokeSong" onchange="resetLyrics()">${songs.map(s=>`<option>${s}</option>`).join("")}</select><div id="lyrics" class="lyrics">Presiona comenzar para cantar.</div><button class="action-btn" onclick="startKaraoke()">▶ Comenzar</button><button class="action-btn" onclick="finishActivity('¡Cantaste una canción!',5)">✅ Terminé</button></div>`}
 let lyricTimer;
 function resetLyrics(){clearInterval(lyricTimer);lyrics.textContent="Presiona comenzar para cantar."}

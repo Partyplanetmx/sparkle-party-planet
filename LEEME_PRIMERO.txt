@@ -1,28 +1,16 @@
-PARTY PLANET VERSIÓN 16
+PARTY PLANET VERSIÓN 17 — INICIO REDISEÑADO
 
-Esta versión fue reconstruida para que cada botón principal abra una pantalla distinta y tenga una función real.
+CAMBIOS
+- Se eliminaron de la pantalla de Inicio las secciones “Categorías” y “Favoritas”.
+- Nueva bienvenida grande con Sparkly.
+- Seis accesos principales completamente funcionales.
+- Tarjeta para continuar aprendiendo.
+- Reto del día.
+- Accesos inferiores a Música, Premios, Eventos y Ajustes.
+- Mejor aprovechamiento del espacio.
 
-CÓMO ABRIRLA
-1. Extrae todo el ZIP.
-2. Abre la carpeta.
-3. Haz doble clic en ABRIR_PARTY_PLANET.bat o index.html.
-
-PANTALLAS FUNCIONALES
-- Inicio
-- Karaoke
-- Cuentos con narración
-- Juegos
-- Idiomas
-- Modo estudio
-- Colorear
-- Personalizar avatar
-- Música demostrativa
-- Recompensas
-- Tienda protegida
-- Eventos
-- Ajustes
-- VIP
-- Área para padres
-
-IMPORTANTE
-Es una aplicación web funcional. Para publicarla como aplicación nativa en App Store o Google Play todavía debe empaquetarse con una herramienta como Capacitor, Flutter o React Native.
+CÓMO ABRIR
+1. Extrae el ZIP en una carpeta nueva.
+2. Cierra cualquier pestaña anterior de Party Planet.
+3. Abre ABRIR_PARTY_PLANET.bat.
+4. Si aparece la versión vieja, presiona Ctrl + F5 en el navegador para actualizar sin caché.
