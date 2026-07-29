@@ -342,3 +342,11 @@
   .v20-banner>img{object-fit:cover}
   .v20-overlay{display:none}
 }
+
+/* V21 - Panel de administración de canciones */
+.top-left-actions{display:flex;align-items:center;gap:8px}.admin-secret{border:0;border-radius:50%;width:40px;height:40px;background:#2b156f;color:white;opacity:.45}.admin-secret:hover{opacity:1}
+.admin-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}.admin-form,.admin-library{background:linear-gradient(145deg,#251177,#13075d);border:1px solid #6046d8;border-radius:20px;padding:18px}
+.admin-form label{display:block;margin:12px 0;font-weight:900}.admin-form input,.admin-form select,.admin-form textarea{width:100%;margin-top:6px;padding:12px;border:0;border-radius:12px;background:#fff;color:#26105e}.admin-form textarea{min-height:130px;resize:vertical}.admin-form button{border:0;border-radius:13px;padding:12px 16px;background:#ef23a6;color:white;font-weight:900;margin-right:8px}
+.admin-song{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;background:#1c0b67;border:1px solid #5037c8;border-radius:16px;padding:10px;margin-bottom:10px}.admin-song img{width:70px;height:70px;object-fit:cover;border-radius:12px;background:white}.admin-song button{border:0;border-radius:10px;padding:8px;background:#f224a6;color:white}.admin-song .danger{background:#b51d3d}
+.song-cover{width:64px;height:64px;border-radius:12px;object-fit:cover;background:white}.song{display:grid!important;grid-template-columns:auto 1fr auto;gap:12px}.karaoke-player{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start}.karaoke-player img{width:180px;height:180px;object-fit:cover;border-radius:18px;background:white}.admin-note{background:#ffdc3b;color:#3f2450;padding:12px;border-radius:14px;font-weight:900}
+@media(max-width:850px){.admin-layout{grid-template-columns:1fr}.karaoke-player{grid-template-columns:1fr}.karaoke-player img{margin:auto}}

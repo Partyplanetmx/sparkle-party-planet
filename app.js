@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusic();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusic();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -135,5 +135,185 @@ function finishActivity(msg,n){state.stars+=n;save();sync();toast(`${msg} +${n} 
 function speak(text,locale="es-MX"){speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(text);u.lang=locale;u.rate=.82;u.pitch=1.12;speechSynthesis.speak(u)}
 function closeModal(){modal.classList.add("hidden")}
 function toast(m){let t=document.getElementById("toast");t.textContent=m;t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1900)}
+
+// ===== V21: Biblioteca local y panel de administrador =====
+const ADMIN_PASSWORD_KEY="pp21_admin_password";
+if(!localStorage.getItem(ADMIN_PASSWORD_KEY)) localStorage.setItem(ADMIN_PASSWORD_KEY,"PartyPlanet21");
+
+let dbPromise=null;
+function openSongDB(){
+  if(dbPromise) return dbPromise;
+  dbPromise=new Promise((resolve,reject)=>{
+    const req=indexedDB.open("PartyPlanetSongs",1);
+    req.onupgradeneeded=()=>{
+      const db=req.result;
+      if(!db.objectStoreNames.contains("songs")){
+        const store=db.createObjectStore("songs",{keyPath:"id",autoIncrement:true});
+        store.createIndex("title","title",{unique:false});
+      }
+    };
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+  return dbPromise;
+}
+async function dbAllSongs(){
+  const db=await openSongDB();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction("songs","readonly");
+    const req=tx.objectStore("songs").getAll();
+    req.onsuccess=()=>resolve(req.result||[]);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function dbAddSong(song){
+  const db=await openSongDB();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction("songs","readwrite");
+    const req=tx.objectStore("songs").add(song);
+    req.onsuccess=()=>resolve(req.result);
+    req.onerror=()=>reject(req.error);
+  });
+}
+async function dbDeleteSong(id){
+  const db=await openSongDB();
+  return new Promise((resolve,reject)=>{
+    const tx=db.transaction("songs","readwrite");
+    const req=tx.objectStore("songs").delete(id);
+    req.onsuccess=()=>resolve();
+    req.onerror=()=>reject(req.error);
+  });
+}
+function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const r=new FileReader();
+    r.onload=()=>resolve(r.result);
+    r.onerror=()=>reject(r.error);
+    r.readAsDataURL(file);
+  });
+}
+function openAdminGate(){
+  const pass=prompt("Contraseña de administrador");
+  if(pass===localStorage.getItem(ADMIN_PASSWORD_KEY)) go("admin");
+  else toast("Contraseña incorrecta");
+}
+async function renderAdmin(){
+  const el=document.getElementById("screen-admin");
+  const songs=await dbAllSongs();
+  el.innerHTML=title("🔐","Administrador de canciones","Solo para Party Planet")+`
+  <div class="admin-note">Contraseña inicial: <b>PartyPlanet21</b>. Cámbiala desde este panel.</div>
+  <div class="admin-layout">
+    <section class="admin-form">
+      <h3>➕ Agregar canción</h3>
+      <label>Título<input id="admTitle" placeholder="Nombre de la canción"></label>
+      <label>Artista<select id="admArtist"><option>Las Chespitas</option><option>Sparkly</option><option>Cangurito Bailarín</option><option>Estrellita</option><option>Party Planet</option></select></label>
+      <label>Categoría<select id="admCategory"><option>Aprendizaje</option><option>Cumpleaños</option><option>Navidad</option><option>Vaqueritas</option><option>Patines</option><option>K-Pop infantil</option><option>Canciones de cuna</option><option>Otros</option></select></label>
+      <label>Idioma<select id="admLanguage"><option>Español</option><option>Inglés</option><option>Francés</option><option>Portugués</option><option>Otro</option></select></label>
+      <label>Portada<input id="admCover" type="file" accept="image/*"></label>
+      <label>Archivo de audio<input id="admAudio" type="file" accept="audio/*"></label>
+      <label>Letra<textarea id="admLyrics" placeholder="Pega aquí la letra de la canción"></textarea></label>
+      <label><input id="admKaraoke" type="checkbox" checked> Activar en Karaoke</label>
+      <label><input id="admVip" type="checkbox"> Solo VIP</label>
+      <button onclick="saveAdminSong()">💾 Guardar canción</button>
+      <button onclick="changeAdminPassword()">🔑 Cambiar contraseña</button>
+    </section>
+    <section class="admin-library">
+      <h3>🎵 Canciones guardadas (${songs.length})</h3>
+      <div id="adminSongList">${songs.length?songs.map(s=>`
+        <article class="admin-song">
+          <img src="${s.cover||'assets/images/logo_sparkly.jpg'}" alt="">
+          <div><b>${escapeHtml(s.title)}</b><br><small>${escapeHtml(s.artist)} · ${escapeHtml(s.category)} · ${escapeHtml(s.language)}</small></div>
+          <div><button onclick="previewAdminSong(${s.id})">▶</button><button class="danger" onclick="removeAdminSong(${s.id})">🗑️</button></div>
+        </article>`).join(""):"<p>Aún no has subido canciones.</p>"}</div>
+    </section>
+  </div>`;
+}
+async function saveAdminSong(){
+  const title=document.getElementById("admTitle").value.trim();
+  const audioFile=document.getElementById("admAudio").files[0];
+  if(!title) return toast("Escribe el título");
+  if(!audioFile) return toast("Selecciona un archivo de audio");
+  const coverFile=document.getElementById("admCover").files[0];
+  const song={
+    title,
+    artist:document.getElementById("admArtist").value,
+    category:document.getElementById("admCategory").value,
+    language:document.getElementById("admLanguage").value,
+    lyrics:document.getElementById("admLyrics").value,
+    karaoke:document.getElementById("admKaraoke").checked,
+    vip:document.getElementById("admVip").checked,
+    audio:await fileToDataURL(audioFile),
+    cover:coverFile?await fileToDataURL(coverFile):"assets/images/logo_sparkly.jpg",
+    createdAt:new Date().toISOString()
+  };
+  await dbAddSong(song);
+  toast("Canción guardada");
+  renderAdmin();
+}
+async function removeAdminSong(id){
+  if(!confirm("¿Borrar esta canción? Solo el administrador puede hacerlo.")) return;
+  await dbDeleteSong(id);
+  toast("Canción eliminada");
+  renderAdmin();
+}
+async function previewAdminSong(id){
+  const songs=await dbAllSongs();
+  const s=songs.find(x=>x.id===id);
+  if(!s) return;
+  modalBody.innerHTML=`<h2>${escapeHtml(s.title)}</h2><img src="${s.cover}" style="width:180px;height:180px;object-fit:cover;border-radius:18px"><p>${escapeHtml(s.artist)}</p><audio controls autoplay src="${s.audio}" style="width:100%"></audio>`;
+  modal.classList.remove("hidden");
+}
+function changeAdminPassword(){
+  const current=prompt("Contraseña actual");
+  if(current!==localStorage.getItem(ADMIN_PASSWORD_KEY)) return toast("Contraseña incorrecta");
+  const next=prompt("Nueva contraseña");
+  if(!next||next.length<6) return toast("Usa al menos 6 caracteres");
+  localStorage.setItem(ADMIN_PASSWORD_KEY,next);
+  toast("Contraseña cambiada");
+}
+function escapeHtml(v){
+  return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+async function renderMusic(){
+  const custom=await dbAllSongs();
+  const defaults=songs.map((title,i)=>({id:"d"+i,title,artist:"Party Planet",category:"Demo",cover:"assets/images/logo_sparkly.jpg",audio:null}));
+  const all=[...custom,...defaults];
+  document.getElementById("screen-music").innerHTML=title("🎵","Música","Tus canciones de Party Planet")+`<div class="song-list">${all.map(s=>`
+    <div class="song">
+      <img class="song-cover" src="${s.cover||'assets/images/logo_sparkly.jpg'}">
+      <div><b>${escapeHtml(s.title)}</b><br><small>${escapeHtml(s.artist||"Party Planet")} · ${escapeHtml(s.category||"")}</small></div>
+      <button class="action-btn" onclick="${typeof s.id==="number"?`playStoredSong(${s.id})`:`playSong(${String(s.id).slice(1)})`}">▶</button>
+    </div>`).join("")}</div>`;
+}
+async function playStoredSong(id){
+  const all=await dbAllSongs(); const s=all.find(x=>x.id===id); if(!s)return;
+  modalBody.innerHTML=`<h2>${escapeHtml(s.title)}</h2><img src="${s.cover}" style="width:180px;height:180px;object-fit:cover;border-radius:18px"><p>${escapeHtml(s.artist)}</p><audio controls autoplay src="${s.audio}" style="width:100%"></audio>`;
+  modal.classList.remove("hidden");
+}
+async function renderKaraoke(){
+  const all=(await dbAllSongs()).filter(s=>s.karaoke);
+  const el=document.getElementById("screen-karaoke");
+  if(!all.length){
+    el.innerHTML=title("🎤","Karaoke","Sube canciones desde el panel administrador")+`<div class="panel karaoke-box"><p>No hay canciones de karaoke guardadas.</p><button class="action-btn" onclick="openAdminGate()">🔐 Abrir administrador</button></div>`;
+    return;
+  }
+  el.innerHTML=title("🎤","Karaoke","Elige una canción y sigue la letra")+`
+    <div class="panel karaoke-player">
+      <img id="karaokeCover" src="${all[0].cover}">
+      <div>
+        <select id="karaokeStoredSelect" onchange="loadStoredKaraoke()">${all.map(s=>`<option value="${s.id}">${escapeHtml(s.title)} — ${escapeHtml(s.artist)}</option>`).join("")}</select>
+        <audio id="karaokeAudio" controls src="${all[0].audio}" style="width:100%;margin:12px 0"></audio>
+        <div id="lyrics" class="lyrics">${(all[0].lyrics||"Esta canción todavía no tiene letra.").replace(/\n/g,"<br>")}</div>
+        <button class="action-btn" onclick="finishActivity('¡Cantaste una canción!',5)">✅ Terminé</button>
+      </div>
+    </div>`;
+}
+async function loadStoredKaraoke(){
+  const all=await dbAllSongs();
+  const id=Number(document.getElementById("karaokeStoredSelect").value);
+  const s=all.find(x=>x.id===id); if(!s)return;
+  karaokeCover.src=s.cover; karaokeAudio.src=s.audio; lyrics.innerHTML=(s.lyrics||"Sin letra").replace(/\n/g,"<br>");
+}
+
 sync();go("home");
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
