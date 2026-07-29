@@ -1,22 +1,14 @@
-SPARKLY PARTY PLANET V11
+SPARKLY PARTY PLANET V12 — ADMINISTRACIÓN E IDIOMAS
 
-Contenido funcional incluido:
-- Memorama.
-- Encuentra 3 diferencias.
-- Adivinanzas.
-- Lienzo para colorear y guardar dibujo.
-- Karaoke demostrativo con letras resaltadas.
-- Carga local de pista instrumental.
-- Modo Estudio con voz del navegador.
-- Personalización de personaje.
-- Pantalla VIP con precios en MXN.
-- PWA básica instalable y uso sin conexión.
+Incluye:
+- Panel privado con PIN de 6 dígitos.
+- Subir canciones, portada, categoría y letra.
+- Publicar, ocultar o eliminar solo desde la sesión administradora.
+- Biblioteca pública para que los niños únicamente escuchen.
+- Idiomas ampliados: inglés, francés e italiano.
+- Palabras por categorías, pronunciación y juego de traducciones.
 
 IMPORTANTE:
-1. El cobro VIP es solo una demostración visual. Para recibir pagos reales debe conectarse:
-   - App Store In-App Purchases,
-   - Google Play Billing,
-   - o una pasarela segura como Stripe/Mercado Pago.
-2. Para publicar canciones, coloca archivos autorizados en assets/audio y edita app.js.
-3. Las voces dependen de las voces disponibles en cada dispositivo.
-4. Sube el contenido INTERNO de esta carpeta al repositorio de GitHub Pages.
+Esta versión guarda todo localmente en el navegador del dispositivo.
+Para que la protección sea absoluta en internet, debe conectarse a una base de datos en la nube con una cuenta administradora y reglas de seguridad.
+Si se borran los datos del navegador, también se eliminan el PIN y las canciones locales.

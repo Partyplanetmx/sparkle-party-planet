@@ -62,7 +62,14 @@
     .progress{height:12px;border-radius:999px;background:#ede9fe;overflow:hidden}
     .progress>div{height:100%;background:#7c3aed;width:35%}
     footer{text-align:center;color:white;padding:24px 10px}
-    @media(max-width:720px){
+    
+input,select,textarea{width:100%;padding:11px;border:2px solid #ddd6fe;border-radius:12px;margin:6px 0 12px;background:white}
+.song-cover{width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:14px;background:#ede9fe}
+.song-actions{display:flex;gap:8px;flex-wrap:wrap}
+.word{display:flex;align-items:center;gap:12px}
+.word .emoji{font-size:2.2rem}
+.word button{margin-left:auto}
+@media(max-width:720px){
       .hero{grid-template-columns:1fr}
       .hero img{max-height:190px}
       .difference-wrap{grid-template-columns:1fr}
@@ -92,6 +99,9 @@
     <button data-open="riddles"><span>❓</span>Adivinanzas</button>
     <button data-open="coloring"><span>🎨</span>Colorear</button>
     <button data-open="karaoke"><span>🎤</span>Karaoke</button>
+    <button data-open="songs"><span>🎵</span>Canciones</button>
+    <button data-open="languages"><span>🌎</span>Idiomas</button>
+    <button data-open="admin"><span>🔐</span>Administración</button>
     <button data-open="study"><span>📚</span>Modo Estudio</button>
     <button data-open="customize"><span>👗</span>Personalizar</button>
     <button data-open="vip"><span>👑</span>VIP</button>
@@ -209,6 +219,94 @@
       <div class="vip-lock">
         Los vestuarios especiales, fondos y accesorios premium se desbloquean con VIP o con estrellas ganadas.
       </div>
+    </div>
+  </section>
+
+
+  <section id="songs" class="screen">
+    <h2>🎵 Canciones de Las Chespitas</h2>
+    <p>Los niños pueden escuchar las canciones publicadas. Solo la administradora puede subir, ocultar o eliminar contenido.</p>
+    <div class="grid" id="publicSongs"></div>
+    <div class="status" id="songsEmpty">Todavía no hay canciones publicadas desde este dispositivo.</div>
+  </section>
+
+  <section id="languages" class="screen">
+    <h2>🌎 Aprende idiomas con Las Chespitas</h2>
+    <div class="card">
+      <label>Idioma
+        <select id="languageSelect">
+          <option value="en">Inglés</option>
+          <option value="fr">Francés</option>
+          <option value="it">Italiano</option>
+        </select>
+      </label>
+      <label>Categoría
+        <select id="categorySelect"></select>
+      </label>
+      <p><button class="btn" id="startLanguageQuiz">🎯 Jugar y aprender</button></p>
+    </div>
+    <div class="grid" id="wordGrid"></div>
+    <div class="card" id="languageQuizBox" style="display:none">
+      <h3 id="languageQuestion"></h3>
+      <div class="riddle-options" id="languageOptions"></div>
+      <div class="status" id="languageStatus">Elige la traducción correcta.</div>
+    </div>
+  </section>
+
+  <section id="admin" class="screen">
+    <h2>🔐 Administración de Las Chespitas</h2>
+    <div id="adminSetup" class="card">
+      <h3>Configurar acceso de administradora</h3>
+      <p>La primera vez crea un PIN de 6 dígitos.</p>
+      <label>Nuevo PIN
+        <input id="newAdminPin" inputmode="numeric" maxlength="6" placeholder="6 dígitos">
+      </label>
+      <label>Confirmar PIN
+        <input id="confirmAdminPin" inputmode="numeric" maxlength="6" placeholder="Repite el PIN">
+      </label>
+      <p><button class="btn" id="saveAdminPin">Guardar PIN</button></p>
+      <div class="status" id="setupStatus">No compartas tu PIN.</div>
+    </div>
+
+    <div id="adminLogin" class="card" style="display:none">
+      <h3>Entrar como administradora</h3>
+      <label>PIN
+        <input id="adminPin" inputmode="numeric" maxlength="6" placeholder="Tu PIN">
+      </label>
+      <p><button class="btn" id="loginAdmin">Entrar</button></p>
+      <div class="status" id="loginStatus">Solo la administradora puede modificar canciones.</div>
+    </div>
+
+    <div id="adminPanel" style="display:none">
+      <div class="top-actions">
+        <span class="pill">Sesión de administradora activa</span>
+        <button class="btn secondary" id="logoutAdmin">Cerrar sesión</button>
+      </div>
+      <div class="card">
+        <h3>Subir canción</h3>
+        <label>Título<input id="songTitle" maxlength="80" placeholder="Ej. El baile de Las Chespitas"></label>
+        <label>Categoría
+          <select id="songCategory">
+            <option>Baile</option><option>Educativa</option><option>Navidad</option>
+            <option>Vaquera</option><option>Karaoke</option><option>Balada</option>
+          </select>
+        </label>
+        <label>Letra o descripción
+          <textarea id="songLyrics" rows="5" placeholder="Escribe la letra o descripción"></textarea>
+        </label>
+        <label>Archivo de audio<input id="songFile" type="file" accept="audio/*"></label>
+        <label>Portada<input id="coverFile" type="file" accept="image/*"></label>
+        <label><input id="songPublished" type="checkbox" checked> Publicar para los niños</label>
+        <p><button class="btn" id="saveSong">Guardar canción</button></p>
+        <div class="status" id="adminStatus">Los archivos se guardan en este navegador.</div>
+      </div>
+      <h3>Mis canciones</h3>
+      <div class="grid" id="adminSongs"></div>
+    </div>
+
+    <div class="vip-lock">
+      <strong>Importante:</strong> esta versión protege la administración dentro de la aplicación y en este dispositivo.
+      Para una seguridad total en internet se necesita una cuenta administradora y reglas de acceso en una base de datos en la nube.
     </div>
   </section>
 
