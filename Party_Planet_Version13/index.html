@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#6d35d8">
+<title>Party Planet V13</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <button class="icon-btn" onclick="goHome()" aria-label="Inicio">🏠</button>
+    <div>
+      <div class="brand">PARTY PLANET</div>
+      <small>Versión 13 · Mundo de Idiomas</small>
+    </div>
+    <button class="stars" onclick="openSection('rewards')">⭐ <span id="starCount">0</span></button>
+  </header>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="hero">
+        <div class="planet">✨</div>
+        <h1>¡Bienvenidos a Party Planet!</h1>
+        <p>Sparkly, Las Chespitas y el Cangurito Bailarín te esperan.</p>
+        <button class="primary" onclick="speakWelcome()">▶ Escuchar bienvenida</button>
+      </div>
+      <div class="menu-grid">
+        <button class="tile music" onclick="openSection('music')"><b>🎵</b><span>Música</span></button>
+        <button class="tile karaoke" onclick="openSection('karaoke')"><b>🎤</b><span>Karaoke</span></button>
+        <button class="tile games" onclick="openSection('games')"><b>🎮</b><span>Juegos</span></button>
+        <button class="tile learn" onclick="openSection('learn')"><b>📚</b><span>Aprende</span></button>
+        <button class="tile languages" onclick="openSection('languages')"><b>🌎</b><span>Idiomas</span></button>
+        <button class="tile color" onclick="openSection('color')"><b>🎨</b><span>Colorea</span></button>
+        <button class="tile stories" onclick="openSection('stories')"><b>📖</b><span>Cuentos</span></button>
+        <button class="tile characters" onclick="openSection('characters')"><b>🌟</b><span>Personajes</span></button>
+        <button class="tile rewards" onclick="openSection('rewards')"><b>🏆</b><span>Premios</span></button>
+        <button class="tile store" onclick="openSection('store')"><b>🛍️</b><span>Tienda</span></button>
+        <button class="tile parents" onclick="parentGate()"><b>👨‍👩‍👧</b><span>Padres</span></button>
+      </div>
+    </section>
+
+    <section id="music" class="screen">
+      <h2>🎵 Música de Party Planet</h2>
+      <p class="hint">Agrega tus canciones MP3 en la carpeta <b>assets/audio</b> y edita la lista en app.js.</p>
+      <div id="musicList" class="list"></div>
+    </section>
+
+    <section id="karaoke" class="screen">
+      <h2>🎤 Karaoke</h2>
+      <div class="card">
+        <h3>El Cangurito Bailarín</h3>
+        <div id="lyrics" class="lyrics">Salta, salta, cangurito…<br>¡baila alegre sin parar!</div>
+        <button class="primary" onclick="startKaraoke()">Comenzar letra</button>
+        <button class="secondary" onclick="award(3,'¡Cantaste una canción!')">Terminé de cantar</button>
+      </div>
+    </section>
+
+    <section id="games" class="screen">
+      <h2>🎮 Juegos</h2>
+      <div class="game-grid">
+        <button onclick="startMemory()">🧠 Memorama</button>
+        <button onclick="startStars()">⭐ Atrapa estrellas</button>
+        <button onclick="startNumbers()">🔢 Números</button>
+        <button onclick="startColors()">🌈 Colores</button>
+        <button onclick="startLetters()">🔤 Vocales</button>
+        <button onclick="startDance()">💃 Sigue el ritmo</button>
+      </div>
+      <div id="gameArea" class="game-area"><p>Elige un juego.</p></div>
+    </section>
+
+    <section id="learn" class="screen">
+      <h2>📚 Aprende</h2>
+      <div class="lesson-grid">
+        <button onclick="lesson('vocales')">A E I O U</button>
+        <button onclick="lesson('numeros')">1 2 3 4 5</button>
+        <button onclick="lesson('colores')">🎨 Colores</button>
+        <button onclick="lesson('valores')">🤝 Valores</button>
+      </div>
+      <div id="lessonArea" class="card"><p>Selecciona una lección.</p></div>
+    </section>
+
+
+    <section id="languages" class="screen language-screen">
+      <div class="language-hero">
+        <div>
+          <span class="eyebrow">PARTY PLANET APRENDE Y CANTA</span>
+          <h2>🌎 El planeta de los idiomas</h2>
+          <p>Escucha, repite, juega y descubre palabras nuevas todos los días.</p>
+        </div>
+        <div class="language-mascot">🪐✨</div>
+      </div>
+
+      <div class="language-toolbar">
+        <label>Idioma
+          <select id="languageSelect" onchange="renderLanguageWords()"></select>
+        </label>
+        <label>Categoría
+          <select id="categorySelect" onchange="renderLanguageWords()"></select>
+        </label>
+        <label class="search-label">Buscar palabra
+          <input id="wordSearch" type="search" placeholder="Ejemplo: casa, perro, feliz…" oninput="renderLanguageWords()">
+        </label>
+      </div>
+
+      <div class="daily-word card">
+        <div>
+          <small>PALABRA DEL DÍA</small>
+          <h3 id="dailyNative">Hola</h3>
+          <p id="dailyTranslation">Hello</p>
+        </div>
+        <button class="primary" onclick="speakDailyWord()">🔊 Escuchar</button>
+      </div>
+
+      <div class="language-actions">
+        <button class="primary" onclick="randomWord()">🎲 Palabra sorpresa</button>
+        <button class="secondary" onclick="startLanguageQuiz()">🧠 Juego de palabras</button>
+        <button class="secondary" onclick="loadMoreWords()">➕ Ver más palabras</button>
+      </div>
+
+      <div id="languageStats" class="language-stats"></div>
+      <div id="wordGrid" class="word-grid"></div>
+      <div id="languageQuiz" class="card language-quiz" style="display:none"></div>
+
+      <p class="hint">El sistema está preparado para seguir agregando palabras y nuevos idiomas sin cambiar el diseño de la aplicación.</p>
+    </section>
+
+    <section id="color" class="screen">
+      <h2>🎨 Colorea la estrella</h2>
+      <div class="palette">
+        <button style="background:#ff4fa3" onclick="paint('#ff4fa3')"></button>
+        <button style="background:#6d35d8" onclick="paint('#6d35d8')"></button>
+        <button style="background:#23a8ff" onclick="paint('#23a8ff')"></button>
+        <button style="background:#ffd642" onclick="paint('#ffd642')"></button>
+        <button style="background:#34cf7a" onclick="paint('#34cf7a')"></button>
+      </div>
+      <div id="paintStar" class="paint-star">★</div>
+      <button class="primary" onclick="award(2,'¡Tu dibujo quedó precioso!')">Guardar dibujo</button>
+    </section>
+
+    <section id="stories" class="screen">
+      <h2>📖 Cuentos</h2>
+      <article class="card story">
+        <h3>La Fuente de las Sonrisas</h3>
+        <p>En el corazón de Party Planet, cada sonrisa encendía una chispa de luz. Un día, miles de chispas se unieron y nacieron Las Chespitas, listas para cantar, bailar y ayudar a Sparkly a llenar cada fiesta de alegría.</p>
+        <button class="primary" onclick="readStory()">🔊 Escuchar cuento</button>
+      </article>
+    </section>
+
+    <section id="characters" class="screen">
+      <h2>🌟 Personajes</h2>
+      <div class="character-grid">
+        <div class="card"><div class="avatar purple">✨</div><h3>Sparkly</h3><p>Anfitrión alegre y protector.</p></div>
+        <div class="card"><div class="avatar pink">💖</div><h3>Las Chespitas</h3><p>Embajadoras de música, baile y amistad.</p></div>
+        <div class="card"><div class="avatar blue">🦘</div><h3>Cangurito Bailarín</h3><p>Salta y baila por todo Party Planet.</p></div>
+      </div>
+    </section>
+
+    <section id="rewards" class="screen">
+      <h2>🏆 Recompensas</h2>
+      <div class="reward-total">⭐ <span id="rewardStars">0</span> estrellas</div>
+      <div class="badge-grid">
+        <div class="badge">🎤<small>Cantante</small></div>
+        <div class="badge">🧠<small>Memoria</small></div>
+        <div class="badge">🎨<small>Artista</small></div>
+        <div class="badge">📚<small>Estudiante</small></div>
+      </div>
+      <button class="secondary" onclick="resetProgress()">Reiniciar progreso</button>
+    </section>
+
+    <section id="store" class="screen">
+      <h2>🛍️ Tienda Party Planet</h2>
+      <div class="product-grid">
+        <div class="card"><b>🎂 Velas</b><p>Velas para celebrar.</p></div>
+        <div class="card"><b>🎉 Serpentinas</b><p>Colores para la fiesta.</p></div>
+        <div class="card"><b>👑 Diademas</b><p>Accesorios divertidos.</p></div>
+        <div class="card"><b>🎈 Globos</b><p>Decora a lo grande.</p></div>
+      </div>
+      <p class="hint">La compra real se conectará en una versión futura y siempre requerirá autorización de un adulto.</p>
+    </section>
+
+    <section id="parents" class="screen">
+      <h2>👨‍👩‍👧 Área para padres</h2>
+      <div class="card parent-panel">
+        <p><b>Estrellas ganadas:</b> <span id="parentStars">0</span></p>
+        <p><b>Actividades completadas:</b> <span id="activityCount">0</span></p>
+        <label>Tiempo diario recomendado
+          <select id="timeLimit">
+            <option>15 minutos</option><option selected>30 minutos</option><option>45 minutos</option><option>60 minutos</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" checked> Bloquear compras</label>
+        <label class="check"><input type="checkbox" checked> Sonidos infantiles</label>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "name": "Party Planet Versión 13 - Mundo de Idiomas",
+  "short_name": "Party Planet",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4ecff",
+  "theme_color": "#6d35d8",
+  "icons": []
+}
