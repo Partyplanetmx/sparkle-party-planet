@@ -43,7 +43,24 @@ function renderHome(){
       <button class="hotspot hs-rewards" aria-label="Premios" onclick="go('rewards')"></button>
       <button class="hotspot hs-settings" aria-label="Ajustes" onclick="go('settings')"></button>
     </div>
-
+    <section class="character-showcase">
+      <button onclick="go('games')" class="character-card">
+        <img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín">
+        <div><b>Cangurito Bailarín</b><small>Juegos, baile y retos</small></div>
+      </button>
+      <button onclick="go('study')" class="character-card">
+        <img src="assets/images/estrellita.jpg" alt="Estrellita">
+        <div><b>Estrellita</b><small>Aprendizaje y recompensas</small></div>
+      </button>
+      <button onclick="go('karaoke')" class="character-card">
+        <img src="assets/images/sparkly.jpg" alt="Sparkly">
+        <div><b>Sparkly</b><small>Música y diversión</small></div>
+      </button>
+      <button onclick="go('stories')" class="character-card">
+        <img src="assets/images/chespitas.jpg" alt="Las Chespitas">
+        <div><b>Las Chespitas</b><small>Cuentos, canciones y aventuras</small></div>
+      </button>
+    </section>
     <div class="mobile-home-fallback">
       <h2>Party Planet</h2>
       <p>Elige una actividad.</p>
@@ -63,13 +80,13 @@ function renderHome(){
       </div>
     </div>`;
 }
-function renderKaraoke(){document.getElementById("screen-karaoke").innerHTML=title("🎤","Karaoke","Elige una canción y sigue la letra")+`<div class="panel karaoke-box"><select id="karaokeSong" onchange="resetLyrics()">${songs.map(s=>`<option>${s}</option>`).join("")}</select><div id="lyrics" class="lyrics">Presiona comenzar para cantar.</div><button class="action-btn" onclick="startKaraoke()">▶ Comenzar</button><button class="action-btn" onclick="finishActivity('¡Cantaste una canción!',5)">✅ Terminé</button></div>`}
+function renderKaraoke(){document.getElementById("screen-karaoke").innerHTML=title("🎤","Karaoke","Elige una canción y sigue la letra")+`<div class="screen-character-banner"><img src="assets/images/sparkly.jpg" alt="Sparkly"><div><h3>Canta con Sparkly</h3><p>Elige una canción y sigue la letra.</p></div></div><div class="panel karaoke-box"><select id="karaokeSong" onchange="resetLyrics()">${songs.map(s=>`<option>${s}</option>`).join("")}</select><div id="lyrics" class="lyrics">Presiona comenzar para cantar.</div><button class="action-btn" onclick="startKaraoke()">▶ Comenzar</button><button class="action-btn" onclick="finishActivity('¡Cantaste una canción!',5)">✅ Terminé</button></div>`}
 let lyricTimer;
 function resetLyrics(){clearInterval(lyricTimer);lyrics.textContent="Presiona comenzar para cantar."}
 function startKaraoke(){clearInterval(lyricTimer);let lines=["En Party Planet vamos a cantar","con estrellas vamos a brillar","las Chespitas vienen a bailar","¡y Sparkly nos invita a soñar!"],i=0;lyrics.innerHTML="";lyricTimer=setInterval(()=>{lyrics.innerHTML=lines.slice(0,i+1).map((x,j)=>j===i?`<b>${x}</b>`:x).join("<br>");speak(lines[i],"es-MX");i++;if(i===lines.length)clearInterval(lyricTimer)},1400)}
-function renderStories(){document.getElementById("screen-stories").innerHTML=title("📖","Cuentos","Historias con narración")+stories.map((s,i)=>`<article class="panel story-card"><h3>${s[0]}</h3><p>${s[1]}</p><button class="action-btn" onclick="speakStory(${i})">🔊 Escuchar</button><button class="action-btn" onclick="finishActivity('Cuento completado',4)">⭐ Terminé</button></article>`).join("")}
+function renderStories(){document.getElementById("screen-stories").innerHTML=title("📖","Cuentos","Historias con narración")+`<div class="screen-character-banner"><img src="assets/images/chespitas.jpg" alt="Las Chespitas"><div><h3>Cuentos con Las Chespitas</h3><p>Historias llenas de magia y amistad.</p></div></div>`+stories.map((s,i)=>`<article class="panel story-card"><h3>${s[0]}</h3><p>${s[1]}</p><button class="action-btn" onclick="speakStory(${i})">🔊 Escuchar</button><button class="action-btn" onclick="finishActivity('Cuento completado',4)">⭐ Terminé</button></article>`).join("")}
 function speakStory(i){speak(stories[i][1],"es-MX")}
-function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
+function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="screen-character-banner"><img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín"><div><h3>Juega con el Cangurito</h3><p>Retos, memoria, números y colores.</p></div></div><div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
 function memoryGame(){let a=["⭐","🎤","🦘","🎈"],arr=[...a,...a].sort(()=>Math.random()-.5);window.mem={arr,open:[],done:[]};gameArea.innerHTML=`<h3>Encuentra las parejas</h3><div class="memory">${arr.map((x,i)=>`<button id="m${i}" onclick="flip(${i})">${`❓`}</button>`).join("")}</div>`}
 function flip(i){let m=mem;if(m.open.includes(i)||m.done.includes(i))return;document.getElementById("m"+i).textContent=m.arr[i];m.open.push(i);if(m.open.length===2){let[a,b]=m.open;if(m.arr[a]===m.arr[b]){m.done.push(a,b);m.open=[];if(m.done.length===m.arr.length)finishActivity("¡Memorama completo!",8)}else setTimeout(()=>{document.getElementById("m"+a).textContent="❓";document.getElementById("m"+b).textContent="❓";m.open=[]},700)}}
 function numberGame(){gameArea.innerHTML=`<h3>¿Cuánto es 3 + 2?</h3><div class="feature-grid"><button class="feature-card purple" onclick="wrong()">4</button><button class="feature-card green" onclick="finishActivity('¡Correcto!',5)">5</button><button class="feature-card orange" onclick="wrong()">6</button></div>`}
@@ -85,7 +102,7 @@ function renderWordList(list=null){let a=list||filteredWords();wordGrid.innerHTM
 function learnWord(k){state.learned.add(k);state.stars+=10;save();sync();renderLanguages();toast("¡Aprendida! +10 ⭐")}
 function favWord(k){state.favs.has(k)?state.favs.delete(k):state.favs.add(k);save();renderLanguages()}
 function randomWord(){let w=WORDS[Math.floor(Math.random()*WORDS.length)];renderWordList([w]);speak(w[state.lang],LANGS[state.lang][2])}
-function renderStudy(){let w=WORDS[Math.floor(Math.random()*WORDS.length)];document.getElementById("screen-study").innerHTML=title("🎓","Modo estudio","Una palabra nueva cada vez")+`<div class="panel" style="text-align:center"><div style="font-size:100px">${w.emoji}</div><h1>${w.es}</h1><h2 style="color:#78eaff">${w[state.lang]}</h2><button class="action-btn" onclick="speak('${String(w[state.lang]).replaceAll("'","&#39;")}','${LANGS[state.lang][2]}')">🔊 Escuchar</button><button class="action-btn" onclick="learnWord('${w.es}');renderStudy()">⭐ Aprendida</button><button class="action-btn" onclick="renderStudy()">➡ Siguiente</button></div>`}
+function renderStudy(){let w=WORDS[Math.floor(Math.random()*WORDS.length)];document.getElementById("screen-study").innerHTML=title("🎓","Modo estudio","Una palabra nueva cada vez")+`<div class="screen-character-banner"><img src="assets/images/estrellita.jpg" alt="Estrellita"><div><h3>Aprende con Estrellita</h3><p>Cada palabra nueva enciende una estrella.</p></div></div><div class="panel" style="text-align:center"><div style="font-size:100px">${w.emoji}</div><h1>${w.es}</h1><h2 style="color:#78eaff">${w[state.lang]}</h2><button class="action-btn" onclick="speak('${String(w[state.lang]).replaceAll("'","&#39;")}','${LANGS[state.lang][2]}')">🔊 Escuchar</button><button class="action-btn" onclick="learnWord('${w.es}');renderStudy()">⭐ Aprendida</button><button class="action-btn" onclick="renderStudy()">➡ Siguiente</button></div>`}
 function renderColor(){document.getElementById("screen-color").innerHTML=title("🎨","Colorea","Elige un color y toca la estrella")+`<div class="panel paint-area"><div class="palette">${["#ff4fa3","#6d35d8","#23a8ff","#ffd642","#34cf7a","#ff7a22"].map(c=>`<button style="background:${c}" onclick="setPaint('${c}')"></button>`).join("")}</div><div id="paintStar" class="paint-star" onclick="finishActivity('¡Dibujo guardado!',4)">★</div><button class="action-btn" onclick="finishActivity('¡Dibujo guardado!',4)">Guardar dibujo</button></div>`;paintStar.style.color=state.color}
 function setPaint(c){state.color=c;paintStar.style.color=c}
 function renderAvatar(){document.getElementById("screen-avatar").innerHTML=title("👕","Personaliza","Crea tu personaje")+`<div class="panel avatar-stage"><div id="avatarFace" class="avatar-face">${state.avatar}</div><div class="avatar-options">${["👧🏻","👧🏼","👦🏻","👦🏽","🧑🏻","🧑🏽"].map(a=>`<button onclick="setAvatar('${a}')">${a}</button>`).join("")}</div><button class="action-btn" onclick="finishActivity('Avatar guardado',3)">Guardar avatar</button></div>`}

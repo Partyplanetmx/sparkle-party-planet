@@ -1,14 +1,20 @@
-PARTY PLANET VERSIÓN 18
+PARTY PLANET VERSIÓN 19
 
-NUEVO INICIO
-- Se añadió la pantalla aprobada con Sparkly usando su gorro de cumpleaños en Colorea.
-- La imagen se conserva en alta calidad.
-- Los botones visibles están cubiertos por zonas interactivas.
-- Funcionan: Padres, VIP, Karaoke, Idiomas, Juegos, Cuentos, Colorea, Personaliza,
-  Continuar, Reto del día, Progreso, Música, Eventos, Premios y Ajustes.
-- En teléfono se muestra una versión adaptable con botones grandes.
+IMÁGENES INTEGRADAS
+- Cangurito Bailarín: Juegos y retos.
+- Estrellita: Modo estudio y recompensas.
+- Sparkly: Karaoke y música.
+- Las Chespitas: Cuentos y aventuras.
+- Logo Sparkly Party Planet: Encabezado principal.
+
+MEJORAS
+- Galería de personajes en la pantalla de Inicio.
+- Imágenes en alta calidad.
+- Cada personaje abre una sección funcional.
+- Banners visuales en Karaoke, Juegos, Cuentos y Modo Estudio.
+- Se mantienen todos los botones funcionales de la Versión 18.
 
 CÓMO ABRIR
-1. Extrae completamente el ZIP.
+1. Extrae el ZIP completamente.
 2. Abre ABRIR_PARTY_PLANET.bat.
-3. Si ves una versión anterior, presiona Ctrl + F5.
+3. Si aparece una versión anterior, presiona Ctrl + F5.
