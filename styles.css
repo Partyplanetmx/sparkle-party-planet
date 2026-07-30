@@ -350,3 +350,30 @@
 .admin-song{display:grid;grid-template-columns:70px 1fr auto;gap:12px;align-items:center;background:#1c0b67;border:1px solid #5037c8;border-radius:16px;padding:10px;margin-bottom:10px}.admin-song img{width:70px;height:70px;object-fit:cover;border-radius:12px;background:white}.admin-song button{border:0;border-radius:10px;padding:8px;background:#f224a6;color:white}.admin-song .danger{background:#b51d3d}
 .song-cover{width:64px;height:64px;border-radius:12px;object-fit:cover;background:white}.song{display:grid!important;grid-template-columns:auto 1fr auto;gap:12px}.karaoke-player{display:grid;grid-template-columns:180px 1fr;gap:18px;align-items:start}.karaoke-player img{width:180px;height:180px;object-fit:cover;border-radius:18px;background:white}.admin-note{background:#ffdc3b;color:#3f2450;padding:12px;border-radius:14px;font-weight:900}
 @media(max-width:850px){.admin-layout{grid-template-columns:1fr}.karaoke-player{grid-template-columns:1fr}.karaoke-player img{margin:auto}}
+
+/* V22 Cloud Edition */
+.cloud-status{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 16px;border-radius:18px;background:linear-gradient(135deg,#1d0c69,#3c168e);
+  border:1px solid #7154df;margin-bottom:14px
+}
+.cloud-dot{width:13px;height:13px;border-radius:50%;display:inline-block;margin-right:8px;background:#ffbe2c;box-shadow:0 0 15px #ffbe2c}
+.cloud-dot.online{background:#31e27b;box-shadow:0 0 15px #31e27b}
+.v22-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.v22-card{border:1px solid #6547d5;border-radius:20px;padding:17px;background:linear-gradient(145deg,#291178,#17065d);box-shadow:0 10px 25px #0004}
+.v22-card h3{margin-top:0}
+.metric{font-size:34px;font-weight:1000;color:#ffe43d}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:15px}
+.filter-row input,.filter-row select{padding:12px;border:0;border-radius:13px;min-width:180px}
+.library-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.library-card{border:1px solid #6547d5;border-radius:19px;overflow:hidden;background:#1b0a63;box-shadow:0 8px 20px #0004}
+.library-card img{width:100%;aspect-ratio:1/1;object-fit:cover;background:white}
+.library-card .body{padding:12px}
+.library-card button{width:100%;border:0;padding:11px;border-radius:11px;background:#ed23a5;color:white;font-weight:900}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:900;margin:3px 3px 0 0;background:#5d3dcc}
+.badge.vip{background:#f0a71b;color:#321200}
+.cloud-form label{display:block;margin:10px 0;font-weight:900}
+.cloud-form input,.cloud-form textarea{width:100%;margin-top:5px;padding:11px;border:0;border-radius:11px}
+.setup-code{white-space:pre-wrap;background:#090325;padding:14px;border-radius:14px;overflow:auto;font-size:12px}
+@media(max-width:1000px){.v22-grid{grid-template-columns:1fr 1fr}.library-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.v22-grid{grid-template-columns:1fr}.library-grid{grid-template-columns:repeat(2,1fr)}}

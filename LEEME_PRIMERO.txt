@@ -1,19 +1,29 @@
-PARTY PLANET VERSIÓN 21 — ADMINISTRADOR DE CANCIONES
+PARTY PLANET VERSIÓN 22 — CLOUD EDITION
 
-CONTRASEÑA INICIAL
+CONTRASEÑA INICIAL DEL ADMINISTRADOR
 PartyPlanet21
 
-CÓMO SUBIR CANCIONES
-1. Abre la aplicación.
-2. Presiona el pequeño candado 🔐 de la esquina superior izquierda.
-3. Escribe la contraseña.
-4. Agrega título, artista, categoría, idioma, portada, audio y letra.
-5. Presiona Guardar canción.
-6. La canción aparecerá automáticamente en Música y, si activaste Karaoke, también en Karaoke.
+QUÉ FUNCIONA DESDE AHORA
+- Panel privado para subir y borrar canciones.
+- Biblioteca musical con buscador.
+- Filtros por categoría e idioma.
+- Contenido gratuito y VIP.
+- Portadas, audio, letras y karaoke.
+- Estadísticas locales de reproducciones y contenido.
+- Funcionamiento sin internet en modo local.
+- Pantalla para guardar la configuración de Firebase.
 
-IMPORTANTE
-- Las canciones se guardan en ese navegador y en esa computadora mediante IndexedDB.
-- No se suben a internet ni a otros dispositivos.
-- Si borras los datos del navegador, también se borrarán las canciones.
-- Para sincronizar canciones en todos los teléfonos se necesitará un servidor y una base de datos en línea.
-- Solo el administrador puede borrar canciones desde el panel.
+IMPORTANTE SOBRE LA NUBE
+Esta carpeta está preparada para conectarse a Firebase, pero no puede crear por sí sola una cuenta o proyecto externo.
+Para sincronizar canciones en todos los teléfonos necesitas:
+1. Crear un proyecto en Firebase.
+2. Activar Authentication, Firestore y Storage.
+3. Copiar las claves del proyecto en la sección “Configurar nube”.
+4. Publicar la aplicación en un servidor HTTPS o convertirla a aplicación móvil.
+
+Hasta que se complete esa conexión, las canciones siguen guardándose únicamente en esta computadora.
+
+CÓMO ABRIR
+1. Extrae completamente el ZIP.
+2. Abre ABRIR_PARTY_PLANET.bat.
+3. No ejecutes la aplicación desde dentro de WinRAR.

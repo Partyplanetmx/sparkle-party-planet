@@ -1,9 +1,10 @@
 {
-  "name": "Party Planet Versión 21",
-  "short_name": "Party Planet V21",
+  "name": "Party Planet Versión 22 Cloud Edition",
+  "short_name": "Party Planet V22",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
-  "icons": []
+  "icons": [],
+  "description": "Aplicación infantil Party Planet con panel administrador, música, karaoke, filtros, VIP y arquitectura preparada para la nube."
 }

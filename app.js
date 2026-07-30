@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusic();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -215,7 +215,7 @@ async function renderAdmin(){
       <label><input id="admKaraoke" type="checkbox" checked> Activar en Karaoke</label>
       <label><input id="admVip" type="checkbox"> Solo VIP</label>
       <button onclick="saveAdminSong()">💾 Guardar canción</button>
-      <button onclick="changeAdminPassword()">🔑 Cambiar contraseña</button>
+      <button onclick="changeAdminPassword()">🔑 Cambiar contraseña</button><button onclick="go('cloud')">☁️ Configurar nube</button><button onclick="go('analytics')">📊 Estadísticas</button>
     </section>
     <section class="admin-library">
       <h3>🎵 Canciones guardadas (${songs.length})</h3>
@@ -247,6 +247,7 @@ async function saveAdminSong(){
     createdAt:new Date().toISOString()
   };
   await dbAddSong(song);
+  track("uploads");
   toast("Canción guardada");
   renderAdmin();
 }
@@ -317,3 +318,142 @@ async function loadStoredKaraoke(){
 
 sync();go("home");
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+
+
+// ===== PARTY PLANET V22 CLOUD EDITION =====
+const CLOUD_CONFIG_KEY = "pp22_cloud_config";
+const CLOUD_MODE_KEY = "pp22_cloud_mode";
+const ANALYTICS_KEY = "pp22_analytics";
+if(!localStorage.getItem(CLOUD_MODE_KEY)) localStorage.setItem(CLOUD_MODE_KEY,"local");
+
+function getAnalytics(){
+  return JSON.parse(localStorage.getItem(ANALYTICS_KEY)||'{"plays":0,"karaoke":0,"uploads":0,"favorites":0,"lastOpen":null}');
+}
+function setAnalytics(data){localStorage.setItem(ANALYTICS_KEY,JSON.stringify(data))}
+function track(metric){
+  const a=getAnalytics(); a[metric]=(a[metric]||0)+1; a.lastOpen=new Date().toISOString(); setAnalytics(a);
+}
+function cloudMode(){return localStorage.getItem(CLOUD_MODE_KEY)||"local"}
+function cloudConfigured(){
+  try{
+    const c=JSON.parse(localStorage.getItem(CLOUD_CONFIG_KEY)||"{}");
+    return !!(c.apiKey&&c.projectId&&c.storageBucket);
+  }catch(e){return false}
+}
+function cloudStatusHtml(){
+  const configured=cloudConfigured();
+  return `<div class="cloud-status"><div><span class="cloud-dot ${configured?'online':''}"></span><b>${configured?'Nube configurada':'Modo local activo'}</b><div><small>${configured?'La aplicación está lista para conectarse al proyecto Firebase indicado.':'Todo funciona en esta computadora. Agrega las claves Firebase cuando quieras sincronizar.'}</small></div></div><button class="action-btn" onclick="go('cloud')">☁️ Configurar nube</button></div>`;
+}
+async function cloudAllSongs(){
+  // V22 includes an adapter point. Until Firebase credentials and SDK are installed,
+  // IndexedDB remains the safe working source.
+  return await dbAllSongs();
+}
+async function renderCloud(){
+  const cfg=JSON.parse(localStorage.getItem(CLOUD_CONFIG_KEY)||"{}");
+  const el=document.getElementById("screen-cloud");
+  el.innerHTML=title("☁️","Party Planet Cloud","Conecta la aplicación con tu proyecto Firebase")+cloudStatusHtml()+`
+  <div class="v22-grid">
+    <section class="v22-card cloud-form">
+      <h3>🔧 Datos del proyecto</h3>
+      <label>API Key<input id="fbApiKey" value="${escapeHtml(cfg.apiKey||"")}" placeholder="AIza..."></label>
+      <label>Project ID<input id="fbProjectId" value="${escapeHtml(cfg.projectId||"")}" placeholder="party-planet-app"></label>
+      <label>Storage Bucket<input id="fbBucket" value="${escapeHtml(cfg.storageBucket||"")}" placeholder="party-planet-app.appspot.com"></label>
+      <label>Auth Domain<input id="fbAuth" value="${escapeHtml(cfg.authDomain||"")}" placeholder="party-planet-app.firebaseapp.com"></label>
+      <button class="action-btn" onclick="saveCloudConfig()">💾 Guardar configuración</button>
+      <button class="action-btn" onclick="clearCloudConfig()">🧹 Volver a modo local</button>
+    </section>
+    <section class="v22-card">
+      <h3>📋 Qué sincronizará</h3>
+      <p>🎵 Canciones, portadas y letras</p>
+      <p>🎤 Contenido de karaoke</p>
+      <p>💎 Contenido VIP y gratuito</p>
+      <p>📊 Reproducciones y favoritos</p>
+      <p>🌍 Categorías e idiomas</p>
+    </section>
+    <section class="v22-card">
+      <h3>🔒 Seguridad recomendada</h3>
+      <p>Usa Firebase Authentication para el administrador.</p>
+      <p>Los niños tendrán acceso de lectura únicamente.</p>
+      <p>Solo la cuenta administradora podrá subir, editar o borrar.</p>
+    </section>
+  </div>
+  <div class="v22-card" style="margin-top:14px">
+    <h3>Archivo de configuración esperado</h3>
+    <div class="setup-code">firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_PROYECTO.firebaseapp.com",
+  projectId: "TU_PROYECTO",
+  storageBucket: "TU_PROYECTO.appspot.com"
+}</div>
+    <p><b>Importante:</b> guardar estas claves prepara la aplicación, pero para activar la sincronización real debes crear el proyecto Firebase y publicar la app en un servidor HTTPS.</p>
+  </div>`;
+}
+function saveCloudConfig(){
+  const cfg={
+    apiKey:document.getElementById("fbApiKey").value.trim(),
+    projectId:document.getElementById("fbProjectId").value.trim(),
+    storageBucket:document.getElementById("fbBucket").value.trim(),
+    authDomain:document.getElementById("fbAuth").value.trim()
+  };
+  if(!cfg.apiKey||!cfg.projectId||!cfg.storageBucket) return toast("Faltan datos obligatorios");
+  localStorage.setItem(CLOUD_CONFIG_KEY,JSON.stringify(cfg));
+  localStorage.setItem(CLOUD_MODE_KEY,"cloud-ready");
+  toast("Configuración de nube guardada");
+  renderCloud();
+}
+function clearCloudConfig(){
+  localStorage.removeItem(CLOUD_CONFIG_KEY);
+  localStorage.setItem(CLOUD_MODE_KEY,"local");
+  toast("Modo local activado");
+  renderCloud();
+}
+async function renderAnalytics(){
+  const a=getAnalytics();
+  const songs=await dbAllSongs();
+  document.getElementById("screen-analytics").innerHTML=title("📊","Estadísticas","Actividad en este dispositivo")+cloudStatusHtml()+`
+  <div class="v22-grid">
+    <div class="v22-card"><h3>▶ Reproducciones</h3><div class="metric">${a.plays||0}</div></div>
+    <div class="v22-card"><h3>🎤 Karaokes</h3><div class="metric">${a.karaoke||0}</div></div>
+    <div class="v22-card"><h3>📤 Canciones subidas</h3><div class="metric">${songs.length}</div></div>
+    <div class="v22-card"><h3>❤️ Favoritos</h3><div class="metric">${a.favorites||0}</div></div>
+    <div class="v22-card"><h3>💎 Canciones VIP</h3><div class="metric">${songs.filter(s=>s.vip).length}</div></div>
+    <div class="v22-card"><h3>🌍 Idiomas</h3><div class="metric">${new Set(songs.map(s=>s.language)).size}</div></div>
+  </div>`;
+}
+async function renderMusicV22(){
+  const custom=await cloudAllSongs();
+  const search=(document.getElementById("musicSearch")?.value||"").toLowerCase();
+  const category=document.getElementById("musicCategory")?.value||"";
+  const language=document.getElementById("musicLanguage")?.value||"";
+  const filtered=custom.filter(s=>
+    (!search||(`${s.title} ${s.artist} ${s.category}`.toLowerCase().includes(search))) &&
+    (!category||s.category===category) &&
+    (!language||s.language===language)
+  );
+  const categories=[...new Set(custom.map(s=>s.category).filter(Boolean))];
+  const languages=[...new Set(custom.map(s=>s.language).filter(Boolean))];
+  document.getElementById("screen-music").innerHTML=title("🎵","Biblioteca musical","Busca por canción, personaje, categoría o idioma")+cloudStatusHtml()+`
+    <div class="filter-row">
+      <input id="musicSearch" placeholder="🔎 Buscar canción" value="${escapeHtml(search)}" oninput="renderMusicV22()">
+      <select id="musicCategory" onchange="renderMusicV22()"><option value="">Todas las categorías</option>${categories.map(c=>`<option ${category===c?'selected':''}>${escapeHtml(c)}</option>`).join("")}</select>
+      <select id="musicLanguage" onchange="renderMusicV22()"><option value="">Todos los idiomas</option>${languages.map(l=>`<option ${language===l?'selected':''}>${escapeHtml(l)}</option>`).join("")}</select>
+      <button class="action-btn" onclick="openAdminGate()">➕ Subir canción</button>
+      <button class="action-btn" onclick="go('analytics')">📊 Estadísticas</button>
+    </div>
+    <div class="library-grid">${filtered.length?filtered.map(s=>`
+      <article class="library-card">
+        <img src="${s.cover||'assets/images/logo_sparkly.jpg'}" alt="">
+        <div class="body">
+          <b>${escapeHtml(s.title)}</b><br><small>${escapeHtml(s.artist)}</small><br>
+          <span class="badge">${escapeHtml(s.category)}</span>
+          <span class="badge">${escapeHtml(s.language)}</span>
+          ${s.vip?'<span class="badge vip">👑 VIP</span>':''}
+          <button onclick="playStoredSongV22(${s.id})">▶ Escuchar</button>
+        </div>
+      </article>`).join(""):"<p>No hay canciones que coincidan.</p>"}</div>`;
+}
+async function playStoredSongV22(id){
+  track("plays");
+  return playStoredSong(id);
+}
