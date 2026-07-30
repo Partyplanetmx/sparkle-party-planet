@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 25",
-  "short_name": "Party Planet V25",
+  "name": "Party Planet Versión 26 Juegos Educativos",
+  "short_name": "Party Planet V26",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Versión sin columna izquierda duplicada, con logo Party Planet en la página de inicio."
+  "description": "Aplicación infantil con sonidos de animales, rompecabezas, lectura con sílabas, piano y juegos musicales."
 }

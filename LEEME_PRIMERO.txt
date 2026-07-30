@@ -1,16 +1,36 @@
-PARTY PLANET VERSIÓN 25
+PARTY PLANET VERSIÓN 26 — JUEGOS EDUCATIVOS
 
-CAMBIOS REALIZADOS
-- Se quitó la columna izquierda que ocupaba espacio.
-- Ya no se repite el menú en otra columna de la página de inicio.
-- Se dejó un menú horizontal superior más limpio y más práctico.
-- La página de inicio ahora usa todo el ancho de la pantalla.
-- Se agregó el nuevo logo de Party Planet en el encabezado y también dentro de la página de inicio.
-- Se conserva el movimiento y las animaciones.
-- Se mantiene la corrección de caché para que cargue la versión nueva desde el principio.
+NUEVAS SECCIONES
+1. SONIDOS DE ANIMALES
+   - Perro, gato, vaca, pato, león, oveja, caballo y cerdito.
+   - Toca cada animal para escuchar su nombre y sonido.
+   - Juego para adivinar el animal correcto.
+   - Los sonidos son recreaciones infantiles generadas por la aplicación.
+
+2. PUZZLE KIDS
+   - Rompecabezas de Sparkly, Cangurito, Estrellita y Las Chespitas.
+   - Toca dos piezas para intercambiarlas.
+   - Recompensa de estrellas al completarlo.
+
+3. APRENDE A LEER CON SÍLABAS
+   - Familias silábicas MA, PA, LA y SA.
+   - Palabras como CASA, MESA, LUNA, PATO, GATO, PELOTA y MARIPOSA.
+   - Voz en español mexicano para escuchar sílabas y palabras.
+
+4. PIANO PARA NIÑOS
+   - Ocho teclas musicales.
+   - Permite grabar y reproducir melodías.
+   - Canción infantil de ejemplo.
+   - Compatible con teclas A, S, D, F, G, H, J y K.
+
+5. MÚSICA Y JUEGOS INTERACTIVOS
+   - Juego de memoria musical.
+   - Secuencias de ritmo cada vez más largas.
+   - Acceso al piano, karaoke y biblioteca musical.
 
 CÓMO ABRIR
-1. Extrae completamente el ZIP en una carpeta nueva.
+1. Extrae completamente el ZIP.
 2. Abre ABRIR_PARTY_PLANET.bat.
-3. No abras la aplicación desde WinRAR.
-4. Si una computadora insiste en mostrar una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
+3. Mantén abierta la ventana negra.
+4. No abras desde WinRAR.
+5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.

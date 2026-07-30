@@ -508,3 +508,39 @@ body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!importan
   .v25-banner{aspect-ratio:9/16}
   .v25-overlay{display:none}
 }
+
+/* ======================================================
+   PARTY PLANET V26 — JUEGOS EDUCATIVOS
+   ====================================================== */
+.v26-learning-heading{margin:22px 2px 12px}
+.v26-learning-heading h3{margin:0;font-size:28px}.v26-learning-heading p{margin:5px 0}
+.v26-learning-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:13px;margin-bottom:18px}
+.v26-game-card{border:0;border-radius:22px;padding:17px;color:white;text-align:left;min-height:155px;box-shadow:inset 0 -5px #0004,0 9px 20px #0004;animation:cardFloatV24 2.8s ease-in-out infinite}
+.v26-game-card span{display:block;font-size:46px}.v26-game-card b{display:block;font-size:20px;margin:7px 0}.v26-game-card small{display:block}
+.animal-card{background:linear-gradient(145deg,#12b985,#087d82)}.puzzle-card{background:linear-gradient(145deg,#ff8b25,#d34a31)}.syllable-card{background:linear-gradient(145deg,#a448ed,#5422c3)}.piano-card{background:linear-gradient(145deg,#f13ba7,#9e20bd)}.music-card{background:linear-gradient(145deg,#20b9e6,#3156da)}
+
+.animal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.animal-grid button{border:0;border-radius:22px;padding:18px;color:white;background:linear-gradient(145deg,#32209b,#18216f);box-shadow:inset 0 -5px #0004,0 8px 18px #0004}
+.animal-grid span{display:block;font-size:65px}.animal-grid b{display:block;font-size:22px}.animal-grid small{display:block;margin-top:7px;color:#8cf4ff}
+.animal-quiz{margin-top:16px;text-align:center}.animal-choices{display:flex;justify-content:center;gap:15px;margin-top:15px}
+.animal-choices button{border:0;border-radius:20px;padding:16px;background:#fff;color:#2b146f;font-size:60px}.animal-choices small{display:block;font-size:14px;font-weight:900}
+
+.puzzle-toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin-bottom:15px}.puzzle-toolbar button{border:0;border-radius:13px;padding:10px;background:#f329a7;color:white;font-weight:900}
+.puzzle-board{width:min(650px,90vw);aspect-ratio:1/1;margin:auto;display:grid;grid-template-columns:repeat(3,1fr);gap:5px;background:#1c0a65;padding:7px;border-radius:22px}
+.puzzle-board button{border:2px solid #fff5;border-radius:10px;background-size:300% 300%;cursor:pointer}.puzzle-board button.selected{outline:6px solid #ffdf31;transform:scale(.94)}
+.game-hint{text-align:center;color:#a9f4ff;font-weight:900}
+
+.syllable-lessons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}.syllable-lessons button{border:0;border-radius:18px;padding:16px;background:linear-gradient(145deg,#2bbddd,#5634db);color:white;font-weight:1000;font-size:18px}
+.syllable-game{text-align:center}.syllable-emoji{font-size:100px}.built-word{font-size:34px;letter-spacing:5px;color:#ffe63c;margin:15px}
+.syllable-options{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:16px}.syllable-options button{border:0;border-radius:18px;padding:17px 25px;background:#f02cab;color:white;font-weight:1000;font-size:28px;box-shadow:0 5px 0 #8d0a68}
+
+.piano-controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}.kids-piano{display:flex;width:100%;min-height:340px;overflow:auto;background:#17065f;padding:13px;border-radius:22px}
+.kids-piano button{flex:1;min-width:80px;border:2px solid #28115f;border-radius:0 0 14px 14px;background:linear-gradient(#fff,#dcecff);color:#241160;box-shadow:inset 0 -12px 20px #6b88ad55;transition:.12s}
+.kids-piano button:nth-child(2n){background:linear-gradient(#ffe8fa,#f7a8db)}.kids-piano button b{display:block;font-size:22px;margin-top:220px}.kids-piano button small{display:block}.kids-piano button.playing{transform:translateY(10px);filter:brightness(1.25);box-shadow:0 0 30px #ffdf31}
+
+.music-game-panel{text-align:center;background:linear-gradient(145deg,#251079,#10055a);border:1px solid #6245d9;border-radius:23px;padding:20px}
+.rhythm-pads{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px auto;max-width:700px}.rhythm-pads button{min-height:150px;border:0;border-radius:24px;font-size:60px;background:linear-gradient(145deg,#2744d2,#8f2cd4);box-shadow:inset 0 -8px #0004,0 10px 22px #0004}.rhythm-pads button.lit{transform:scale(1.12);filter:brightness(1.8);box-shadow:0 0 40px #ffe532}
+.v26-mini-games{display:grid;grid-template-columns:repeat(3,1fr);gap:13px;margin-top:15px}.v26-mini-games button{border:0;border-radius:20px;padding:20px;background:linear-gradient(145deg,#ef2aa8,#5432d8);color:white;font-weight:900}.v26-mini-games span{display:block;font-size:45px}
+
+@media(max-width:1000px){.v26-learning-grid{grid-template-columns:repeat(3,1fr)}.animal-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:700px){.v26-learning-grid{grid-template-columns:repeat(2,1fr)}.animal-grid{grid-template-columns:repeat(2,1fr)}.syllable-lessons{grid-template-columns:repeat(2,1fr)}.rhythm-pads{grid-template-columns:repeat(2,1fr)}.v26-mini-games{grid-template-columns:1fr}.kids-piano button{min-width:65px}.kids-piano button b{margin-top:180px}}

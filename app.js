@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguages();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -58,6 +58,18 @@ function renderHome(){
       <button class="v25-action-card green" onclick="go('languages')"><span>🌍</span><b>Idiomas</b><small>Aprende palabras</small></button>
       <button class="v25-action-card orange" onclick="go('color')"><span>🎨</span><b>Colorea</b><small>Pinta y crea</small></button>
       <button class="v25-action-card red" onclick="go('music')"><span>🎵</span><b>Música</b><small>Escucha y baila</small></button>
+    </section>
+
+    <section class="v26-learning-heading">
+      <h3>🎉 Nuevos juegos educativos</h3>
+      <p>Toca una actividad para comenzar.</p>
+    </section>
+    <section class="v26-learning-grid">
+      <button onclick="go('animals')" class="v26-game-card animal-card"><span>🐶</span><b>Sonidos de animales</b><small>Escucha, reconoce y juega</small></button>
+      <button onclick="go('puzzle')" class="v26-game-card puzzle-card"><span>🧩</span><b>Puzzle Kids</b><small>Arma el rompecabezas</small></button>
+      <button onclick="go('syllables')" class="v26-game-card syllable-card"><span>🔤</span><b>Aprende a leer</b><small>Palabras por sílabas</small></button>
+      <button onclick="go('piano')" class="v26-game-card piano-card"><span>🎹</span><b>Piano niño</b><small>Toca notas y canciones</small></button>
+      <button onclick="go('musicgames')" class="v26-game-card music-card"><span>🎶</span><b>Juegos musicales</b><small>Ritmo, memoria y canciones</small></button>
     </section>
 
     <section class="v20-carousel">
@@ -460,3 +472,239 @@ document.addEventListener("click",e=>{const x=e.target.closest("button,.characte
 applyMotionPreference();setTimeout(()=>createConfetti(20),700);
 
 document.addEventListener("DOMContentLoaded",()=>{document.body.classList.remove("motion-reduced");localStorage.setItem("pp23_motion","full");setTimeout(()=>{if(typeof createConfetti==="function")createConfetti(36)},400);});
+
+
+// ======================================================
+// PARTY PLANET V26 — JUEGOS EDUCATIVOS INTERACTIVOS
+// ======================================================
+const animalData=[
+  {name:"Perro",emoji:"🐶",sound:"guau guau",freq:[180,120]},
+  {name:"Gato",emoji:"🐱",sound:"miau",freq:[420,520]},
+  {name:"Vaca",emoji:"🐮",sound:"muuu",freq:[105,85]},
+  {name:"Pato",emoji:"🦆",sound:"cuac cuac",freq:[520,390]},
+  {name:"León",emoji:"🦁",sound:"grrrr",freq:[90,60]},
+  {name:"Oveja",emoji:"🐑",sound:"beee",freq:[300,260]},
+  {name:"Caballo",emoji:"🐴",sound:"hiiii",freq:[240,480]},
+  {name:"Cerdito",emoji:"🐷",sound:"oinc oinc",freq:[210,250]}
+];
+let animalQuizAnswer=null;
+
+function audioCtx(){
+  if(!window.ppAudioCtx) window.ppAudioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  return window.ppAudioCtx;
+}
+function synthTone(freq=440,duration=.3,type="sine",volume=.18,start=0){
+  const ctx=audioCtx(), osc=ctx.createOscillator(), gain=ctx.createGain();
+  osc.type=type;osc.frequency.value=freq;
+  gain.gain.setValueAtTime(0.001,ctx.currentTime+start);
+  gain.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+start+.02);
+  gain.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+start+duration);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(ctx.currentTime+start);osc.stop(ctx.currentTime+start+duration+.03);
+}
+function speakText(text,rate=.8,pitch=1.2){
+  if(!("speechSynthesis" in window)) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang="es-MX";u.rate=rate;u.pitch=pitch;
+  speechSynthesis.speak(u);
+}
+function playAnimal(index){
+  const a=animalData[index];
+  synthTone(a.freq[0],.28,"sawtooth",.12);
+  synthTone(a.freq[1],.38,"triangle",.11,.18);
+  setTimeout(()=>speakText(`${a.name}. ${a.sound}`,.72,1.25),350);
+  sparkleAt(innerWidth/2,innerHeight/2);
+}
+function newAnimalQuiz(){
+  animalQuizAnswer=Math.floor(Math.random()*animalData.length);
+  const choices=[animalQuizAnswer];
+  while(choices.length<3){
+    const x=Math.floor(Math.random()*animalData.length);
+    if(!choices.includes(x))choices.push(x);
+  }
+  choices.sort(()=>Math.random()-.5);
+  document.getElementById("animalQuiz").innerHTML=`
+    <h3>🔊 Escucha y toca el animal correcto</h3>
+    <button class="action-btn" onclick="playAnimal(${animalQuizAnswer})">▶ Escuchar otra vez</button>
+    <div class="animal-choices">${choices.map(i=>`<button onclick="answerAnimal(${i})">${animalData[i].emoji}<small>${animalData[i].name}</small></button>`).join("")}</div>`;
+  playAnimal(animalQuizAnswer);
+}
+function answerAnimal(i){
+  if(i===animalQuizAnswer){createConfetti(30);toast("¡Correcto!");state.stars+=5;sync();setTimeout(newAnimalQuiz,700)}
+  else toast("Intenta otra vez");
+}
+function renderAnimals(){
+  document.getElementById("screen-animals").innerHTML=title("🐾","Sonidos de animales","Toca cada animal para escucharlo")+`
+  <div class="animal-grid">${animalData.map((a,i)=>`<button onclick="playAnimal(${i})"><span>${a.emoji}</span><b>${a.name}</b><small>🔊 ${a.sound}</small></button>`).join("")}</div>
+  <div id="animalQuiz" class="panel animal-quiz"><button class="action-btn" onclick="newAnimalQuiz()">🎯 Jugar: adivina el animal</button></div>`;
+}
+
+const puzzleImages=[
+  {name:"Sparkly",src:"assets/images/sparkly.jpg"},
+  {name:"Cangurito",src:"assets/images/cangurito.jpg"},
+  {name:"Estrellita",src:"assets/images/estrellita.jpg"},
+  {name:"Las Chespitas",src:"assets/images/chespitas.jpg"}
+];
+let puzzleState={image:0,tiles:[],moves:0};
+function shuffleArray(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function startPuzzle(imageIndex=0){
+  puzzleState.image=imageIndex;puzzleState.moves=0;puzzleState.tiles=shuffleArray([...Array(9).keys()]);
+  if(puzzleState.tiles.every((v,i)=>v===i)) [puzzleState.tiles[0],puzzleState.tiles[1]]=[puzzleState.tiles[1],puzzleState.tiles[0]];
+  drawPuzzle();
+}
+function drawPuzzle(){
+  const p=puzzleImages[puzzleState.image];
+  const board=document.getElementById("puzzleBoard");
+  if(!board)return;
+  board.innerHTML=puzzleState.tiles.map((tile,pos)=>{
+    const row=Math.floor(tile/3),col=tile%3;
+    return `<button draggable="true" data-pos="${pos}" onclick="selectPuzzleTile(${pos})" style="background-image:url('${p.src}');background-position:${col*50}% ${row*50}%"></button>`;
+  }).join("");
+  document.getElementById("puzzleMoves").textContent=puzzleState.moves;
+}
+let selectedPuzzleTile=null;
+function selectPuzzleTile(pos){
+  if(selectedPuzzleTile===null){selectedPuzzleTile=pos;document.querySelectorAll("#puzzleBoard button")[pos].classList.add("selected");return}
+  [puzzleState.tiles[selectedPuzzleTile],puzzleState.tiles[pos]]=[puzzleState.tiles[pos],puzzleState.tiles[selectedPuzzleTile]];
+  selectedPuzzleTile=null;puzzleState.moves++;drawPuzzle();
+  if(puzzleState.tiles.every((v,i)=>v===i)){createConfetti(50);toast("¡Rompecabezas completado!");state.stars+=15;sync();}
+}
+function renderPuzzle(){
+  document.getElementById("screen-puzzle").innerHTML=title("🧩","Puzzle Kids","Toca dos piezas para intercambiarlas")+`
+  <div class="puzzle-toolbar">${puzzleImages.map((p,i)=>`<button onclick="startPuzzle(${i})">${p.name}</button>`).join("")}<span>Movimientos: <b id="puzzleMoves">0</b></span></div>
+  <div id="puzzleBoard" class="puzzle-board"></div>
+  <p class="game-hint">Elige dos cuadros para cambiar sus lugares hasta completar la imagen.</p>`;
+  startPuzzle(0);
+}
+
+const syllableWords=[
+  {word:"CASA",parts:["CA","SA"],emoji:"🏠"},
+  {word:"MESA",parts:["ME","SA"],emoji:"🪑"},
+  {word:"LUNA",parts:["LU","NA"],emoji:"🌙"},
+  {word:"PATO",parts:["PA","TO"],emoji:"🦆"},
+  {word:"GATO",parts:["GA","TO"],emoji:"🐱"},
+  {word:"PELOTA",parts:["PE","LO","TA"],emoji:"⚽"},
+  {word:"MARIPOSA",parts:["MA","RI","PO","SA"],emoji:"🦋"},
+  {word:"ESTRELLA",parts:["ES","TRE","LLA"],emoji:"⭐"}
+];
+let syllableIndex=0, builtSyllables=[];
+function renderSyllableWord(){
+  const w=syllableWords[syllableIndex];
+  builtSyllables=[];
+  const shuffled=shuffleArray([...w.parts]);
+  document.getElementById("syllableGame").innerHTML=`
+    <div class="syllable-emoji">${w.emoji}</div>
+    <h3>Forma la palabra</h3>
+    <div id="builtWord" class="built-word">_ _ _</div>
+    <div class="syllable-options">${shuffled.map(p=>`<button onclick="chooseSyllable('${p}')">${p}</button>`).join("")}</div>
+    <button class="action-btn" onclick="speakText('${w.word.toLowerCase()}',.65,1.25)">🔊 Escuchar palabra</button>`;
+  speakText(w.word.toLowerCase(),.7,1.2);
+}
+function chooseSyllable(part){
+  builtSyllables.push(part);
+  const w=syllableWords[syllableIndex];
+  document.getElementById("builtWord").textContent=builtSyllables.join(" - ");
+  speakText(part.toLowerCase(),.62,1.3);
+  if(builtSyllables.length===w.parts.length){
+    if(builtSyllables.join("")===w.word){
+      createConfetti(35);toast("¡Muy bien!");state.stars+=8;sync();
+      syllableIndex=(syllableIndex+1)%syllableWords.length;setTimeout(renderSyllableWord,900);
+    }else{
+      toast("Orden incorrecto. Intenta de nuevo.");
+      setTimeout(renderSyllableWord,800);
+    }
+  }
+}
+function renderSyllables(){
+  document.getElementById("screen-syllables").innerHTML=title("🔤","Aprende a leer con sílabas","Une las sílabas y forma palabras")+`
+  <div class="syllable-lessons">
+    <button onclick="speakText('ma, me, mi, mo, mu',.65,1.25)">MA ME MI MO MU</button>
+    <button onclick="speakText('pa, pe, pi, po, pu',.65,1.25)">PA PE PI PO PU</button>
+    <button onclick="speakText('la, le, li, lo, lu',.65,1.25)">LA LE LI LO LU</button>
+    <button onclick="speakText('sa, se, si, so, su',.65,1.25)">SA SE SI SO SU</button>
+  </div>
+  <div id="syllableGame" class="panel syllable-game"></div>`;
+  renderSyllableWord();
+}
+
+const pianoNotes=[
+  {n:"DO",f:261.63,key:"A"},{n:"RE",f:293.66,key:"S"},{n:"MI",f:329.63,key:"D"},
+  {n:"FA",f:349.23,key:"F"},{n:"SOL",f:392,key:"G"},{n:"LA",f:440,key:"H"},
+  {n:"SI",f:493.88,key:"J"},{n:"DO",f:523.25,key:"K"}
+];
+let recording=[],recordingStart=0,isRecording=false;
+function playPianoNote(i){
+  const n=pianoNotes[i];synthTone(n.f,.55,"sine",.2);synthTone(n.f*2,.3,"triangle",.05);
+  const key=document.querySelector(`[data-piano="${i}"]`);
+  if(key){key.classList.add("playing");setTimeout(()=>key.classList.remove("playing"),180)}
+  if(isRecording)recording.push({i,t:Date.now()-recordingStart});
+}
+function toggleRecording(){
+  isRecording=!isRecording;
+  const b=document.getElementById("recordBtn");
+  if(isRecording){recording=[];recordingStart=Date.now();b.textContent="⏹️ Detener";toast("Grabando melodía")}
+  else{b.textContent="⏺️ Grabar";toast("Melodía guardada")}
+}
+function playRecording(){
+  if(!recording.length)return toast("Primero graba una melodía");
+  recording.forEach(x=>setTimeout(()=>playPianoNote(x.i),x.t));
+}
+function playKidsSong(){
+  const melody=[0,0,4,4,5,5,4,3,3,2,2,1,1,0];
+  melody.forEach((n,i)=>setTimeout(()=>playPianoNote(n),i*420));
+}
+function renderPiano(){
+  document.getElementById("screen-piano").innerHTML=title("🎹","Piano para niños","Toca las teclas y crea tu canción")+`
+  <div class="piano-controls">
+    <button id="recordBtn" class="action-btn" onclick="toggleRecording()">⏺️ Grabar</button>
+    <button class="action-btn" onclick="playRecording()">▶ Reproducir</button>
+    <button class="action-btn" onclick="playKidsSong()">⭐ Canción de ejemplo</button>
+  </div>
+  <div class="kids-piano">${pianoNotes.map((n,i)=>`<button data-piano="${i}" onclick="playPianoNote(${i})"><b>${n.n}</b><small>${n.key}</small></button>`).join("")}</div>
+  <p class="game-hint">También puedes usar las teclas A, S, D, F, G, H, J y K.</p>`;
+}
+document.addEventListener("keydown",e=>{
+  const i=pianoNotes.findIndex(n=>n.key===e.key.toUpperCase());
+  if(i>=0 && document.getElementById("screen-piano")?.classList.contains("active"))playPianoNote(i);
+});
+
+let rhythmSequence=[],rhythmPlayer=[],rhythmLevel=3;
+function playRhythmSequence(){
+  rhythmPlayer=[];
+  rhythmSequence=Array.from({length:rhythmLevel},()=>Math.floor(Math.random()*4));
+  rhythmSequence.forEach((n,i)=>setTimeout(()=>flashRhythm(n),i*650));
+}
+function flashRhythm(n){
+  const b=document.querySelector(`[data-rhythm="${n}"]`);
+  if(!b)return;
+  b.classList.add("lit");synthTone([261,330,392,523][n],.32,"triangle",.18);
+  setTimeout(()=>b.classList.remove("lit"),280);
+}
+function pressRhythm(n){
+  flashRhythm(n);rhythmPlayer.push(n);
+  const pos=rhythmPlayer.length-1;
+  if(rhythmPlayer[pos]!==rhythmSequence[pos]){toast("Casi. Intenta de nuevo.");setTimeout(playRhythmSequence,700);return}
+  if(rhythmPlayer.length===rhythmSequence.length){
+    createConfetti(30);toast("¡Ritmo correcto!");state.stars+=10;sync();rhythmLevel=Math.min(8,rhythmLevel+1);setTimeout(playRhythmSequence,900);
+  }
+}
+function renderMusicGames(){
+  document.getElementById("screen-musicgames").innerHTML=title("🎶","Música y juegos interactivos","Imita el ritmo y gana estrellas")+`
+  <div class="music-game-panel">
+    <h3>🌈 Memoria musical</h3>
+    <p>Escucha la secuencia y repítela.</p>
+    <div class="rhythm-pads">
+      <button data-rhythm="0" onclick="pressRhythm(0)">🥁</button>
+      <button data-rhythm="1" onclick="pressRhythm(1)">🔔</button>
+      <button data-rhythm="2" onclick="pressRhythm(2)">⭐</button>
+      <button data-rhythm="3" onclick="pressRhythm(3)">🎵</button>
+    </div>
+    <button class="action-btn" onclick="playRhythmSequence()">▶ Comenzar ritmo</button>
+  </div>
+  <div class="v26-mini-games">
+    <button onclick="go('piano')"><span>🎹</span><b>Piano libre</b></button>
+    <button onclick="go('karaoke')"><span>🎤</span><b>Canta conmigo</b></button>
+    <button onclick="go('music')"><span>🎧</span><b>Escucha canciones</b></button>
+  </div>`;
+}
