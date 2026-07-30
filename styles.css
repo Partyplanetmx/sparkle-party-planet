@@ -403,3 +403,23 @@ body::before{content:"";position:fixed;inset:0;z-index:-4;pointer-events:none;ba
 body.motion-reduced *{animation-duration:.001ms!important;animation-iteration-count:1!important}body.motion-reduced .space-motion{display:none}
 @keyframes cosmicShift{from{background-position:0 0}to{background-position:100% 70%}}@keyframes twinkle{0%,100%{opacity:.25;transform:scale(.7)}50%{opacity:1;transform:scale(1.35) rotate(25deg)}}@keyframes planetFloat{0%,100%{transform:translateY(-12px) rotate(-4deg)}50%{transform:translateY(18px) rotate(8deg)}}@keyframes cometFly{0%{transform:translate(-15vw,-5vh) rotate(-18deg);opacity:0}10%{opacity:1}100%{transform:translate(125vw,35vh) rotate(-18deg);opacity:0}}@keyframes headerGlow{0%,100%{box-shadow:0 16px 32px #0005}50%{box-shadow:0 16px 32px #0005,0 0 35px #ff45ce77}}@keyframes titleFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes bannerFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes bannerZoom{from{transform:scale(1.01)}to{transform:scale(1.07)}}@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}@keyframes characterBreathe{0%,100%{transform:scale(1) rotate(-.4deg)}50%{transform:scale(1.025) rotate(.4deg)}}@keyframes characterHello{0%{transform:scale(1)}25%{transform:scale(1.08) rotate(-5deg)}55%{transform:scale(.98) rotate(5deg)}100%{transform:scale(1)}}@keyframes squash{0%{transform:scale(1)}45%{transform:scale(1.12,.84)}100%{transform:scale(1)}}@keyframes confettiFall{0%{transform:translateY(-30px) rotate(0);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:.1}}@keyframes sparkBurst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(.1);opacity:0}}
 @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important}.space-motion{display:none}}
+
+/* V24 cache corregida y movimiento reforzado */
+.space-motion{z-index:1!important}.app-shell,header,main,nav,.screen,.v20-header,.v20-main{position:relative;z-index:2}
+body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!important}
+.star{font-size:28px!important;animation:twinkleV24 1.5s ease-in-out infinite!important}
+.p1{width:130px!important;height:130px!important;opacity:.8!important;animation:planetFloatV24 5s ease-in-out infinite!important}.p2{width:95px!important;height:95px!important;opacity:.8!important;animation:planetFloatV24 4.2s ease-in-out infinite reverse!important}
+.c1{animation:cometFlyV24 7s linear infinite!important}.c2{animation:cometFlyV24 9s linear infinite 2s!important}
+.v20-banner{animation:bannerFloatV24 3.5s ease-in-out infinite!important}.v20-banner>img{animation:bannerZoomV24 7s ease-in-out infinite alternate!important}
+.v20-carousel button,.character-card,.library-card{animation:cardFloatV24 2.8s ease-in-out infinite!important}
+.v20-carousel img,.character-card img,.screen-character-banner img,.library-card img{animation:characterBreatheV24 2.2s ease-in-out infinite!important}
+.motion-toggle{animation:pulseMotionButton 1.8s ease-in-out infinite}
+@keyframes cosmicShiftV24{0%{background-position:0 0}100%{background-position:100% 70%}}
+@keyframes twinkleV24{0%,100%{opacity:.2;transform:scale(.7)}50%{opacity:1;transform:scale(1.6) rotate(35deg)}}
+@keyframes planetFloatV24{0%,100%{transform:translateY(-22px) rotate(-8deg)}50%{transform:translateY(28px) rotate(12deg)}}
+@keyframes cometFlyV24{0%{transform:translate(-20vw,-10vh) rotate(-18deg);opacity:0}10%{opacity:1}100%{transform:translate(135vw,45vh) rotate(-18deg);opacity:0}}
+@keyframes bannerFloatV24{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes bannerZoomV24{from{transform:scale(1.01)}to{transform:scale(1.10)}}
+@keyframes cardFloatV24{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes characterBreatheV24{0%,100%{transform:scale(1) rotate(-1deg)}50%{transform:scale(1.06) rotate(1deg)}}
+@keyframes pulseMotionButton{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}

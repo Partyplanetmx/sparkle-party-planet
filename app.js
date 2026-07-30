@@ -460,9 +460,11 @@ async function playStoredSongV22(id){
 
 // V23 movimiento y reacciones
 const MOTION_KEY="pp23_motion";
-function applyMotionPreference(){const reduced=localStorage.getItem(MOTION_KEY)==="reduced";document.body.classList.toggle("motion-reduced",reduced);const b=document.querySelector(".motion-toggle");if(b){b.textContent=reduced?"🌙":"✨";b.title=reduced?"Activar movimiento":"Reducir movimiento";}}
+function applyMotionPreference(){const reduced=false; localStorage.setItem(MOTION_KEY,"full");document.body.classList.toggle("motion-reduced",reduced);const b=document.querySelector(".motion-toggle");if(b){b.textContent=reduced?"🌙":"✨";b.title=reduced?"Activar movimiento":"Reducir movimiento";}}
 function toggleMotion(){const reduced=!document.body.classList.contains("motion-reduced");localStorage.setItem(MOTION_KEY,reduced?"reduced":"full");applyMotionPreference();toast(reduced?"Movimiento reducido":"Movimiento activado");}
 function createConfetti(amount=34){if(document.body.classList.contains("motion-reduced"))return;const colors=["#ffdf32","#ff47ba","#4cddff","#8e55ff","#42e887","#ff7a2e"];for(let i=0;i<amount;i++){const p=document.createElement("i");p.className="confetti-piece";p.style.left=Math.random()*100+"vw";p.style.background=colors[i%colors.length];p.style.animationDelay=Math.random()*.55+"s";document.body.appendChild(p);setTimeout(()=>p.remove(),2600);}}
 function sparkleAt(x,y){if(document.body.classList.contains("motion-reduced"))return;for(let i=0;i<10;i++){const s=document.createElement("i");s.className="spark-burst";s.style.left=x+"px";s.style.top=y+"px";const a=Math.PI*2*i/10,d=35+Math.random()*55;s.style.setProperty("--dx",Math.cos(a)*d+"px");s.style.setProperty("--dy",Math.sin(a)*d+"px");document.body.appendChild(s);setTimeout(()=>s.remove(),1000);}}
 document.addEventListener("click",e=>{const x=e.target.closest("button,.character-card,.library-card,.v20-carousel button");if(x){const r=x.getBoundingClientRect();sparkleAt(r.left+r.width/2,r.top+r.height/2);}});
 applyMotionPreference();setTimeout(()=>createConfetti(20),700);
+
+document.addEventListener("DOMContentLoaded",()=>{document.body.classList.remove("motion-reduced");localStorage.setItem("pp23_motion","full");setTimeout(()=>{if(typeof createConfetti==="function")createConfetti(36)},400);});
