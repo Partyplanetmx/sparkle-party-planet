@@ -1,36 +1,43 @@
-PARTY PLANET VERSIÓN 26 — JUEGOS EDUCATIVOS
+PARTY PLANET VERSIÓN 27 — UNIVERSO DE PALABRAS
 
-NUEVAS SECCIONES
-1. SONIDOS DE ANIMALES
-   - Perro, gato, vaca, pato, león, oveja, caballo y cerdito.
-   - Toca cada animal para escuchar su nombre y sonido.
-   - Juego para adivinar el animal correcto.
-   - Los sonidos son recreaciones infantiles generadas por la aplicación.
+IDIOMAS INCLUIDOS
+- Inglés
+- Francés
+- Italiano
+- Alemán
+- Portugués
+- Japonés
+- Coreano
+- Chino
 
-2. PUZZLE KIDS
-   - Rompecabezas de Sparkly, Cangurito, Estrellita y Las Chespitas.
-   - Toca dos piezas para intercambiarlas.
-   - Recompensa de estrellas al completarlo.
+CONTENIDO
+Cada idioma contiene 120 palabras iniciales organizadas en:
+- Animales
+- Colores
+- Familia
+- Escuela
+- Comida
+- Casa
+- Cuerpo
+- Naturaleza
+- Transporte
+- Emociones
 
-3. APRENDE A LEER CON SÍLABAS
-   - Familias silábicas MA, PA, LA y SA.
-   - Palabras como CASA, MESA, LUNA, PATO, GATO, PELOTA y MARIPOSA.
-   - Voz en español mexicano para escuchar sílabas y palabras.
+FUNCIONES
+- 960 traducciones iniciales en total.
+- Buscador en todas las categorías.
+- Pronunciación con la voz disponible del navegador.
+- Favoritos guardados en la computadora.
+- Categorías visuales.
+- Botón para cargar más palabras.
+- Diseño animado y adaptado para niños.
 
-4. PIANO PARA NIÑOS
-   - Ocho teclas musicales.
-   - Permite grabar y reproducir melodías.
-   - Canción infantil de ejemplo.
-   - Compatible con teclas A, S, D, F, G, H, J y K.
-
-5. MÚSICA Y JUEGOS INTERACTIVOS
-   - Juego de memoria musical.
-   - Secuencias de ritmo cada vez más largas.
-   - Acceso al piano, karaoke y biblioteca musical.
+NOTA
+El catálogo es amplio y está preparado para seguir agregando palabras en futuras versiones. La pronunciación depende de las voces instaladas en Windows o en el navegador.
 
 CÓMO ABRIR
 1. Extrae completamente el ZIP.
 2. Abre ABRIR_PARTY_PLANET.bat.
 3. Mantén abierta la ventana negra.
-4. No abras desde WinRAR.
-5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
+4. No lo abras desde WinRAR.
+5. Si aparece una versión vieja, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.

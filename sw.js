@@ -1,9 +1,9 @@
-const CACHE_NAME = "party-planet-v26-fresh";
+const CACHE_NAME = "party-planet-v27-fresh";
 const ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=26",
-  "./app.js?v=26",
+  "./styles.css?v=27",
+  "./app.js?v=27",
   "./manifest.json",
   "./assets/images/logo_party_planet_v25.png"
 ];

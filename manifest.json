@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 26 Juegos Educativos",
-  "short_name": "Party Planet V26",
+  "name": "Party Planet Versión 27 Universo de Palabras",
+  "short_name": "Party Planet V27",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Aplicación infantil con sonidos de animales, rompecabezas, lectura con sílabas, piano y juegos musicales."
+  "description": "Idiomas con amplio vocabulario, categorías, buscador, pronunciación y favoritos."
 }
