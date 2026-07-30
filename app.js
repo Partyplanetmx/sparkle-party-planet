@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath();if(name==="snakes")renderSnakes()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath();if(name==="snakes")renderSnakesV30()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -102,7 +102,7 @@ function resetLyrics(){clearInterval(lyricTimer);lyrics.textContent="Presiona co
 function startKaraoke(){clearInterval(lyricTimer);let lines=["En Party Planet vamos a cantar","con estrellas vamos a brillar","las Chespitas vienen a bailar","¡y Sparkly nos invita a soñar!"],i=0;lyrics.innerHTML="";lyricTimer=setInterval(()=>{lyrics.innerHTML=lines.slice(0,i+1).map((x,j)=>j===i?`<b>${x}</b>`:x).join("<br>");speak(lines[i],"es-MX");i++;if(i===lines.length)clearInterval(lyricTimer)},1400)}
 function renderStories(){document.getElementById("screen-stories").innerHTML=title("📖","Cuentos","Historias con narración")+`<div class="screen-character-banner"><img src="assets/images/chespitas.jpg" alt="Las Chespitas"><div><h3>Cuentos con Las Chespitas</h3><p>Historias llenas de magia y amistad.</p></div></div>`+stories.map((s,i)=>`<article class="panel story-card"><h3>${s[0]}</h3><p>${s[1]}</p><button class="action-btn" onclick="speakStory(${i})">🔊 Escuchar</button><button class="action-btn" onclick="finishActivity('Cuento completado',4)">⭐ Terminé</button></article>`).join("")}
 function speakStory(i){speak(stories[i][1],"es-MX")}
-function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="featured-game-card" onclick="go(\'snakes\')"><div class="featured-game-icon">🐍🪜</div><div><h3>Serpientes y Escaleras</h3><p>Lanza el dado, sube por las escaleras y evita las serpientes.</p></div><button class="action-btn">Jugar</button></div>`+`<div class="screen-character-banner"><img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín"><div><h3>Juega con el Cangurito</h3><p>Retos, memoria, números y colores.</p></div></div><div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
+function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="featured-game-card" onclick="go(\'snakes\')"><div class="featured-game-icon">🐍🪜</div><div><h3>Serpientes y Escaleras</h3><p>Juega con Sparkly, las dos Chespitas y el Cangurito, lanzando el dado uno por uno.</p></div><button class="action-btn">Jugar</button></div>`+`<div class="screen-character-banner"><img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín"><div><h3>Juega con el Cangurito</h3><p>Retos, memoria, números y colores.</p></div></div><div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
 function memoryGame(){let a=["⭐","🎤","🦘","🎈"],arr=[...a,...a].sort(()=>Math.random()-.5);window.mem={arr,open:[],done:[]};gameArea.innerHTML=`<h3>Encuentra las parejas</h3><div class="memory">${arr.map((x,i)=>`<button id="m${i}" onclick="flip(${i})">${`❓`}</button>`).join("")}</div>`}
 function flip(i){let m=mem;if(m.open.includes(i)||m.done.includes(i))return;document.getElementById("m"+i).textContent=m.arr[i];m.open.push(i);if(m.open.length===2){let[a,b]=m.open;if(m.arr[a]===m.arr[b]){m.done.push(a,b);m.open=[];if(m.done.length===m.arr.length)finishActivity("¡Memorama completo!",8)}else setTimeout(()=>{document.getElementById("m"+a).textContent="❓";document.getElementById("m"+b).textContent="❓";m.open=[]},700)}}
 function numberGame(){gameArea.innerHTML=`<h3>¿Cuánto es 3 + 2?</h3><div class="feature-grid"><button class="feature-card purple" onclick="wrong()">4</button><button class="feature-card green" onclick="finishActivity('¡Correcto!',5)">5</button><button class="feature-card orange" onclick="wrong()">6</button></div>`}
@@ -1135,4 +1135,228 @@ function cpuSnakeTurn(){
       moveSnakeToken("cpu",r);
     }
   },90);
+}
+
+
+// ======================================================
+// PARTY PLANET V30 — SERPIENTES Y ESCALERAS DE 4 JUGADORES
+// ======================================================
+const V30_SL_MAP = {
+  ladders: {3:22, 8:30, 20:41, 28:55, 36:62, 50:72, 71:92},
+  snakes: {27:5, 40:18, 54:31, 68:45, 79:58, 87:66, 98:74}
+};
+
+const V30_CHARACTERS = [
+  {id:"sparkly", name:"Sparkly", short:"SP", image:"assets/images/sparkly.jpg", tokenColor:"#ffcf2d"},
+  {id:"chespita_mayor", name:"Chespita 1", short:"C1", image:"assets/images/chespitas.jpg", tokenColor:"#ff4fb2"},
+  {id:"chespita_dos", name:"Chespita 2", short:"C2", image:"assets/images/chespitas.jpg", tokenColor:"#44d4ff"},
+  {id:"cangurito", name:"Cangurito", short:"CA", image:"assets/images/cangurito.jpg", tokenColor:"#60e67b"}
+];
+
+let v30SelectedCharacter = "sparkly";
+let v30Game = null;
+
+function v30InitGame(){
+  const chars = V30_CHARACTERS.map(c => ({
+    ...c,
+    position: 1,
+    finished: false
+  }));
+  const startIndex = chars.findIndex(c => c.id === v30SelectedCharacter);
+  const ordered = [...chars.slice(startIndex), ...chars.slice(0, startIndex)];
+  v30Game = {
+    players: ordered,
+    current: 0,
+    rolling: false,
+    finished: false,
+    lastRoll: 1,
+    message: "Elige tu personaje y lanza el dado uno por uno."
+  };
+}
+
+function v30SelectCharacter(id){
+  v30SelectedCharacter = id;
+  v30InitGame();
+  renderSnakesV30();
+}
+
+function v30CurrentPlayer(){
+  if(!v30Game) v30InitGame();
+  return v30Game.players[v30Game.current];
+}
+
+function v30BoardCellNumber(row,col){
+  const fromBottom = 9 - row;
+  const base = fromBottom * 10;
+  return fromBottom % 2 === 0 ? base + col + 1 : base + (10 - col);
+}
+
+function v30DiceFace(n){
+  return ["","⚀","⚁","⚂","⚃","⚄","⚅"][n] || "⚀";
+}
+
+function renderSnakesV30(){
+  if(!v30Game) v30InitGame();
+  const current = v30CurrentPlayer();
+  document.getElementById("screen-snakes").innerHTML = title("🐍🪜","Serpientes y Escaleras","Escoge tu personaje y tira el dado uno por uno para los 4 jugadores") + `
+    <section class="v30-setup-strip">
+      <h3>👑 Elige tu personaje</h3>
+      <div class="v30-character-picker">
+        ${V30_CHARACTERS.map(c => `
+          <button class="v30-character-card ${v30SelectedCharacter===c.id?'active':''}" onclick="v30SelectCharacter('${c.id}')">
+            <img src="${c.image}" alt="${c.name}">
+            <b>${c.name}</b>
+            <small>${v30SelectedCharacter===c.id?'Tú juegas con este personaje':'Elegir'}</small>
+          </button>
+        `).join("")}
+      </div>
+    </section>
+
+    <section class="v30-snakes-layout">
+      <div class="v30-board-wrap">
+        <div class="v30-board">${v30RenderBoard()}</div>
+      </div>
+
+      <aside class="v30-side">
+        <div class="v30-turn-card">
+          <div class="v30-turn-top">
+            <img src="${current.image}" alt="${current.name}">
+            <div>
+              <h3>Turno de ${current.name}</h3>
+              <p>${v30Game.message}</p>
+            </div>
+          </div>
+          <div class="v30-dice-area">
+            <div id="v30Dice" class="v30-dice">${v30DiceFace(v30Game.lastRoll)}</div>
+            <button class="v30-roll-btn" onclick="v30RollDice()" ${v30Game.rolling||v30Game.finished?'disabled':''}>🎲 Tirar dado</button>
+          </div>
+        </div>
+
+        <div class="v30-player-list">
+          ${v30Game.players.map((p,idx) => `
+            <article class="v30-player-item ${idx===v30Game.current && !v30Game.finished?'active-turn':''}">
+              <img src="${p.image}" alt="${p.name}">
+              <div class="v30-player-meta">
+                <b>${p.name}${p.id===v30SelectedCharacter?' · Tú':''}</b>
+                <small>Casilla ${p.position}${p.finished?' · Llegó a la meta':''}</small>
+              </div>
+              <button class="v30-mini-roll ${idx===v30Game.current && !v30Game.finished?'enabled':''}" onclick="v30RollDice()" ${idx===v30Game.current && !v30Game.finished && !v30Game.rolling ? '' : 'disabled'}>Tirar</button>
+            </article>
+          `).join("")}
+        </div>
+
+        <div class="v30-rules">
+          <h4>Cómo jugar</h4>
+          <p>🎲 Se tira el dado uno por uno.</p>
+          <p>🪜 Las escaleras te hacen subir.</p>
+          <p>🐍 Las serpientes te hacen bajar.</p>
+          <p>🏁 Gana quien llegue primero a 100.</p>
+          <p>⭐ Si tu personaje gana, ganas 30 estrellas.</p>
+        </div>
+
+        <button class="action-btn" onclick="v30NewGame()">🔄 Juego nuevo</button>
+      </aside>
+    </section>
+  `;
+}
+
+function v30RenderBoard(){
+  let html = "";
+  for(let row=0; row<10; row++){
+    for(let col=0; col<10; col++){
+      const n = v30BoardCellNumber(row,col);
+      const ladder = V30_SL_MAP.ladders[n];
+      const snake = V30_SL_MAP.snakes[n];
+      const playersHere = v30Game.players.filter(p => p.position === n);
+      html += `<div class="v30-cell ${ladder?'ladder-cell':''} ${snake?'snake-start':''}">
+        <span class="v30-cell-number">${n}</span>
+        ${ladder?'<span class="v30-cell-icon">🪜</span>':''}
+        ${snake?'<span class="v30-cell-icon">🐍</span>':''}
+        <div class="v30-tokens">
+          ${playersHere.map(p=>`<span class="v30-token" style="background:${p.tokenColor}" title="${p.name}">${p.short}</span>`).join("")}
+        </div>
+      </div>`;
+    }
+  }
+  return html;
+}
+
+function v30RollDice(){
+  if(!v30Game || v30Game.rolling || v30Game.finished) return;
+  v30Game.rolling = true;
+  const die = document.getElementById("v30Dice");
+  let steps = 0;
+  const timer = setInterval(() => {
+    const r = Math.floor(Math.random()*6)+1;
+    v30Game.lastRoll = r;
+    if(die){
+      die.textContent = v30DiceFace(r);
+      die.classList.add("rolling");
+    }
+    steps++;
+    if(steps>=10){
+      clearInterval(timer);
+      const finalRoll = Math.floor(Math.random()*6)+1;
+      v30Game.lastRoll = finalRoll;
+      if(die){
+        die.classList.remove("rolling");
+        die.textContent = v30DiceFace(finalRoll);
+      }
+      v30MoveCurrentPlayer(finalRoll);
+    }
+  }, 85);
+}
+
+function v30MoveCurrentPlayer(roll){
+  const player = v30CurrentPlayer();
+  let target = player.position + roll;
+  if(target > 100) target = player.position;
+  player.position = target;
+  v30Game.message = `${player.name} sacó ${roll}.`;
+  renderSnakesV30();
+
+  setTimeout(() => {
+    const ladder = V30_SL_MAP.ladders[player.position];
+    const snake = V30_SL_MAP.snakes[player.position];
+    if(ladder){
+      player.position = ladder;
+      v30Game.message = `¡${player.name} subió por una escalera!`;
+      speakText(`${player.name} subió por una escalera`, .76, 1.2);
+      createConfetti(18);
+    }else if(snake){
+      player.position = snake;
+      v30Game.message = `¡${player.name} cayó en una serpiente!`;
+      speakText(`${player.name} cayó en una serpiente`, .8, 1.08);
+    }
+    renderSnakesV30();
+
+    setTimeout(() => {
+      if(player.position >= 100){
+        player.finished = true;
+        v30Game.finished = true;
+        const isUser = player.id === v30SelectedCharacter;
+        if(isUser){
+          state.stars += 30;
+          sync();
+          createConfetti(80);
+          v30Game.message = `¡Ganaste con ${player.name}! Llegaste a la meta.`;
+          speakText(`Felicidades. Ganaste con ${player.name}`, .72, 1.28);
+        } else {
+          v30Game.message = `${player.name} ganó la partida. ¡Inténtalo otra vez!`;
+          speakText(`${player.name} ganó la partida`, .78, 1.12);
+        }
+        renderSnakesV30();
+        return;
+      }
+      v30Game.current = (v30Game.current + 1) % v30Game.players.length;
+      v30Game.rolling = false;
+      v30Game.message = `Ahora le toca a ${v30CurrentPlayer().name}.`;
+      renderSnakesV30();
+    }, 650);
+  }, 480);
+}
+
+function v30NewGame(){
+  v30InitGame();
+  renderSnakesV30();
 }

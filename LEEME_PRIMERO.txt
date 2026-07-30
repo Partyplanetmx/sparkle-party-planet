@@ -1,16 +1,18 @@
-PARTY PLANET VERSIÓN 29 — SERPIENTES Y ESCALERAS
+PARTY PLANET VERSIÓN 30 — SERPIENTES Y ESCALERAS DE 4 JUGADORES
 
-NUEVO JUEGO
-- Tablero de 100 casillas.
-- Ficha del jugador y nave rival.
-- Dado animado.
-- Escaleras que hacen subir.
-- Serpientes que hacen bajar.
-- Turnos automáticos.
-- Rival controlado por la aplicación.
-- Premio de 25 estrellas al ganar.
-- Confeti y voz de felicitación.
-- Botón para comenzar un juego nuevo.
+MEJORAS EN EL JUEGO
+- Ahora participan 4 jugadores:
+  1. Sparkly
+  2. Chespita 1
+  3. Chespita 2
+  4. Cangurito
+- Puedes elegir con cuál personaje vas a jugar.
+- Se muestran imágenes actuales de los personajes.
+- El dado se tira uno por uno.
+- Cada turno cambia al siguiente personaje.
+- Cada jugador tiene su tarjeta con imagen, nombre y casilla.
+- Si tu personaje gana, recibes 30 estrellas.
+- Se conserva el tablero de 100 casillas con serpientes y escaleras.
 
 CÓMO ABRIR
 1. Extrae completamente el ZIP.

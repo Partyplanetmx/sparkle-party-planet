@@ -652,3 +652,56 @@ body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!importan
 
 @media(max-width:950px){.snakes-layout{grid-template-columns:1fr}.snakes-panel{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.snakes-panel{grid-template-columns:1fr}.featured-game-card{grid-template-columns:1fr;text-align:center}.snake-cell{min-height:32px}.cell-number{font-size:8px}.cell-special{font-size:14px}}
+
+/* ======================================================
+   PARTY PLANET V30 — SERPIENTES Y ESCALERAS 4 JUGADORES
+   ====================================================== */
+.v30-setup-strip{margin-bottom:16px}
+.v30-setup-strip h3{margin:0 0 10px;font-size:28px}
+.v30-character-picker{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.v30-character-card{border:0;border-radius:22px;padding:12px;background:linear-gradient(145deg,#26127c,#140760);color:#fff;box-shadow:0 10px 22px #0004;text-align:center}
+.v30-character-card img{width:100%;height:130px;object-fit:cover;border-radius:16px;margin-bottom:8px}
+.v30-character-card b{display:block;font-size:18px}
+.v30-character-card small{display:block;margin-top:4px;color:#95f0ff}
+.v30-character-card.active{outline:4px solid #ffd637;background:linear-gradient(145deg,#ff35b0,#6637e7)}
+
+.v30-snakes-layout{display:grid;grid-template-columns:minmax(0,1fr) 350px;gap:18px;align-items:start}
+.v30-board-wrap{padding:12px;border-radius:24px;background:linear-gradient(145deg,#2a157f,#10055a);box-shadow:0 15px 35px #0005}
+.v30-board{display:grid;grid-template-columns:repeat(10,1fr);aspect-ratio:1/1;border:5px solid #fff;border-radius:18px;overflow:hidden;background:#fff}
+.v30-cell{position:relative;display:flex;align-items:center;justify-content:center;border:1px solid #ffffff55;background:linear-gradient(145deg,#5c3bd2,#2a178d)}
+.v30-cell:nth-child(3n){background:linear-gradient(145deg,#f23aaa,#a322bf)}
+.v30-cell:nth-child(4n){background:linear-gradient(145deg,#20b9e7,#3454d9)}
+.v30-cell:nth-child(5n){background:linear-gradient(145deg,#ffb72c,#ef6a19);color:#30144d}
+.v30-cell.ladder-cell{box-shadow:inset 0 0 0 4px #56ffb0}
+.v30-cell.snake-start{box-shadow:inset 0 0 0 4px #ffdf39}
+.v30-cell-number{position:absolute;top:3px;left:5px;font-size:11px;font-weight:1000}
+.v30-cell-icon{font-size:clamp(16px,2vw,28px);opacity:.9}
+.v30-tokens{position:absolute;bottom:2px;right:2px;display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end;max-width:90%}
+.v30-token{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;font-size:9px;font-weight:1000;color:#20123f;border:2px solid #fff;box-shadow:0 2px 4px #0007}
+
+.v30-side{display:grid;gap:12px}
+.v30-turn-card,.v30-player-list,.v30-rules{border-radius:20px;padding:16px;background:linear-gradient(145deg,#28147e,#12065b);border:1px solid #6245d9;box-shadow:0 8px 20px #0004}
+.v30-turn-top{display:grid;grid-template-columns:86px 1fr;gap:12px;align-items:center}
+.v30-turn-top img{width:86px;height:86px;object-fit:cover;border-radius:18px}
+.v30-turn-top h3{margin:0 0 4px}
+.v30-turn-top p{margin:0}
+.v30-dice-area{text-align:center;margin-top:10px}
+.v30-dice{font-size:90px;line-height:1;margin-bottom:10px;color:#fff;text-shadow:0 5px 10px #000}
+.v30-dice.rolling{animation:diceSpin .35s linear infinite}
+.v30-roll-btn{border:0;border-radius:18px;padding:14px 18px;background:linear-gradient(145deg,#ffcf2d,#ef6b18);color:#32154f;font-weight:1000;font-size:18px;box-shadow:0 6px 0 #9f3b14}
+.v30-roll-btn:disabled{opacity:.55;cursor:not-allowed}
+
+.v30-player-list{display:grid;gap:10px}
+.v30-player-item{display:grid;grid-template-columns:56px 1fr auto;gap:10px;align-items:center;background:#ffffff10;border-radius:16px;padding:10px}
+.v30-player-item img{width:56px;height:56px;object-fit:cover;border-radius:14px}
+.v30-player-meta b{display:block}
+.v30-player-meta small{display:block;color:#a9f5ff}
+.v30-player-item.active-turn{outline:3px solid #55efaf;background:#ffffff1b}
+.v30-mini-roll{border:0;border-radius:12px;padding:10px 12px;background:#4733a8;color:#fff;font-weight:1000}
+.v30-mini-roll.enabled{background:linear-gradient(145deg,#ff35b0,#6637e7)}
+.v30-mini-roll:disabled{opacity:.5}
+
+.v30-rules h4{margin:0 0 8px}
+.v30-rules p{margin:7px 0}
+@media(max-width:1000px){.v30-character-picker{grid-template-columns:repeat(2,1fr)}.v30-snakes-layout{grid-template-columns:1fr}}
+@media(max-width:640px){.v30-character-picker{grid-template-columns:1fr}.v30-cell{min-height:34px}.v30-cell-number{font-size:8px}.v30-cell-icon{font-size:14px}.v30-token{width:18px;height:18px;font-size:7px}}
