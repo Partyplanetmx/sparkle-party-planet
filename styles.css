@@ -571,3 +571,48 @@ body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!importan
 
 @media(max-width:1050px){.language-categories-v27{grid-template-columns:repeat(4,1fr)}.language-word-grid-v27{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:700px){.language-hero-v27{flex-direction:column;align-items:flex-start}.language-toolbar-v27{grid-template-columns:1fr}.language-categories-v27{grid-template-columns:repeat(2,1fr)}.language-word-grid-v27{grid-template-columns:repeat(2,1fr)}}
+
+/* ======================================================
+   PARTY PLANET V28 — MATEMÁTICAS PARA NIÑOS
+   ====================================================== */
+.math-card{background:linear-gradient(145deg,#ffcf2d,#ef6b18);color:#301650}
+.math-dashboard{display:grid;gap:12px;margin-bottom:15px}
+.math-mode-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.math-mode-tabs button{border:0;border-radius:20px;padding:15px;background:linear-gradient(145deg,#2a168b,#4424ad);color:#fff;font-weight:1000;font-size:17px;box-shadow:0 7px 17px #0004}
+.math-mode-tabs button span{display:block;font-size:35px;margin-bottom:5px}
+.math-mode-tabs button.active{background:linear-gradient(145deg,#ff35b0,#7c37e7);outline:3px solid #ffe3fa}
+.math-levels{display:flex;align-items:center;gap:9px;flex-wrap:wrap;background:#1d0b6b;padding:11px;border-radius:17px}
+.math-levels button{border:0;border-radius:12px;padding:9px 13px;background:#3b2598;color:#fff;font-weight:900}
+.math-levels button.active{background:#ffcc2d;color:#32134e}
+.math-stats{display:flex;justify-content:space-around;gap:10px;flex-wrap:wrap;background:linear-gradient(90deg,#2d168d,#6d25bc);padding:12px;border-radius:17px;font-weight:900}
+
+.math-game-card{position:relative;text-align:center;border-radius:26px;padding:24px;box-shadow:0 16px 35px #0005;overflow:hidden}
+.math-game-card.pink{background:linear-gradient(145deg,#f52fad,#7d32da)}
+.math-game-card.blue{background:linear-gradient(145deg,#24b9e7,#3154d9)}
+.math-game-card.purple{background:linear-gradient(145deg,#9d49ee,#4221b7)}
+.math-game-card.green{background:linear-gradient(145deg,#17c78d,#087d82)}
+.math-character{font-size:65px;animation:planetFloatV24 4s ease-in-out infinite}
+.math-instruction{font-weight:900;font-size:19px}
+.math-operation{display:flex;justify-content:center;align-items:center;gap:15px;font-size:clamp(42px,8vw,78px);font-weight:1000;margin:12px 0;text-shadow:0 5px 7px #0005}
+.math-operation strong{color:#ffe639}.question-mark{background:#fff;color:#42177e;border-radius:20px;padding:0 20px;box-shadow:0 7px 0 #b9c6e0}
+.math-answer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;max-width:750px;margin:20px auto}
+.math-answer-grid button{border:0;border-radius:22px;padding:18px;background:#fff;color:#35126c;font-size:34px;font-weight:1000;box-shadow:0 7px 0 #b9c6e0;transition:.15s}
+.math-answer-grid button:hover{transform:translateY(-5px) scale(1.04)}
+.math-answer-grid button:active{transform:translateY(5px);box-shadow:0 2px 0 #b9c6e0}
+.math-answer-grid button.wrong{background:#ff5575;color:white;animation:mathShake .4s ease}
+.math-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+
+.math-objects{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;max-width:700px;margin:12px auto;font-size:28px}
+.math-groups{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:15px}.math-groups div{padding:8px;border:3px dashed #fff7;border-radius:14px}.math-groups span{font-size:22px}
+.math-division{font-size:25px;font-weight:900;background:#0002;padding:12px;border-radius:16px;max-width:600px;margin:12px auto}.math-division p{font-size:16px}
+.math-lessons{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
+.math-lessons button{border:0;border-radius:20px;padding:17px;color:white;background:linear-gradient(145deg,#2b178e,#4c27b5);text-align:left;box-shadow:0 8px 18px #0004}
+.math-lessons span{display:block;font-size:40px}.math-lessons b{display:block;font-size:18px;margin:5px 0}.math-lessons small{display:block}
+.math-lesson-modal .lesson-emoji{font-size:50px;letter-spacing:8px}.math-lesson-modal p{font-size:18px;line-height:1.6}.lesson-example{font-size:38px;font-weight:1000;color:#ffe43c;margin:15px}
+@keyframes mathShake{0%,100%{transform:translateX(0)}25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+
+@media(max-width:800px){
+  .math-mode-tabs{grid-template-columns:repeat(2,1fr)}
+  .math-answer-grid{grid-template-columns:repeat(2,1fr)}
+  .math-lessons{grid-template-columns:repeat(2,1fr)}
+}

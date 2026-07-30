@@ -1,43 +1,27 @@
-PARTY PLANET VERSIÓN 27 — UNIVERSO DE PALABRAS
+PARTY PLANET VERSIÓN 28 — MATEMÁTICAS PARA NIÑOS
 
-IDIOMAS INCLUIDOS
-- Inglés
-- Francés
-- Italiano
-- Alemán
-- Portugués
-- Japonés
-- Coreano
-- Chino
-
-CONTENIDO
-Cada idioma contiene 120 palabras iniciales organizadas en:
-- Animales
-- Colores
-- Familia
-- Escuela
-- Comida
-- Casa
-- Cuerpo
-- Naturaleza
-- Transporte
-- Emociones
+NUEVA SECCIÓN DE MATEMÁTICAS
+- Sumar
+- Restar
+- Multiplicar
+- Dividir
 
 FUNCIONES
-- 960 traducciones iniciales en total.
-- Buscador en todas las categorías.
-- Pronunciación con la voz disponible del navegador.
-- Favoritos guardados en la computadora.
-- Categorías visuales.
-- Botón para cargar más palabras.
-- Diseño animado y adaptado para niños.
-
-NOTA
-El catálogo es amplio y está preparado para seguir agregando palabras en futuras versiones. La pronunciación depende de las voces instaladas en Windows o en el navegador.
+- Tres niveles: fácil, medio y difícil.
+- Ejercicios aleatorios.
+- Cuatro respuestas grandes para elegir.
+- Operaciones de división siempre con resultado entero.
+- Restas sin resultados negativos.
+- Voz para escuchar las operaciones.
+- Representaciones visuales con estrellas y dulces.
+- Puntos, rachas y ejercicios realizados.
+- Cinco estrellas por respuesta correcta.
+- Confeti y mensajes de felicitación.
+- Lecciones sencillas para explicar cada operación.
 
 CÓMO ABRIR
 1. Extrae completamente el ZIP.
 2. Abre ABRIR_PARTY_PLANET.bat.
 3. Mantén abierta la ventana negra.
-4. No lo abras desde WinRAR.
-5. Si aparece una versión vieja, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
+4. No abras la aplicación desde WinRAR.
+5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.

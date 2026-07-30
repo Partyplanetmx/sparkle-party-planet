@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -70,6 +70,7 @@ function renderHome(){
       <button onclick="go('syllables')" class="v26-game-card syllable-card"><span>🔤</span><b>Aprende a leer</b><small>Palabras por sílabas</small></button>
       <button onclick="go('piano')" class="v26-game-card piano-card"><span>🎹</span><b>Piano niño</b><small>Toca notas y canciones</small></button>
       <button onclick="go('musicgames')" class="v26-game-card music-card"><span>🎶</span><b>Juegos musicales</b><small>Ritmo, memoria y canciones</small></button>
+      <button onclick="go('math')" class="v26-game-card math-card"><span>➕</span><b>Matemáticas</b><small>Suma, resta, multiplica y divide</small></button>
     </section>
 
     <section class="v20-carousel">
@@ -793,4 +794,181 @@ function renderLanguagesV27(){
 }
 function categoryEmojiV27(cat){
   return ({"Animales":"🐾","Colores":"🎨","Familia":"👨‍👩‍👧","Escuela":"🏫","Comida":"🍎","Casa":"🏠","Cuerpo":"🖐️","Naturaleza":"🌳","Transporte":"🚀","Emociones":"😊","Favoritas":"⭐"})[cat]||"✨";
+}
+
+
+// ======================================================
+// PARTY PLANET V28 — MATEMÁTICAS PARA NIÑOS
+// ======================================================
+let mathMode="add";
+let mathLevel=1;
+let mathQuestion=null;
+let mathScore=0;
+let mathStreak=0;
+let mathAnswered=0;
+
+const mathModes={
+  add:{name:"Sumar",symbol:"+",emoji:"➕",color:"pink"},
+  subtract:{name:"Restar",symbol:"−",emoji:"➖",color:"blue"},
+  multiply:{name:"Multiplicar",symbol:"×",emoji:"✖️",color:"purple"},
+  divide:{name:"Dividir",symbol:"÷",emoji:"➗",color:"green"}
+};
+
+function setMathMode(mode){
+  mathMode=mode;
+  mathScore=0;
+  mathStreak=0;
+  mathAnswered=0;
+  newMathQuestion();
+}
+function setMathLevel(level){
+  mathLevel=Number(level);
+  mathScore=0;
+  mathStreak=0;
+  mathAnswered=0;
+  newMathQuestion();
+}
+function randomInt(min,max){
+  return Math.floor(Math.random()*(max-min+1))+min;
+}
+function createMathQuestion(){
+  let a,b,answer;
+  const max=[10,20,50][mathLevel-1]||10;
+
+  if(mathMode==="add"){
+    a=randomInt(0,max);
+    b=randomInt(0,max);
+    answer=a+b;
+  }else if(mathMode==="subtract"){
+    a=randomInt(0,max);
+    b=randomInt(0,a);
+    answer=a-b;
+  }else if(mathMode==="multiply"){
+    const multMax=[5,10,12][mathLevel-1]||5;
+    a=randomInt(1,multMax);
+    b=randomInt(1,multMax);
+    answer=a*b;
+  }else{
+    const divMax=[5,10,12][mathLevel-1]||5;
+    b=randomInt(1,divMax);
+    answer=randomInt(1,divMax);
+    a=b*answer;
+  }
+
+  const wrongs=new Set();
+  while(wrongs.size<3){
+    let candidate=answer+randomInt(-6,6);
+    if(candidate>=0 && candidate!==answer) wrongs.add(candidate);
+  }
+  const options=[answer,...wrongs].sort(()=>Math.random()-.5);
+  return {a,b,answer,options};
+}
+function newMathQuestion(){
+  mathQuestion=createMathQuestion();
+  renderMath();
+  setTimeout(()=>speakMathQuestion(),250);
+}
+function speakMathQuestion(){
+  if(!mathQuestion)return;
+  const m=mathModes[mathMode];
+  const phrases={
+    add:`¿Cuánto es ${mathQuestion.a} más ${mathQuestion.b}?`,
+    subtract:`¿Cuánto es ${mathQuestion.a} menos ${mathQuestion.b}?`,
+    multiply:`¿Cuánto es ${mathQuestion.a} por ${mathQuestion.b}?`,
+    divide:`¿Cuánto es ${mathQuestion.a} dividido entre ${mathQuestion.b}?`
+  };
+  speakText(phrases[mathMode],.72,1.18);
+}
+function answerMath(value){
+  if(!mathQuestion)return;
+  mathAnswered++;
+  if(Number(value)===mathQuestion.answer){
+    mathScore++;
+    mathStreak++;
+    state.stars+=5;
+    sync();
+    createConfetti(28);
+    toast("¡Correcto! Ganaste 5 estrellas");
+    speakText("¡Muy bien!",.75,1.3);
+    setTimeout(newMathQuestion,850);
+  }else{
+    mathStreak=0;
+    toast("Casi. Intenta otra vez");
+    speakText("Intenta otra vez",.78,1.2);
+    const wrong=document.querySelector(`[data-math-answer="${value}"]`);
+    if(wrong){
+      wrong.classList.add("wrong");
+      setTimeout(()=>wrong.classList.remove("wrong"),500);
+    }
+  }
+}
+function mathVisual(){
+  if(!mathQuestion)return "";
+  const limit=Math.min(mathQuestion.a,20);
+  if(mathMode==="add" || mathMode==="subtract"){
+    return `<div class="math-objects">${Array.from({length:limit},(_,i)=>`<span>${i<10?"⭐":"🪐"}</span>`).join("")}${mathQuestion.a>20?`<b>+${mathQuestion.a-20}</b>`:""}</div>`;
+  }
+  if(mathMode==="multiply"){
+    return `<div class="math-groups">${Array.from({length:Math.min(mathQuestion.a,8)},()=>`<div>${Array.from({length:Math.min(mathQuestion.b,8)},()=>"<span>⭐</span>").join("")}</div>`).join("")}</div>`;
+  }
+  return `<div class="math-division"><span>${mathQuestion.a} 🍬</span><p>Repartidos entre ${mathQuestion.b} niños</p></div>`;
+}
+function renderMath(){
+  if(!mathQuestion) mathQuestion=createMathQuestion();
+  const m=mathModes[mathMode];
+  document.getElementById("screen-math").innerHTML=title("➕","Matemáticas para niños","Suma, resta, multiplica y divide jugando")+`
+    <section class="math-dashboard">
+      <div class="math-mode-tabs">
+        ${Object.entries(mathModes).map(([key,v])=>`<button class="${mathMode===key?'active':''}" onclick="setMathMode('${key}')"><span>${v.emoji}</span>${v.name}</button>`).join("")}
+      </div>
+      <div class="math-levels">
+        <b>Nivel:</b>
+        <button class="${mathLevel===1?'active':''}" onclick="setMathLevel(1)">🌱 Fácil</button>
+        <button class="${mathLevel===2?'active':''}" onclick="setMathLevel(2)">🚀 Medio</button>
+        <button class="${mathLevel===3?'active':''}" onclick="setMathLevel(3)">🌟 Difícil</button>
+      </div>
+      <div class="math-stats">
+        <span>⭐ Puntos: <b>${mathScore}</b></span>
+        <span>🔥 Racha: <b>${mathStreak}</b></span>
+        <span>📝 Ejercicios: <b>${mathAnswered}</b></span>
+      </div>
+    </section>
+
+    <section class="math-game-card ${m.color}">
+      <div class="math-character">🪐</div>
+      <p class="math-instruction">Resuelve la operación</p>
+      <div class="math-operation">
+        <span>${mathQuestion.a}</span>
+        <strong>${m.symbol}</strong>
+        <span>${mathQuestion.b}</span>
+        <strong>=</strong>
+        <span class="question-mark">?</span>
+      </div>
+      ${mathVisual()}
+      <div class="math-answer-grid">
+        ${mathQuestion.options.map(n=>`<button data-math-answer="${n}" onclick="answerMath(${n})">${n}</button>`).join("")}
+      </div>
+      <div class="math-actions">
+        <button class="action-btn" onclick="speakMathQuestion()">🔊 Escuchar</button>
+        <button class="action-btn" onclick="newMathQuestion()">🔄 Otro ejercicio</button>
+      </div>
+    </section>
+
+    <section class="math-lessons">
+      <button onclick="showMathLesson('add')"><span>🍎</span><b>Aprender a sumar</b><small>Juntar cantidades</small></button>
+      <button onclick="showMathLesson('subtract')"><span>🎈</span><b>Aprender a restar</b><small>Quitar cantidades</small></button>
+      <button onclick="showMathLesson('multiply')"><span>⭐</span><b>Tablas de multiplicar</b><small>Grupos iguales</small></button>
+      <button onclick="showMathLesson('divide')"><span>🍬</span><b>Aprender a dividir</b><small>Repartir en partes iguales</small></button>
+    </section>`;
+}
+function showMathLesson(type){
+  const lessons={
+    add:{title:"Sumar es juntar",text:"Si tienes 2 estrellas y recibes 3 más, ahora tienes 5 estrellas.",example:"2 + 3 = 5",emoji:"⭐⭐ + ⭐⭐⭐"},
+    subtract:{title:"Restar es quitar",text:"Si tienes 5 globos y se van 2, quedan 3 globos.",example:"5 − 2 = 3",emoji:"🎈🎈🎈🎈🎈"},
+    multiply:{title:"Multiplicar son grupos iguales",text:"Tres grupos de 2 estrellas forman 6 estrellas.",example:"3 × 2 = 6",emoji:"⭐⭐  ⭐⭐  ⭐⭐"},
+    divide:{title:"Dividir es repartir",text:"Si repartimos 8 dulces entre 2 niños, cada uno recibe 4.",example:"8 ÷ 2 = 4",emoji:"🍬🍬🍬🍬  |  🍬🍬🍬🍬"}
+  };
+  const l=lessons[type];
+  modalBody.innerHTML=`<div class="math-lesson-modal"><div class="lesson-emoji">${l.emoji}</div><h2>${l.title}</h2><p>${l.text}</p><div class="lesson-example">${l.example}</div><button class="action-btn" onclick="speakText('${l.text.replace(/'/g,"\\'")}',.72,1.2)">🔊 Escuchar explicación</button></div>`;
+  modal.classList.remove("hidden");
 }
