@@ -1,6 +1,16 @@
-PARTY PLANET V24
+PARTY PLANET VERSIÓN 25
 
-Extrae el ZIP en una carpeta nueva y abre ABRIR_PARTY_PLANET.bat.
-La pantalla renovada debe aparecer desde el principio.
-Si aún aparece la antigua, abre LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
-No abras desde WinRAR.
+CAMBIOS REALIZADOS
+- Se quitó la columna izquierda que ocupaba espacio.
+- Ya no se repite el menú en otra columna de la página de inicio.
+- Se dejó un menú horizontal superior más limpio y más práctico.
+- La página de inicio ahora usa todo el ancho de la pantalla.
+- Se agregó el nuevo logo de Party Planet en el encabezado y también dentro de la página de inicio.
+- Se conserva el movimiento y las animaciones.
+- Se mantiene la corrección de caché para que cargue la versión nueva desde el principio.
+
+CÓMO ABRIR
+1. Extrae completamente el ZIP en una carpeta nueva.
+2. Abre ABRIR_PARTY_PLANET.bat.
+3. No abras la aplicación desde WinRAR.
+4. Si una computadora insiste en mostrar una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.

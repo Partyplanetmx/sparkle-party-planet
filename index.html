@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#160066">
-<title>Party Planet V24</title>
+<title>Party Planet V25</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=24">
-<script>(async function(){const V='24';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
+<link rel="stylesheet" href="styles.css?v=25">
+<script>(async function(){const V='25';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
 </head>
 <body>
 <div class="space-motion" aria-hidden="true">
@@ -21,7 +21,7 @@
 <header class="topbar">
   <div class="top-left-actions"><button class="parents" onclick="openParentGate()">👥 PARA PADRES</button><button class="admin-secret" onclick="openAdminGate()" title="Administrador">🔐</button><button class="motion-toggle" onclick="toggleMotion()" title="Activar o reducir movimiento">✨</button></div>
   <div class="brand brand-image" onclick="go('home')">
-      <img src="assets/images/logo_sparkly.jpg" alt="Sparkly Party Planet">
+      <img src="assets/images/logo_party_planet_v25.png" alt="Sparkly Party Planet">
     </div>
   <div class="wallet">
     <span>⭐ <b id="starsTop">1250</b></span>
@@ -48,8 +48,7 @@
 
 <div class="section-banner">ELIGE UNA ACTIVIDAD</div>
 
-<div class="app-layout">
-  <nav id="mainNav" class="side-nav">
+<div id="mainNav" class="quick-nav">
     <button data-screen="home" onclick="go('home')">🏠 <span>INICIO</span></button>
     <button data-screen="karaoke" onclick="go('karaoke')">🎤 <span>KARAOKE</span></button>
     <button data-screen="stories" onclick="go('stories')">📖 <span>CUENTOS</span></button>
@@ -64,9 +63,9 @@
     <button data-screen="events" onclick="go('events')">🗓️ <span>EVENTOS</span></button>
     <button data-screen="settings" onclick="go('settings')">⚙️ <span>AJUSTES</span></button>
     <div class="kangaroo">🦘<small>Cangurito Bailarín</small></div>
-  </nav>
-
-  <main class="content">
+  </div>
+<div class="app-layout app-layout-wide">
+  <main class="content content-wide">
     <section id="screen-home" class="screen active"></section>
     <section id="screen-karaoke" class="screen"></section>
     <section id="screen-stories" class="screen"></section>
@@ -91,6 +90,6 @@
 
 <div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
 <div id="toast"></div>
-<script src="app.js?v=24"></script>
+<script src="app.js?v=25"></script>
 </body>
 </html>

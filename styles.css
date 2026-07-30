@@ -423,3 +423,88 @@ body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!importan
 @keyframes cardFloatV24{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 @keyframes characterBreatheV24{0%,100%{transform:scale(1) rotate(-1deg)}50%{transform:scale(1.06) rotate(1deg)}}
 @keyframes pulseMotionButton{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+
+/* ======================================================
+   PARTY PLANET V25 — SIN COLUMNA IZQUIERDA Y SIN DUPLICADO
+   ====================================================== */
+.topbar{grid-template-columns:1fr 2.2fr 1fr}
+.brand-image{width:360px;max-width:100%;border-radius:20px;overflow:hidden;box-shadow:0 8px 22px #0005}
+.brand-image img{display:block;width:100%;height:95px;object-fit:contain;background:transparent;padding:4px}
+
+.quick-nav{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin:10px 16px 0; padding:12px;
+  background:rgba(16,7,94,.92);
+  border:1px solid #5d45d7; border-radius:20px;
+  box-shadow:0 10px 24px #0004;
+}
+.quick-nav > button{
+  border:0; border-radius:16px; padding:12px 16px;
+  background:linear-gradient(90deg,#31158f,#4d28bb);
+  color:#fff; font-weight:900; cursor:pointer;
+}
+.quick-nav > button.active{
+  background:linear-gradient(90deg,#ff33b5,#6e41ff);
+  box-shadow:inset 0 0 0 2px #ffd2ff, 0 6px 15px #0004;
+}
+.quick-nav .kangaroo{display:none}
+
+.app-layout-wide{grid-template-columns:1fr!important; padding:10px 16px 16px!important}
+.content-wide{min-height:600px}
+
+.v25-home-top{
+  display:grid; grid-template-columns:420px 1fr; gap:16px; align-items:center; margin-bottom:16px;
+}
+.home-logo-panel{
+  border-radius:24px; padding:16px; min-height:190px;
+  background:linear-gradient(145deg,#2d137f,#140659);
+  border:1px solid #6549da; box-shadow:0 12px 28px #0004;
+  display:flex; align-items:center; justify-content:center;
+}
+.home-logo-panel img{max-width:100%; width:100%; max-height:160px; object-fit:contain}
+.home-welcome-card{
+  border-radius:24px; padding:20px;
+  background:linear-gradient(135deg,#fe36b8,#8138f0,#21c7f4);
+  box-shadow:0 12px 28px #0004;
+}
+.home-welcome-card h2{margin:0 0 8px; font-size:34px}
+.home-welcome-card p{margin:0 0 16px; font-size:18px; line-height:1.5}
+.home-cta-row{display:flex; flex-wrap:wrap; gap:10px}
+
+.v25-banner{
+  position:relative; width:100%; aspect-ratio:16/9; overflow:hidden;
+  border-radius:26px; border:4px solid #5353db55;
+  box-shadow:0 18px 40px #0007; background:#16045c; margin-bottom:16px;
+  animation:bannerFloatV24 3.5s ease-in-out infinite!important;
+}
+.v25-banner > img{width:100%;height:100%;display:block;object-fit:cover;animation:bannerZoomV24 7s ease-in-out infinite alternate!important}
+.v25-overlay{position:absolute;border:0;background:transparent;border-radius:18px;cursor:pointer;transition:.18s}
+.v25-overlay:hover{background:#ffffff18;box-shadow:inset 0 0 0 3px #fff,0 0 25px #ff37d7}
+.v25-parents{left:1%;top:1%;width:16%;height:9%}
+.v25-wallet{right:1%;top:1%;width:24%;height:9%}
+.v25-karaoke{left:1%;top:49%;width:17%;height:28%}
+.v25-languages{left:18%;top:49%;width:17%;height:28%}
+.v25-games{left:35%;top:49%;width:17%;height:28%}
+.v25-stories{left:52%;top:49%;width:17%;height:28%}
+.v25-color{left:69%;top:49%;width:15%;height:28%}
+.v25-avatar{right:1%;top:49%;width:15%;height:28%}
+
+.v25-activity-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:16px}
+.v25-action-card{border:0;border-radius:22px;padding:18px;color:white;text-align:left;min-height:130px;box-shadow:inset 0 -5px #0004,0 8px 18px #0004;cursor:pointer}
+.v25-action-card span{display:block;font-size:38px;margin-bottom:8px}
+.v25-action-card b{display:block;font-size:24px;margin-bottom:4px}
+.v25-action-card small{display:block;font-size:15px;opacity:.95}
+
+@media(max-width:1000px){
+  .v25-home-top{grid-template-columns:1fr}
+  .v25-activity-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:700px){
+  .quick-nav{overflow:auto;flex-wrap:nowrap}
+  .quick-nav > button{white-space:nowrap}
+  .v25-activity-grid{grid-template-columns:1fr}
+  .brand-image{width:240px}
+  .brand-image img{height:72px}
+  .v25-banner{aspect-ratio:9/16}
+  .v25-overlay{display:none}
+}

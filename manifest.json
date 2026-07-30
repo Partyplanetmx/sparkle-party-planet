@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 24 Animada",
-  "short_name": "Party Planet V24",
+  "name": "Party Planet Versión 25",
+  "short_name": "Party Planet V25",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Pantalla renovada desde el inicio, caché corregida y animaciones visibles."
+  "description": "Versión sin columna izquierda duplicada, con logo Party Planet en la página de inicio."
 }
