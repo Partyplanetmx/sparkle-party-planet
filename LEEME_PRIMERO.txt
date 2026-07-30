@@ -1,29 +1,20 @@
-PARTY PLANET VERSIÓN 22 — CLOUD EDITION
+PARTY PLANET VERSIÓN 23 ANIMADA
 
-CONTRASEÑA INICIAL DEL ADMINISTRADOR
+NOVEDADES
+- Fondo espacial en movimiento.
+- Estrellas brillantes, planetas flotantes y cometas.
+- Personajes que flotan, respiran y saludan al tocarlos.
+- Botones con rebote.
+- Destellos al tocar.
+- Confeti al abrir.
+- Botón ✨ para activar o reducir movimiento.
+- Respeta la configuración de movimiento reducido del dispositivo.
+
+CONTRASEÑA INICIAL
 PartyPlanet21
-
-QUÉ FUNCIONA DESDE AHORA
-- Panel privado para subir y borrar canciones.
-- Biblioteca musical con buscador.
-- Filtros por categoría e idioma.
-- Contenido gratuito y VIP.
-- Portadas, audio, letras y karaoke.
-- Estadísticas locales de reproducciones y contenido.
-- Funcionamiento sin internet en modo local.
-- Pantalla para guardar la configuración de Firebase.
-
-IMPORTANTE SOBRE LA NUBE
-Esta carpeta está preparada para conectarse a Firebase, pero no puede crear por sí sola una cuenta o proyecto externo.
-Para sincronizar canciones en todos los teléfonos necesitas:
-1. Crear un proyecto en Firebase.
-2. Activar Authentication, Firestore y Storage.
-3. Copiar las claves del proyecto en la sección “Configurar nube”.
-4. Publicar la aplicación en un servidor HTTPS o convertirla a aplicación móvil.
-
-Hasta que se complete esa conexión, las canciones siguen guardándose únicamente en esta computadora.
 
 CÓMO ABRIR
 1. Extrae completamente el ZIP.
 2. Abre ABRIR_PARTY_PLANET.bat.
-3. No ejecutes la aplicación desde dentro de WinRAR.
+3. No lo abras directamente desde WinRAR.
+4. Si aparece una versión anterior, presiona Ctrl + F5.
