@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath();if(name==="snakes")renderSnakes()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -102,7 +102,7 @@ function resetLyrics(){clearInterval(lyricTimer);lyrics.textContent="Presiona co
 function startKaraoke(){clearInterval(lyricTimer);let lines=["En Party Planet vamos a cantar","con estrellas vamos a brillar","las Chespitas vienen a bailar","¡y Sparkly nos invita a soñar!"],i=0;lyrics.innerHTML="";lyricTimer=setInterval(()=>{lyrics.innerHTML=lines.slice(0,i+1).map((x,j)=>j===i?`<b>${x}</b>`:x).join("<br>");speak(lines[i],"es-MX");i++;if(i===lines.length)clearInterval(lyricTimer)},1400)}
 function renderStories(){document.getElementById("screen-stories").innerHTML=title("📖","Cuentos","Historias con narración")+`<div class="screen-character-banner"><img src="assets/images/chespitas.jpg" alt="Las Chespitas"><div><h3>Cuentos con Las Chespitas</h3><p>Historias llenas de magia y amistad.</p></div></div>`+stories.map((s,i)=>`<article class="panel story-card"><h3>${s[0]}</h3><p>${s[1]}</p><button class="action-btn" onclick="speakStory(${i})">🔊 Escuchar</button><button class="action-btn" onclick="finishActivity('Cuento completado',4)">⭐ Terminé</button></article>`).join("")}
 function speakStory(i){speak(stories[i][1],"es-MX")}
-function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="screen-character-banner"><img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín"><div><h3>Juega con el Cangurito</h3><p>Retos, memoria, números y colores.</p></div></div><div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
+function renderGames(){document.getElementById("screen-games").innerHTML=title("🎮","Juegos","Todos los juegos funcionan")+`<div class="featured-game-card" onclick="go(\'snakes\')"><div class="featured-game-icon">🐍🪜</div><div><h3>Serpientes y Escaleras</h3><p>Lanza el dado, sube por las escaleras y evita las serpientes.</p></div><button class="action-btn">Jugar</button></div>`+`<div class="screen-character-banner"><img src="assets/images/cangurito.jpg" alt="Cangurito Bailarín"><div><h3>Juega con el Cangurito</h3><p>Retos, memoria, números y colores.</p></div></div><div class="feature-grid"><button class="feature-card blue" onclick="memoryGame()"><span>🧠</span>Memorama</button><button class="feature-card pink" onclick="numberGame()"><span>🔢</span>Números</button><button class="feature-card green" onclick="colorGame()"><span>🌈</span>Colores</button><button class="feature-card orange" onclick="starGame()"><span>⭐</span>Atrapa estrellas</button></div><div id="gameArea" class="panel game-area">Elige un juego.</div>`}
 function memoryGame(){let a=["⭐","🎤","🦘","🎈"],arr=[...a,...a].sort(()=>Math.random()-.5);window.mem={arr,open:[],done:[]};gameArea.innerHTML=`<h3>Encuentra las parejas</h3><div class="memory">${arr.map((x,i)=>`<button id="m${i}" onclick="flip(${i})">${`❓`}</button>`).join("")}</div>`}
 function flip(i){let m=mem;if(m.open.includes(i)||m.done.includes(i))return;document.getElementById("m"+i).textContent=m.arr[i];m.open.push(i);if(m.open.length===2){let[a,b]=m.open;if(m.arr[a]===m.arr[b]){m.done.push(a,b);m.open=[];if(m.done.length===m.arr.length)finishActivity("¡Memorama completo!",8)}else setTimeout(()=>{document.getElementById("m"+a).textContent="❓";document.getElementById("m"+b).textContent="❓";m.open=[]},700)}}
 function numberGame(){gameArea.innerHTML=`<h3>¿Cuánto es 3 + 2?</h3><div class="feature-grid"><button class="feature-card purple" onclick="wrong()">4</button><button class="feature-card green" onclick="finishActivity('¡Correcto!',5)">5</button><button class="feature-card orange" onclick="wrong()">6</button></div>`}
@@ -971,4 +971,168 @@ function showMathLesson(type){
   const l=lessons[type];
   modalBody.innerHTML=`<div class="math-lesson-modal"><div class="lesson-emoji">${l.emoji}</div><h2>${l.title}</h2><p>${l.text}</p><div class="lesson-example">${l.example}</div><button class="action-btn" onclick="speakText('${l.text.replace(/'/g,"\\'")}',.72,1.2)">🔊 Escuchar explicación</button></div>`;
   modal.classList.remove("hidden");
+}
+
+
+// ======================================================
+// PARTY PLANET V29 — SERPIENTES Y ESCALERAS
+// ======================================================
+const snakesLadders = {
+  ladders: {3:22, 8:30, 20:41, 28:55, 36:62, 50:72, 71:92},
+  snakes: {27:5, 40:18, 54:31, 68:45, 79:58, 87:66, 98:74}
+};
+let snakeGame = {
+  player:1,
+  cpu:1,
+  turn:"player",
+  rolling:false,
+  finished:false,
+  lastRoll:1,
+  message:"¡Lanza el dado para comenzar!"
+};
+
+function resetSnakeGame(){
+  snakeGame={player:1,cpu:1,turn:"player",rolling:false,finished:false,lastRoll:1,message:"¡Lanza el dado para comenzar!"};
+  renderSnakes();
+}
+function boardCellNumber(row,col){
+  const fromBottom=9-row;
+  const base=fromBottom*10;
+  return fromBottom%2===0 ? base+col+1 : base+(10-col);
+}
+function renderSnakeBoard(){
+  let html="";
+  for(let row=0;row<10;row++){
+    for(let col=0;col<10;col++){
+      const n=boardCellNumber(row,col);
+      const isLadder=snakesLadders.ladders[n];
+      const isSnake=snakesLadders.snakes[n];
+      const playerHere=snakeGame.player===n;
+      const cpuHere=snakeGame.cpu===n;
+      html+=`<div class="snake-cell ${isLadder?'ladder-cell':''} ${isSnake?'snake-cell-start':''}">
+        <span class="cell-number">${n}</span>
+        ${isLadder?'<span class="cell-special">🪜</span>':''}
+        ${isSnake?'<span class="cell-special">🐍</span>':''}
+        <div class="tokens">
+          ${playerHere?'<span class="token player-token">🚀</span>':''}
+          ${cpuHere?'<span class="token cpu-token">🛸</span>':''}
+        </div>
+      </div>`;
+    }
+  }
+  return html;
+}
+function renderSnakes(){
+  document.getElementById("screen-snakes").innerHTML=title("🐍🪜","Serpientes y Escaleras","Llega a la casilla 100 antes que la nave rival")+`
+    <section class="snakes-layout">
+      <div class="snakes-board-wrap">
+        <div class="snakes-board">${renderSnakeBoard()}</div>
+      </div>
+      <aside class="snakes-panel">
+        <div class="turn-card ${snakeGame.turn==='player'?'your-turn':'cpu-turn'}">
+          <h3>${snakeGame.turn==='player'?'🚀 Tu turno':'🛸 Turno de la nave rival'}</h3>
+          <p>${snakeGame.message}</p>
+        </div>
+        <div class="dice-box">
+          <div id="snakeDice" class="snake-dice">${diceFace(snakeGame.lastRoll)}</div>
+          <button class="roll-dice-btn" onclick="rollSnakeDice()" ${snakeGame.rolling||snakeGame.turn!=='player'||snakeGame.finished?'disabled':''}>🎲 Lanzar dado</button>
+        </div>
+        <div class="snake-score">
+          <div><span>🚀</span><b>Tu ficha</b><strong>Casilla ${snakeGame.player}</strong></div>
+          <div><span>🛸</span><b>Rival</b><strong>Casilla ${snakeGame.cpu}</strong></div>
+        </div>
+        <div class="snake-rules">
+          <h4>Cómo jugar</h4>
+          <p>🪜 Las escaleras te hacen subir.</p>
+          <p>🐍 Las serpientes te hacen bajar.</p>
+          <p>🏁 Gana quien llegue primero a 100.</p>
+        </div>
+        <button class="action-btn" onclick="resetSnakeGame()">🔄 Juego nuevo</button>
+      </aside>
+    </section>`;
+}
+function diceFace(n){
+  return ["","⚀","⚁","⚂","⚃","⚄","⚅"][n]||"⚀";
+}
+function rollSnakeDice(){
+  if(snakeGame.rolling||snakeGame.finished||snakeGame.turn!=="player")return;
+  snakeGame.rolling=true;
+  let count=0;
+  const die=document.getElementById("snakeDice");
+  const timer=setInterval(()=>{
+    const r=Math.floor(Math.random()*6)+1;
+    snakeGame.lastRoll=r;
+    if(die){die.textContent=diceFace(r);die.classList.add("rolling")}
+    count++;
+    if(count>=10){
+      clearInterval(timer);
+      if(die)die.classList.remove("rolling");
+      const finalRoll=Math.floor(Math.random()*6)+1;
+      snakeGame.lastRoll=finalRoll;
+      moveSnakeToken("player",finalRoll);
+    }
+  },80);
+}
+function moveSnakeToken(who,roll){
+  let current=snakeGame[who];
+  let target=current+roll;
+  if(target>100) target=current;
+  snakeGame[who]=target;
+  snakeGame.message=(who==="player"?"Sacaste ":"La nave rival sacó ")+roll;
+  renderSnakes();
+
+  setTimeout(()=>{
+    const ladder=snakesLadders.ladders[snakeGame[who]];
+    const snake=snakesLadders.snakes[snakeGame[who]];
+    if(ladder){
+      snakeGame.message="¡Subiste por una escalera!";
+      speakText("¡Subiste por una escalera!",.78,1.25);
+      snakeGame[who]=ladder;
+      createConfetti(20);
+    }else if(snake){
+      snakeGame.message="¡Oh no! Una serpiente te hizo bajar.";
+      speakText("Una serpiente te hizo bajar",.8,1.1);
+      snakeGame[who]=snake;
+    }
+    renderSnakes();
+
+    setTimeout(()=>{
+      if(snakeGame[who]>=100){
+        snakeGame.finished=true;
+        if(who==="player"){
+          snakeGame.message="¡Ganaste! Llegaste al planeta 100.";
+          state.stars+=25;sync();createConfetti(70);speakText("¡Felicidades, ganaste!",.72,1.3);
+        }else{
+          snakeGame.message="La nave rival ganó. ¡Inténtalo otra vez!";
+          speakText("La nave rival ganó. Inténtalo otra vez.",.8,1.1);
+        }
+        renderSnakes();
+        return;
+      }
+      snakeGame.turn=who==="player"?"cpu":"player";
+      snakeGame.rolling=false;
+      renderSnakes();
+      if(snakeGame.turn==="cpu") setTimeout(cpuSnakeTurn,700);
+    },650);
+  },500);
+}
+function cpuSnakeTurn(){
+  if(snakeGame.finished)return;
+  snakeGame.rolling=true;
+  renderSnakes();
+  let c=0;
+  const timer=setInterval(()=>{
+    snakeGame.lastRoll=Math.floor(Math.random()*6)+1;
+    const die=document.getElementById("snakeDice");
+    if(die){die.textContent=diceFace(snakeGame.lastRoll);die.classList.add("rolling")}
+    c++;
+    if(c>=8){
+      clearInterval(timer);
+      const die2=document.getElementById("snakeDice");
+      if(die2)die2.classList.remove("rolling");
+      const r=Math.floor(Math.random()*6)+1;
+      snakeGame.lastRoll=r;
+      moveSnakeToken("cpu",r);
+    }
+  },90);
 }

@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#160066">
-<title>Party Planet V28</title>
+<title>Party Planet V29</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=28">
-<script>(async function(){const V='28';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
+<link rel="stylesheet" href="styles.css?v=29">
+<script>(async function(){const V='29';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
 </head>
 <body>
 <div class="space-motion" aria-hidden="true">
@@ -53,6 +53,7 @@
     <button data-screen="karaoke" onclick="go('karaoke')">🎤 <span>KARAOKE</span></button>
     <button data-screen="stories" onclick="go('stories')">📖 <span>CUENTOS</span></button>
     <button data-screen="games" onclick="go('games')">🎮 <span>JUEGOS</span></button>
+<button data-screen="snakes" onclick="go('snakes')">🐍 <span>SERPIENTES Y ESCALERAS</span></button>
     <button data-screen="languages" onclick="go('languages')">🌍 <span>IDIOMAS</span></button>
     <button data-screen="study" onclick="go('study')">🎓 <span>MODO ESTUDIO</span></button>
     <button data-screen="color" onclick="go('color')">🎨 <span>COLOREA</span></button>
@@ -96,12 +97,13 @@
     <section id="screen-piano" class="screen"></section>
     <section id="screen-musicgames" class="screen"></section>
     <section id="screen-math" class="screen"></section>
+    <section id="screen-snakes" class="screen"></section>
   </main>
 </div>
 </div>
 
 <div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
 <div id="toast"></div>
-<script src="app.js?v=28"></script>
+<script src="app.js?v=29"></script>
 </body>
 </html>

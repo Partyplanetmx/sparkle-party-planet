@@ -1,23 +1,16 @@
-PARTY PLANET VERSIÓN 28 — MATEMÁTICAS PARA NIÑOS
+PARTY PLANET VERSIÓN 29 — SERPIENTES Y ESCALERAS
 
-NUEVA SECCIÓN DE MATEMÁTICAS
-- Sumar
-- Restar
-- Multiplicar
-- Dividir
-
-FUNCIONES
-- Tres niveles: fácil, medio y difícil.
-- Ejercicios aleatorios.
-- Cuatro respuestas grandes para elegir.
-- Operaciones de división siempre con resultado entero.
-- Restas sin resultados negativos.
-- Voz para escuchar las operaciones.
-- Representaciones visuales con estrellas y dulces.
-- Puntos, rachas y ejercicios realizados.
-- Cinco estrellas por respuesta correcta.
-- Confeti y mensajes de felicitación.
-- Lecciones sencillas para explicar cada operación.
+NUEVO JUEGO
+- Tablero de 100 casillas.
+- Ficha del jugador y nave rival.
+- Dado animado.
+- Escaleras que hacen subir.
+- Serpientes que hacen bajar.
+- Turnos automáticos.
+- Rival controlado por la aplicación.
+- Premio de 25 estrellas al ganar.
+- Confeti y voz de felicitación.
+- Botón para comenzar un juego nuevo.
 
 CÓMO ABRIR
 1. Extrae completamente el ZIP.

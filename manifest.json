@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 28 Matemáticas",
-  "short_name": "Party Planet V28",
+  "name": "Party Planet Versión 29 Serpientes y Escaleras",
+  "short_name": "Party Planet V29",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Sección infantil de matemáticas con suma, resta, multiplicación y división."
+  "description": "Incluye juego infantil de Serpientes y Escaleras con dado, fichas, premios y animaciones."
 }
