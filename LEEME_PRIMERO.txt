@@ -1,7 +1,22 @@
-PARTY PLANET VERSIÓN 31 — MEGA UNIVERSO
+PARTY PLANET VERSIÓN 32 — CUENTOS ILUSTRADOS DE LAS CHESPITAS
 
-Incluye perfil infantil, misiones diarias, mapa de planetas, mascota virtual, más juegos, creador de cuentos, estudio de grabación, baile, zona creativa, calendario y modos Preescolar/Primaria.
+MEJORAS EN LA SECCIÓN DE CUENTOS
+- Ahora la sección de cuentos funciona como una pequeña biblioteca.
+- Incluye cuentos más largos tipo libro.
+- Cada libro tiene varias páginas.
+- Cada página muestra una ilustración y texto amplio.
+- Se puede abrir cada libro, cambiar de página y escuchar la narración.
+- Los cuentos están centrados en aventuras de Las Chespitas.
+- Al terminar un libro se otorgan estrellas.
 
-IMPORTANTE: Algunas funciones avanzadas como filtros reales de voz, sincronización entre dispositivos, cámara y publicación en tiendas necesitarán servicios en la nube y una aplicación móvil nativa.
+LIBROS INCLUIDOS
+1. Las Chespitas y la Estrella Perdida
+2. Las Chespitas en el Bosque de los Globos
+3. Las Chespitas y la Fiesta del Gran Planetario
 
-Abre ABRIR_PARTY_PLANET.bat después de extraer el ZIP.
+CÓMO ABRIR
+1. Extrae completamente el ZIP.
+2. Abre ABRIR_PARTY_PLANET.bat.
+3. Mantén abierta la ventana negra.
+4. No abras la aplicación desde WinRAR.
+5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.

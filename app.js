@@ -1383,3 +1383,191 @@ let ctx31=null,draw31=false,last31=null;function setupCanvas31(){let c=document.
 function renderCreativity31(){document.getElementById('screen-creativity').innerHTML=title('🖍️','Zona creativa','Dibuja, colorea y diseña')+`<div class="v31-palette">${['#ff2ead','#29baf0','#ffcf2d','#60df81','#7b42e9','#111'].map(c=>`<button style="background:${c}" onclick="ctx31.strokeStyle='${c}'"></button>`).join('')}<button class="action-btn" onclick="ctx31.clearRect(0,0,9999,9999)">Limpiar</button></div><canvas id="cv31" class="v31-canvas"></canvas>`;setTimeout(setupCanvas31,50)}
 function renderCalendar31(){let e=[['💖','14 de febrero','Amistad'],['🎈','30 de abril','Día del Niño'],['🌷','10 de mayo','Día de las Madres'],['🇲🇽','15 de septiembre','Fiesta Mexicana'],['🎃','31 de octubre','Halloween'],['🎄','24 de diciembre','Navidad']];document.getElementById('screen-calendar').innerHTML=title('📅','Calendario mágico','Fechas especiales')+`<div class="v31-calendar">${e.map(x=>`<article><span>${x[0]}</span><b>${x[1]}</b><h3>${x[2]}</h3><button onclick="toast('Actividad desbloqueada')">Ver actividades</button></article>`).join('')}</div>`}
 function renderLearningMode31(){let m=g31(K31.mode,'Preescolar');document.getElementById('screen-learningmode').innerHTML=title('🎓','Modo escolar','Elige el nivel')+`<div class="v31-modes"><button class="${m==='Preescolar'?'active':''}" onclick="s31(K31.mode,'Preescolar');renderLearningMode31()"><span>🧸</span><b>Preescolar</b><small>Vocales, colores, animales, números y sonidos.</small></button><button class="${m==='Primaria'?'active':''}" onclick="s31(K31.mode,'Primaria');renderLearningMode31()"><span>📘</span><b>Primaria</b><small>Lectura, matemáticas, ortografía, ciencias e idiomas.</small></button></div>`}
+
+
+// ======================================================
+// PARTY PLANET V32 — CUENTOS ILUSTRADOS DE LAS CHESPITAS
+// ======================================================
+const V32_STORY_BOOKS = [
+  {
+    title: "Las Chespitas y la Estrella Perdida",
+    cover: "assets/images/chespitas.jpg",
+    summary: "Una aventura larga y mágica donde Las Chespitas recorren Party Planet para devolverle la luz a una estrella muy especial.",
+    pages: [
+      {
+        image: "assets/images/chespitas.jpg",
+        title: "Capítulo 1 · Una noche sin brillo",
+        text: "Era una noche tranquila en Party Planet. Las luces de colores brillaban, los planetas bailaban lentamente y Las Chespitas se preparaban para un gran concierto. De pronto, la pequeña Estrellita dejó de brillar. El cielo se volvió un poco más oscuro y la música perdió su chispa. Las Chespitas se miraron con sorpresa y decidieron ayudarla antes de que la fiesta mágica se apagara por completo."
+      },
+      {
+        image: "assets/images/estrellita.jpg",
+        title: "Capítulo 2 · El mapa de luz",
+        text: "Estrellita les explicó que su brillo estaba escondido en tres lugares: el Bosque de los Globos, el Río de Confeti y la Montaña Musical. Para encontrarlo, debían seguir un mapa dorado que solo aparecía cuando se decía en voz alta: \"amistad, alegría y valentía\". Las Chespitas tomaron el mapa, se abrazaron muy fuerte y comenzaron su aventura con pasos llenos de emoción."
+      },
+      {
+        image: "assets/images/cangurito.jpg",
+        title: "Capítulo 3 · El salto valiente",
+        text: "En el Bosque de los Globos las esperaba el Cangurito Bailarín. Para conseguir la primera chispa de luz, todos tenían que cruzar un camino saltando de globo en globo sin caer. Las Chespitas cantaron una canción para darse ánimo y el Cangurito mostró los saltos más altos. Gracias al trabajo en equipo, alcanzaron una burbuja brillante donde estaba escondida la primera chispa de Estrellita."
+      },
+      {
+        image: "assets/images/sparkly.jpg",
+        title: "Capítulo 4 · El río de confeti",
+        text: "Más adelante encontraron a Sparkly, quien navegaba alegremente por el Río de Confeti. Él les contó que la segunda chispa estaba al fondo de una lluvia de papelitos de colores que giraban como remolino. Las Chespitas, con ayuda de Sparkly, formaron una rueda, giraron despacito y siguieron el compás de la música hasta descubrir una cajita luminosa. Al abrirla, el río entero se iluminó con destellos plateados y la segunda chispa apareció."
+      },
+      {
+        image: "assets/images/inicio_visual.png",
+        title: "Capítulo 5 · El concierto de las estrellas",
+        text: "La última chispa estaba en la Montaña Musical. Allí, Las Chespitas comprendieron que no bastaba con buscarla: tenían que cantar con el corazón. Entonces subieron al escenario, tomaron aire y dedicaron una canción a la amistad, la alegría y la esperanza. La montaña vibró, la tercera chispa se encendió y volvió a unirse con las otras dos. Estrellita recuperó su brillo, el cielo volvió a iluminarse y Party Planet celebró con un concierto inolvidable. Desde esa noche, todos recordaron que cuando se canta y se comparte amor, siempre aparece una nueva luz."
+      }
+    ]
+  },
+  {
+    title: "Las Chespitas en el Bosque de los Globos",
+    cover: "assets/images/inicio_visual.png",
+    summary: "Un libro de aventuras y amistad donde Las Chespitas ayudan a los habitantes del Bosque de los Globos a recuperar sus colores.",
+    pages: [
+      {
+        image: "assets/images/inicio_visual.png",
+        title: "Capítulo 1 · El bosque en silencio",
+        text: "Una mañana, Las Chespitas recibieron una invitación urgente del Bosque de los Globos. Algo extraño ocurría allí: los globos ya no flotaban, los colores estaban pálidos y las risas se escuchaban muy bajitas. Cuando llegaron, vieron que los senderos estaban quietos y que los animalitos del bosque miraban al cielo con tristeza."
+      },
+      {
+        image: "assets/images/chespitas.jpg",
+        title: "Capítulo 2 · La llave de los colores",
+        text: "En el centro del bosque encontraron un libro antiguo con una llave dibujada en la portada. El libro contaba que los colores solo regresaban cuando alguien realizaba tres actos de bondad: ayudar a un amigo, cantar para alegrar a otro y compartir lo mejor de su corazón. Las Chespitas supieron enseguida que esa era su misión."
+      },
+      {
+        image: "assets/images/cangurito.jpg",
+        title: "Capítulo 3 · Una carrera con alegría",
+        text: "El primer acto de bondad llegó cuando el Cangurito Bailarín quiso participar en la carrera del bosque, pero su globo guía se había desinflado. Las Chespitas lo animaron, buscaron cintas de colores y juntas fabricaron un globo nuevo. El Cangurito dio un gran salto, sonrió muy feliz y, como por arte de magia, el color amarillo volvió a los caminos del bosque."
+      },
+      {
+        image: "assets/images/sparkly.jpg",
+        title: "Capítulo 4 · Canción entre los árboles",
+        text: "Después encontraron a Sparkly tratando de encender unas lucecitas enredadas entre los árboles. Las Chespitas cantaron una melodía suave para darle confianza y pronto todos los pajaritos se unieron al coro. Las hojas comenzaron a moverse como si bailaran y el color rosa volvió a las flores que adornaban el bosque."
+      },
+      {
+        image: "assets/images/estrellita.jpg",
+        title: "Capítulo 5 · El brillo compartido",
+        text: "Faltaba el último acto. Estrellita apareció con una pequeña chispa que no podía sostener sola. Entonces Las Chespitas compartieron con ella abrazos, palabras bonitas y una promesa: nunca dejar sola a la alegría. En ese instante, una ola de color azul, verde, rosa y dorado recorrió todo el Bosque de los Globos. Los globos volvieron a elevarse, los caminos se llenaron de música y los habitantes agradecieron con una gran fiesta. Las Chespitas aprendieron que la bondad tiene el poder de devolverle el color al mundo."
+      }
+    ]
+  },
+  {
+    title: "Las Chespitas y la Fiesta del Gran Planetario",
+    cover: "assets/images/sparkly.jpg",
+    summary: "Las Chespitas organizan la celebración más importante de Party Planet y descubren que una fiesta verdadera se construye con unión, creatividad y cariño.",
+    pages: [
+      {
+        image: "assets/images/sparkly.jpg",
+        title: "Capítulo 1 · Una invitación gigante",
+        text: "Cada año, en Party Planet se celebraba la Fiesta del Gran Planetario, una reunión donde todos los personajes mostraban sus talentos. Ese año, Las Chespitas fueron elegidas para organizarla. Al principio sintieron nervios, porque había mucho por hacer: decorar, ensayar canciones, preparar juegos y recibir a todos los invitados con una sonrisa enorme."
+      },
+      {
+        image: "assets/images/chespitas.jpg",
+        title: "Capítulo 2 · Los preparativos",
+        text: "Las Chespitas comenzaron por repartir tareas. Una se encargó de la música, otra de los adornos y ambas trabajaron juntas en la bienvenida. Eligieron cintas brillantes, estrellas colgantes y un arco de globos tan grande que parecía una puerta al universo. También ensayaron una canción especial para que cada niño se sintiera importante desde el momento de entrar."
+      },
+      {
+        image: "assets/images/cangurito.jpg",
+        title: "Capítulo 3 · El problema inesperado",
+        text: "Cuando casi todo estaba listo, el viento cósmico pasó muy rápido por el escenario y desacomodó parte de la decoración. El Cangurito Bailarín quiso ayudar enseguida, pero con tanto apuro se enredó entre serpentinas y listones. Las Chespitas respiraron profundo y recordaron que los problemas se resuelven mejor con calma y alegría. Así que organizaron una cadena de ayuda para volver a poner todo en su lugar."
+      },
+      {
+        image: "assets/images/inicio_visual.png",
+        title: "Capítulo 4 · Una fiesta para todos",
+        text: "Sparkly llegó con una idea maravillosa: convertir la fiesta en un recorrido por estaciones. Habría una zona para cantar, otra para bailar, otra para juegos y una más para aprender palabras y números. Las Chespitas adoraron la propuesta porque así cada niño podría divertirse a su manera. Poco a poco, el gran planetario comenzó a transformarse en un universo de sonrisas."
+      },
+      {
+        image: "assets/images/logo_party_planet_v25.png",
+        title: "Capítulo 5 · El mejor final",
+        text: "Cuando llegaron los invitados, todo brillaba. Hubo canciones, bailes, juegos y abrazos por todos lados. Las Chespitas abrieron la fiesta con su canción especial y al terminar escucharon un aplauso tan grande que sintieron el corazón lleno de emoción. Comprendieron que la mejor parte de organizar una gran celebración no era la decoración ni las luces, sino ver felices a los demás. Y así, la Fiesta del Gran Planetario se convirtió en una historia que todos quisieron volver a leer una y otra vez."
+      }
+    ]
+  }
+];
+let v32CurrentBook = 0;
+let v32CurrentPage = 0;
+
+function renderStories(){
+  const book = V32_STORY_BOOKS[v32CurrentBook];
+  const pages = book.pages;
+  const progress = ((v32CurrentPage+1)/pages.length)*100;
+  document.getElementById("screen-stories").innerHTML = title("📚","Cuentos ilustrados","Libros largos de aventuras de Las Chespitas") + `
+    <section class="v32-story-hero">
+      <img src="assets/images/chespitas.jpg" alt="Las Chespitas">
+      <div>
+        <h3>Biblioteca de aventuras de Las Chespitas</h3>
+        <p>Aquí encontrarás cuentos más largos, con varias páginas e ilustraciones, como si fueran libros infantiles.</p>
+      </div>
+    </section>
+
+    <section class="story-library-v32">
+      ${V32_STORY_BOOKS.map((b,i)=>`
+        <article class="story-book-card-v32 ${i===v32CurrentBook?'active':''}">
+          <img src="${b.cover}" alt="${b.title}">
+          <div class="story-book-meta-v32">
+            <h3>${b.title}</h3>
+            <p>${b.summary}</p>
+            <div class="story-book-actions-v32">
+              <button class="action-btn" onclick="openStoryBookV32(${i})">📖 Abrir libro</button>
+              <button class="action-btn" onclick="readCurrentPageV32(${i},0)">🔊 Escuchar inicio</button>
+            </div>
+          </div>
+        </article>
+      `).join("")}
+    </section>
+
+    <section class="story-reader-v32">
+      <div class="story-reader-top-v32">
+        <div>
+          <h3>${book.title}</h3>
+          <p>Página ${v32CurrentPage+1} de ${pages.length}</p>
+        </div>
+        <div class="story-progress-v32"><i style="width:${progress}%"></i></div>
+      </div>
+
+      <div class="story-open-book-v32">
+        <div class="story-page-image-v32">
+          <img src="${pages[v32CurrentPage].image}" alt="${pages[v32CurrentPage].title}">
+          <span>Ilustración del cuento</span>
+        </div>
+        <div class="story-page-text-v32">
+          <h4>${pages[v32CurrentPage].title}</h4>
+          <p>${pages[v32CurrentPage].text}</p>
+        </div>
+      </div>
+
+      <div class="story-page-dots-v32">
+        ${pages.map((_,i)=>`<button class="${i===v32CurrentPage?'active':''}" onclick="goToStoryPageV32(${i})">${i+1}</button>`).join("")}
+      </div>
+
+      <div class="story-reader-controls-v32">
+        <button class="action-btn" onclick="prevStoryPageV32()" ${v32CurrentPage===0?'disabled':''}>⬅ Página anterior</button>
+        <button class="action-btn" onclick="readCurrentPageV32()">🔊 Escuchar página</button>
+        <button class="action-btn" onclick="nextStoryPageV32()">Página siguiente ➡</button>
+        <button class="action-btn" onclick="finishActivity('¡Leíste un cuento de Las Chespitas!', 8)">⭐ Terminé el cuento</button>
+      </div>
+    </section>`;
+}
+
+function openStoryBookV32(index){
+  v32CurrentBook = index;
+  v32CurrentPage = 0;
+  renderStories();
+  const el = document.querySelector('.story-reader-v32');
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+function goToStoryPageV32(page){ v32CurrentPage = page; renderStories(); }
+function prevStoryPageV32(){ if(v32CurrentPage>0){v32CurrentPage--; renderStories();} }
+function nextStoryPageV32(){
+  const pages = V32_STORY_BOOKS[v32CurrentBook].pages;
+  if(v32CurrentPage < pages.length-1){ v32CurrentPage++; renderStories(); }
+  else { finishActivity('¡Terminaste el libro!', 10); }
+}
+function readCurrentPageV32(bookIndex=null,pageIndex=null){
+  const b = bookIndex===null ? v32CurrentBook : bookIndex;
+  const p = pageIndex===null ? v32CurrentPage : pageIndex;
+  const page = V32_STORY_BOOKS[b].pages[p];
+  speak(`${page.title}. ${page.text}`, 'es-MX');
+}

@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 31 Mega Universo",
-  "short_name": "Party Planet V31",
+  "name": "Party Planet Versión 32 Cuentos Ilustrados",
+  "short_name": "Party Planet V32",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Mega versión con perfiles, misiones, universo, mascota, juegos, cuentos, estudio, baile, creatividad, calendario y niveles escolares."
+  "description": "Versión con cuentos más largos e ilustrados tipo libro sobre aventuras de Las Chespitas."
 }
