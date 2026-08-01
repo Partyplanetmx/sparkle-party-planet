@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 32 Cuentos Ilustrados",
-  "short_name": "Party Planet V32",
+  "name": "Party Planet Versión 34 Cuentos con Imágenes",
+  "short_name": "Party Planet V34",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Versión con cuentos más largos e ilustrados tipo libro sobre aventuras de Las Chespitas."
+  "description": "Versión con cuentos de Las Chespitas y sus ilustraciones correspondientes integradas en la sección de cuentos."
 }

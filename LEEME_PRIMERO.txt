@@ -1,22 +1,18 @@
-PARTY PLANET VERSIÓN 32 — CUENTOS ILUSTRADOS DE LAS CHESPITAS
+PARTY PLANET VERSIÓN 34 — CUENTOS CON IMÁGENES
 
-MEJORAS EN LA SECCIÓN DE CUENTOS
-- Ahora la sección de cuentos funciona como una pequeña biblioteca.
-- Incluye cuentos más largos tipo libro.
-- Cada libro tiene varias páginas.
-- Cada página muestra una ilustración y texto amplio.
-- Se puede abrir cada libro, cambiar de página y escuchar la narración.
-- Los cuentos están centrados en aventuras de Las Chespitas.
-- Al terminar un libro se otorgan estrellas.
+MEJORA PRINCIPAL
+- Se agregaron las nuevas imágenes creadas especialmente para los cuentos.
+- Cada cuento ahora tiene su imagen correspondiente.
+- También se añadió una galería dentro de la sección de cuentos.
 
-LIBROS INCLUIDOS
+IMÁGENES AGREGADAS
 1. Las Chespitas y la Estrella Perdida
 2. Las Chespitas en el Bosque de los Globos
 3. Las Chespitas y la Fiesta del Gran Planetario
 
 CÓMO ABRIR
-1. Extrae completamente el ZIP.
-2. Abre ABRIR_PARTY_PLANET.bat.
-3. Mantén abierta la ventana negra.
-4. No abras la aplicación desde WinRAR.
-5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
+1. Extrae completamente el ZIP en una carpeta nueva.
+2. Cierra ventanas negras de versiones anteriores.
+3. Abre ABRIR_PARTY_PLANET.bat.
+4. Entra a CUENTOS.
+5. Si quieres abrir directamente la biblioteca de cuentos, usa ABRIR_CUENTOS_DIRECTAMENTE.bat.

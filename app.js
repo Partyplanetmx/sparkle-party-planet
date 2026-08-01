@@ -20,7 +20,7 @@ const events=[["🎂","Cumpleaños mágico","Crea una celebración especial"],["
 function save(){localStorage.pp16stars=state.stars;localStorage.pp16gems=state.gems;localStorage.pp16learned=JSON.stringify([...state.learned]);localStorage.pp16favs=JSON.stringify([...state.favs]);localStorage.pp16lang=state.lang;localStorage.pp16avatar=state.avatar}
 function sync(){starsTop.textContent=state.stars;gemsTop.textContent=state.gems}
 function go(name){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("active"));document.getElementById("screen-"+name).classList.add("active");document.querySelectorAll("#mainNav button").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));render(name);scrollTo(0,0)}
-function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStories();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath();if(name==="snakes")renderSnakesV30();if(name==="profile")renderProfile31();if(name==="missions")renderMissions31();if(name==="universe")renderUniverse31();if(name==="pet")renderPet31();if(name==="moregames")renderMoreGames31();if(name==="storymaker")renderStoryMaker31();if(name==="studio")renderStudio31();if(name==="dance")renderDance31();if(name==="creativity")renderCreativity31();if(name==="calendar")renderCalendar31();if(name==="learningmode")renderLearningMode31()}
+function render(name){if(name==="home")renderHome();if(name==="karaoke")renderKaraoke();if(name==="stories")renderStoriesV33();if(name==="games")renderGames();if(name==="languages")renderLanguagesV27();if(name==="study")renderStudy();if(name==="color")renderColor();if(name==="avatar")renderAvatar();if(name==="music")renderMusicV22();if(name==="rewards")renderRewards();if(name==="store")renderStore();if(name==="events")renderEvents();if(name==="settings")renderSettings();if(name==="vip")renderVIP();if(name==="parents")renderParents();if(name==="admin")renderAdmin();if(name==="cloud")renderCloud();if(name==="analytics")renderAnalytics();if(name==="animals")renderAnimals();if(name==="puzzle")renderPuzzle();if(name==="syllables")renderSyllables();if(name==="piano")renderPiano();if(name==="musicgames")renderMusicGames();if(name==="math")renderMath();if(name==="snakes")renderSnakesV30();if(name==="profile")renderProfile31();if(name==="missions")renderMissions31();if(name==="universe")renderUniverse31();if(name==="pet")renderPet31();if(name==="moregames")renderMoreGames31();if(name==="storymaker")renderStoryMaker31();if(name==="studio")renderStudio31();if(name==="dance")renderDance31();if(name==="creativity")renderCreativity31();if(name==="calendar")renderCalendar31();if(name==="learningmode")renderLearningMode31()}
 function title(icon,name,desc){return `<div class="screen-title"><div><h2>${icon} ${name}</h2><p>${desc}</p></div><span>⭐ ${state.stars}</span></div>`}
 function renderHome(){
   document.getElementById("screen-home").innerHTML = `
@@ -322,7 +322,7 @@ async function loadStoredKaraoke(){
 }
 
 sync();go("home");
-if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js").catch(()=>{});
+/* Service worker desactivado en V33 para evitar que se carguen versiones antiguas. */
 
 
 // ===== PARTY PLANET V22 CLOUD EDITION =====
@@ -1391,16 +1391,16 @@ function renderLearningMode31(){let m=g31(K31.mode,'Preescolar');document.getEle
 const V32_STORY_BOOKS = [
   {
     title: "Las Chespitas y la Estrella Perdida",
-    cover: "assets/images/chespitas.jpg",
+    cover: "assets/images/cuento_estrella_perdida.png",
     summary: "Una aventura larga y mágica donde Las Chespitas recorren Party Planet para devolverle la luz a una estrella muy especial.",
     pages: [
       {
-        image: "assets/images/chespitas.jpg",
+        image: "assets/images/cuento_estrella_perdida.png",
         title: "Capítulo 1 · Una noche sin brillo",
         text: "Era una noche tranquila en Party Planet. Las luces de colores brillaban, los planetas bailaban lentamente y Las Chespitas se preparaban para un gran concierto. De pronto, la pequeña Estrellita dejó de brillar. El cielo se volvió un poco más oscuro y la música perdió su chispa. Las Chespitas se miraron con sorpresa y decidieron ayudarla antes de que la fiesta mágica se apagara por completo."
       },
       {
-        image: "assets/images/estrellita.jpg",
+        image: "assets/images/cuento_estrella_perdida.png",
         title: "Capítulo 2 · El mapa de luz",
         text: "Estrellita les explicó que su brillo estaba escondido en tres lugares: el Bosque de los Globos, el Río de Confeti y la Montaña Musical. Para encontrarlo, debían seguir un mapa dorado que solo aparecía cuando se decía en voz alta: \"amistad, alegría y valentía\". Las Chespitas tomaron el mapa, se abrazaron muy fuerte y comenzaron su aventura con pasos llenos de emoción."
       },
@@ -1415,7 +1415,7 @@ const V32_STORY_BOOKS = [
         text: "Más adelante encontraron a Sparkly, quien navegaba alegremente por el Río de Confeti. Él les contó que la segunda chispa estaba al fondo de una lluvia de papelitos de colores que giraban como remolino. Las Chespitas, con ayuda de Sparkly, formaron una rueda, giraron despacito y siguieron el compás de la música hasta descubrir una cajita luminosa. Al abrirla, el río entero se iluminó con destellos plateados y la segunda chispa apareció."
       },
       {
-        image: "assets/images/inicio_visual.png",
+        image: "assets/images/cuento_estrella_perdida.png",
         title: "Capítulo 5 · El concierto de las estrellas",
         text: "La última chispa estaba en la Montaña Musical. Allí, Las Chespitas comprendieron que no bastaba con buscarla: tenían que cantar con el corazón. Entonces subieron al escenario, tomaron aire y dedicaron una canción a la amistad, la alegría y la esperanza. La montaña vibró, la tercera chispa se encendió y volvió a unirse con las otras dos. Estrellita recuperó su brillo, el cielo volvió a iluminarse y Party Planet celebró con un concierto inolvidable. Desde esa noche, todos recordaron que cuando se canta y se comparte amor, siempre aparece una nueva luz."
       }
@@ -1423,11 +1423,11 @@ const V32_STORY_BOOKS = [
   },
   {
     title: "Las Chespitas en el Bosque de los Globos",
-    cover: "assets/images/inicio_visual.png",
+    cover: "assets/images/cuento_bosque_globos.png",
     summary: "Un libro de aventuras y amistad donde Las Chespitas ayudan a los habitantes del Bosque de los Globos a recuperar sus colores.",
     pages: [
       {
-        image: "assets/images/inicio_visual.png",
+        image: "assets/images/cuento_bosque_globos.png",
         title: "Capítulo 1 · El bosque en silencio",
         text: "Una mañana, Las Chespitas recibieron una invitación urgente del Bosque de los Globos. Algo extraño ocurría allí: los globos ya no flotaban, los colores estaban pálidos y las risas se escuchaban muy bajitas. Cuando llegaron, vieron que los senderos estaban quietos y que los animalitos del bosque miraban al cielo con tristeza."
       },
@@ -1442,12 +1442,12 @@ const V32_STORY_BOOKS = [
         text: "El primer acto de bondad llegó cuando el Cangurito Bailarín quiso participar en la carrera del bosque, pero su globo guía se había desinflado. Las Chespitas lo animaron, buscaron cintas de colores y juntas fabricaron un globo nuevo. El Cangurito dio un gran salto, sonrió muy feliz y, como por arte de magia, el color amarillo volvió a los caminos del bosque."
       },
       {
-        image: "assets/images/sparkly.jpg",
+        image: "assets/images/cuento_bosque_globos.png",
         title: "Capítulo 4 · Canción entre los árboles",
         text: "Después encontraron a Sparkly tratando de encender unas lucecitas enredadas entre los árboles. Las Chespitas cantaron una melodía suave para darle confianza y pronto todos los pajaritos se unieron al coro. Las hojas comenzaron a moverse como si bailaran y el color rosa volvió a las flores que adornaban el bosque."
       },
       {
-        image: "assets/images/estrellita.jpg",
+        image: "assets/images/cuento_bosque_globos.png",
         title: "Capítulo 5 · El brillo compartido",
         text: "Faltaba el último acto. Estrellita apareció con una pequeña chispa que no podía sostener sola. Entonces Las Chespitas compartieron con ella abrazos, palabras bonitas y una promesa: nunca dejar sola a la alegría. En ese instante, una ola de color azul, verde, rosa y dorado recorrió todo el Bosque de los Globos. Los globos volvieron a elevarse, los caminos se llenaron de música y los habitantes agradecieron con una gran fiesta. Las Chespitas aprendieron que la bondad tiene el poder de devolverle el color al mundo."
       }
@@ -1455,11 +1455,11 @@ const V32_STORY_BOOKS = [
   },
   {
     title: "Las Chespitas y la Fiesta del Gran Planetario",
-    cover: "assets/images/sparkly.jpg",
+    cover: "assets/images/cuento_gran_planetario.png",
     summary: "Las Chespitas organizan la celebración más importante de Party Planet y descubren que una fiesta verdadera se construye con unión, creatividad y cariño.",
     pages: [
       {
-        image: "assets/images/sparkly.jpg",
+        image: "assets/images/cuento_gran_planetario.png",
         title: "Capítulo 1 · Una invitación gigante",
         text: "Cada año, en Party Planet se celebraba la Fiesta del Gran Planetario, una reunión donde todos los personajes mostraban sus talentos. Ese año, Las Chespitas fueron elegidas para organizarla. Al principio sintieron nervios, porque había mucho por hacer: decorar, ensayar canciones, preparar juegos y recibir a todos los invitados con una sonrisa enorme."
       },
@@ -1474,12 +1474,12 @@ const V32_STORY_BOOKS = [
         text: "Cuando casi todo estaba listo, el viento cósmico pasó muy rápido por el escenario y desacomodó parte de la decoración. El Cangurito Bailarín quiso ayudar enseguida, pero con tanto apuro se enredó entre serpentinas y listones. Las Chespitas respiraron profundo y recordaron que los problemas se resuelven mejor con calma y alegría. Así que organizaron una cadena de ayuda para volver a poner todo en su lugar."
       },
       {
-        image: "assets/images/inicio_visual.png",
+        image: "assets/images/cuento_gran_planetario.png",
         title: "Capítulo 4 · Una fiesta para todos",
         text: "Sparkly llegó con una idea maravillosa: convertir la fiesta en un recorrido por estaciones. Habría una zona para cantar, otra para bailar, otra para juegos y una más para aprender palabras y números. Las Chespitas adoraron la propuesta porque así cada niño podría divertirse a su manera. Poco a poco, el gran planetario comenzó a transformarse en un universo de sonrisas."
       },
       {
-        image: "assets/images/logo_party_planet_v25.png",
+        image: "assets/images/cuento_gran_planetario.png",
         title: "Capítulo 5 · El mejor final",
         text: "Cuando llegaron los invitados, todo brillaba. Hubo canciones, bailes, juegos y abrazos por todos lados. Las Chespitas abrieron la fiesta con su canción especial y al terminar escucharon un aplauso tan grande que sintieron el corazón lleno de emoción. Comprendieron que la mejor parte de organizar una gran celebración no era la decoración ni las luces, sino ver felices a los demás. Y así, la Fiesta del Gran Planetario se convirtió en una historia que todos quisieron volver a leer una y otra vez."
       }
@@ -1489,7 +1489,7 @@ const V32_STORY_BOOKS = [
 let v32CurrentBook = 0;
 let v32CurrentPage = 0;
 
-function renderStories(){
+function renderStoriesV33(){
   const book = V32_STORY_BOOKS[v32CurrentBook];
   const pages = book.pages;
   const progress = ((v32CurrentPage+1)/pages.length)*100;
@@ -1497,8 +1497,8 @@ function renderStories(){
     <section class="v32-story-hero">
       <img src="assets/images/chespitas.jpg" alt="Las Chespitas">
       <div>
-        <h3>Biblioteca de aventuras de Las Chespitas</h3>
-        <p>Aquí encontrarás cuentos más largos, con varias páginas e ilustraciones, como si fueran libros infantiles.</p>
+        <h3>Biblioteca ilustrada de Las Chespitas</h3>
+        <p>Aquí encontrarás cuentos largos con ilustraciones creadas especialmente para cada aventura, como si fueran libros infantiles de Party Planet.</p>
       </div>
     </section>
 
@@ -1516,6 +1516,15 @@ function renderStories(){
           </div>
         </article>
       `).join("")}
+    </section>
+
+    <section class="story-gallery-v34">
+      <h3>🖼️ Ilustraciones especiales de los cuentos</h3>
+      <div class="story-gallery-grid-v34">
+        <figure><img src="assets/images/cuento_estrella_perdida.png" alt="Las Chespitas y la Estrella Perdida"><figcaption>Las Chespitas y la Estrella Perdida</figcaption></figure>
+        <figure><img src="assets/images/cuento_bosque_globos.png" alt="Las Chespitas en el Bosque de los Globos"><figcaption>Las Chespitas en el Bosque de los Globos</figcaption></figure>
+        <figure><img src="assets/images/cuento_gran_planetario.png" alt="Las Chespitas y la Fiesta del Gran Planetario"><figcaption>Las Chespitas y la Fiesta del Gran Planetario</figcaption></figure>
+      </div>
     </section>
 
     <section class="story-reader-v32">
@@ -1571,3 +1580,14 @@ function readCurrentPageV32(bookIndex=null,pageIndex=null){
   const page = V32_STORY_BOOKS[b].pages[p];
   speak(`${page.title}. ${page.text}`, 'es-MX');
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Party Planet V33 reparada cargada correctamente.");
+  const storyButton = document.querySelector('[data-screen="stories"]');
+  if (storyButton) storyButton.title = "Abrir cuentos ilustrados de Las Chespitas";
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(location.search);
+  if (params.get("open") === "stories") setTimeout(() => go("stories"), 250);
+});

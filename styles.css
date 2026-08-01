@@ -733,3 +733,13 @@ body::before{animation:cosmicShiftV24 8s ease-in-out infinite alternate!importan
 .story-reader-controls-v32{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}.story-reader-controls-v32 .action-btn[disabled]{opacity:.5;cursor:not-allowed}
 @media(max-width:900px){.v32-story-hero,.story-book-card-v32,.story-open-book-v32,.story-reader-top-v32{grid-template-columns:1fr}.story-page-image-v32 img{height:250px}}
 @media(max-width:600px){.story-page-text-v32 p{font-size:18px}.story-book-card-v32 img{height:190px}}
+
+
+/* V34 cuentos con imagenes */
+.story-gallery-v34{margin:16px 0;padding:16px;border-radius:24px;background:linear-gradient(145deg,#27127d,#140760);box-shadow:0 10px 24px #0004}
+.story-gallery-v34 h3{margin:0 0 12px;font-size:28px;color:#fff}
+.story-gallery-grid-v34{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.story-gallery-grid-v34 figure{margin:0;background:linear-gradient(145deg,#ffffff,#fff5d7);padding:12px;border-radius:18px;color:#4d2370;box-shadow:0 8px 18px #0002}
+.story-gallery-grid-v34 img{width:100%;height:230px;object-fit:cover;border-radius:14px;display:block}
+.story-gallery-grid-v34 figcaption{text-align:center;font-weight:900;padding-top:8px;line-height:1.4}
+@media(max-width:900px){.story-gallery-grid-v34{grid-template-columns:1fr}}
