@@ -1,22 +1,7 @@
-PARTY PLANET VERSIÓN 30 — SERPIENTES Y ESCALERAS DE 4 JUGADORES
+PARTY PLANET VERSIÓN 31 — MEGA UNIVERSO
 
-MEJORAS EN EL JUEGO
-- Ahora participan 4 jugadores:
-  1. Sparkly
-  2. Chespita 1
-  3. Chespita 2
-  4. Cangurito
-- Puedes elegir con cuál personaje vas a jugar.
-- Se muestran imágenes actuales de los personajes.
-- El dado se tira uno por uno.
-- Cada turno cambia al siguiente personaje.
-- Cada jugador tiene su tarjeta con imagen, nombre y casilla.
-- Si tu personaje gana, recibes 30 estrellas.
-- Se conserva el tablero de 100 casillas con serpientes y escaleras.
+Incluye perfil infantil, misiones diarias, mapa de planetas, mascota virtual, más juegos, creador de cuentos, estudio de grabación, baile, zona creativa, calendario y modos Preescolar/Primaria.
 
-CÓMO ABRIR
-1. Extrae completamente el ZIP.
-2. Abre ABRIR_PARTY_PLANET.bat.
-3. Mantén abierta la ventana negra.
-4. No abras la aplicación desde WinRAR.
-5. Si aparece una versión anterior, usa LIMPIAR_CACHE_Y_ABRIR.bat una sola vez.
+IMPORTANTE: Algunas funciones avanzadas como filtros reales de voz, sincronización entre dispositivos, cámara y publicación en tiendas necesitarán servicios en la nube y una aplicación móvil nativa.
+
+Abre ABRIR_PARTY_PLANET.bat después de extraer el ZIP.

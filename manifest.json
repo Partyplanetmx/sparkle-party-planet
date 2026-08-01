@@ -1,10 +1,10 @@
 {
-  "name": "Party Planet Versión 30 Serpientes y Escaleras 4 Jugadores",
-  "short_name": "Party Planet V30",
+  "name": "Party Planet Versión 31 Mega Universo",
+  "short_name": "Party Planet V31",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#090044",
   "theme_color": "#160066",
   "icons": [],
-  "description": "Serpientes y Escaleras con 4 jugadores: Sparkly, las dos Chespitas y el Cangurito, con selección de personaje y turnos manuales."
+  "description": "Mega versión con perfiles, misiones, universo, mascota, juegos, cuentos, estudio, baile, creatividad, calendario y niveles escolares."
 }

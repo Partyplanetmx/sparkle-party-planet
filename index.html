@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#160066">
-<title>Party Planet V30</title>
+<title>Party Planet V31</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css?v=30">
-<script>(async function(){const V='30';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
+<link rel="stylesheet" href="styles.css?v=31">
+<script>(async function(){const V='31';if(localStorage.getItem('pp_app_version')!==V){localStorage.setItem('pp_app_version',V);try{if('serviceWorker' in navigator){const r=await navigator.serviceWorker.getRegistrations();await Promise.all(r.map(x=>x.unregister()));}if('caches' in window){const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)));}}catch(e){}}})();</script>
 </head>
 <body>
 <div class="space-motion" aria-hidden="true">
@@ -68,7 +68,7 @@
     <button data-screen="piano" onclick="go('piano')">🎹 <span>PIANO</span></button>
     <button data-screen="musicgames" onclick="go('musicgames')">🎶 <span>JUEGOS MUSICALES</span></button>
     <button data-screen="math" onclick="go('math')">➕ <span>MATEMÁTICAS</span></button>
-<button data-screen="settings" onclick="go('settings')">⚙️ <span>AJUSTES</span></button>
+<button data-screen="profile" onclick="go('profile')">👤 <span>MI PERFIL</span></button><button data-screen="missions" onclick="go('missions')">🎯 <span>MISIONES</span></button><button data-screen="universe" onclick="go('universe')">🪐 <span>UNIVERSO</span></button><button data-screen="pet" onclick="go('pet')">🐣 <span>MASCOTA</span></button><button data-screen="moregames" onclick="go('moregames')">🕹️ <span>MÁS JUEGOS</span></button><button data-screen="storymaker" onclick="go('storymaker')">✨ <span>CREA CUENTOS</span></button><button data-screen="studio" onclick="go('studio')">🎙️ <span>ESTUDIO</span></button><button data-screen="dance" onclick="go('dance')">💃 <span>BAILA</span></button><button data-screen="creativity" onclick="go('creativity')">🖍️ <span>CREATIVIDAD</span></button><button data-screen="calendar" onclick="go('calendar')">📅 <span>CALENDARIO</span></button><button data-screen="learningmode" onclick="go('learningmode')">🎓 <span>MODO ESCOLAR</span></button><button data-screen="settings" onclick="go('settings')">⚙️ <span>AJUSTES</span></button>
     <div class="kangaroo">🦘<small>Cangurito Bailarín</small></div>
   </div>
 <div class="app-layout app-layout-wide">
@@ -98,12 +98,24 @@
     <section id="screen-musicgames" class="screen"></section>
     <section id="screen-math" class="screen"></section>
     <section id="screen-snakes" class="screen"></section>
+<section id="screen-profile" class="screen"></section>
+<section id="screen-missions" class="screen"></section>
+<section id="screen-universe" class="screen"></section>
+<section id="screen-pet" class="screen"></section>
+<section id="screen-moregames" class="screen"></section>
+<section id="screen-storymaker" class="screen"></section>
+<section id="screen-studio" class="screen"></section>
+<section id="screen-dance" class="screen"></section>
+<section id="screen-creativity" class="screen"></section>
+<section id="screen-calendar" class="screen"></section>
+<section id="screen-learningmode" class="screen"></section>
+
   </main>
 </div>
 </div>
 
 <div id="modal" class="modal hidden"><div class="modal-card"><button class="modal-close" onclick="closeModal()">✕</button><div id="modalBody"></div></div></div>
 <div id="toast"></div>
-<script src="app.js?v=30"></script>
+<script src="app.js?v=31"></script>
 </body>
 </html>
